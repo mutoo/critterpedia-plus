@@ -34,7 +34,6 @@ fontSizes.h1 = fontSizes[5];
 const fonts = {
   roboto: "Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif",
   circular: "Circular, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-  icon: 'racing20',
 };
 fonts.body = fonts.roboto;
 fonts.heading = fonts.circular;
@@ -56,83 +55,11 @@ const colors = {
   'grey-66': '#666666',
   'grey-4f': '#4f4f4f',
   'grey-33': '#333333',
-  // general colors
-  primary: '#ed1c24',
-  offWhite: '#faf9f7',
-  purple: '#71668d',
-  green: '#80c88d',
-  blue: '#5181ac',
-  orange: '#f2622e',
-  text: '#333333',
-  src: '#ab3933',
-  beteasy: '#8935c0',
-  speedmap: {
-    light: '#46AE44',
-    dark: '#40A242',
-  },
-  link: {
-    normal: '#333333',
-    active: '#ed1c24',
-  },
-  // meeting
-  meeting: {
-    metro: '#006da6',
-    country: '#91c039',
-  },
-  // message colors
-  message: {
-    dark: {
-      error: '#e06158',
-      success: '#4ba000',
-    },
-    light: {
-      error: '#ffeeee',
-      success: '#f5fae5',
-    },
-  },
-  // clubs colors
-  clubs: {
-    crv: '#008542',
-    vrc: '#201547',
-    mvrc: '#ffc032',
-    prc: '#c7982c',
-    mrc: '#ccbb7b',
-  },
-  // bets
-  bets: {
-    BEST_BET: '#ED1C24',
-    NEXT_BEST: '#046DA6',
-    BEST_ROUGHIE: '#F96234',
-    BEST_VALUE: '#91C039',
-  },
-  // indicator
-  indicator: {
-    positive: '#91C039',
-    negetive: '#ED1C24',
-  },
 };
 
 const variants = {
   link: {},
-  button: {
-    normal: {
-      padding: 'md',
-      border: '1px solid',
-      borderColor: 'grey-99',
-      fontSize: 'body',
-      color: 'grey-99',
-      transition: 'all 0.3s ease-in-out',
-      '&:hover': {
-        borderColor: 'grey-66',
-        color: 'grey-66',
-      },
-    },
-    icon: {
-      cursor: 'pointer',
-      border: 'none',
-      p: 'sm',
-    },
-  },
+  button: {},
 };
 
 // use old module.exports for postcss config here
