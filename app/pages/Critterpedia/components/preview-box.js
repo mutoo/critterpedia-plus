@@ -18,6 +18,24 @@ const PreviewBox = ({ avatar, category, data, ...props }) => {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          top: '4px',
+          bottom: '4px',
+          left: '4px',
+          right: '4px',
+          border: '2px dashed',
+          borderColor: 'grey-99',
+          opacity: '0',
+          transition: 'opacity ease-out 0.2s',
+        },
+        '&:hover::after': {
+          opacity: 1,
+        },
+        '.acnh-critterpedia-slide &:not(:last-of-type)': {
+          mb: '-2px',
+        },
       }}
       {...props}
     >
