@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import { Flex, Box, Text } from 'rebass';
 import Insects from 'assets/images/insects.svg';
 import Fish from 'assets/images/fish.svg';
+import { useInjectReducer, useInjectSaga } from 'redux-injectors';
+import { useDispatch, useSelector } from 'react-redux';
+import FishPreview from './components/fish-preview';
+import InsectPreview from './components/insect-preview';
+import { name as key, reducer, updateActiveTab } from './slice';
+import saga from './saga';
+import selector from './selectors';
 
 const Tab = ({ label, active, icon, ...props }) => (
   <Flex
@@ -54,10 +61,14 @@ Tab.propTypes = {
 };
 
 const CritterpediaPage = () => {
-  const [activeTab, setActiveTab] = useState('Insects');
+  useInjectReducer({ key, reducer });
+  useInjectSaga({ key, saga });
+  const { fish, insects, activeTab } = useSelector(selector);
+  const dispatch = useDispatch();
+  const setActiveTab = useCallback(tab => dispatch(updateActiveTab(tab)), []);
   return (
     <Box p="lg">
-      <Flex>
+      <Flex mb="lg">
         <Tab
           label="Insects"
           active={activeTab === 'Insects'}
@@ -70,6 +81,27 @@ const CritterpediaPage = () => {
           icon={<Fish width={32} height={32} />}
           onClick={() => setActiveTab('Fish')}
         />
+      </Flex>
+      <Flex
+        flexDirection="column"
+        flexWrap="wrap"
+        sx={{
+          height: 120 * 5,
+        }}
+      >
+        {activeTab === 'Fish' &&
+          fish.map(f => (
+            <FishPreview data={f} key={`fish-${f.id}`} mb="-2px" mr="-2px" />
+          ))}
+        {activeTab === 'Insects' &&
+          insects.map(i => (
+            <InsectPreview
+              data={i}
+              key={`insect-${i.id}`}
+              mb="-2px"
+              mr="-2px"
+            />
+          ))}
       </Flex>
     </Box>
   );
