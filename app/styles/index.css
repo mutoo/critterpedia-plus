@@ -1,0 +1,33 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  line-height: 1.5;
+  color: #333333;
+}
+
+html {
+  font-size: 62.5%; /* rem root */
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body.fontLoaded {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+/* the animation for loader.svg */
+@keyframes loader-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

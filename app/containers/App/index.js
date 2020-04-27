@@ -17,7 +17,7 @@ import { useInjectReducer } from 'redux-injectors';
 import { CacheProvider } from '@emotion/core';
 import createCache from '@emotion/cache';
 import queryString from 'query-string';
-import GlobalStyle from '../../global-styles';
+import GlobalStyle from 'containers/GlobalStyles';
 import { name, reducer } from './slice';
 
 const App = () => {
@@ -43,8 +43,8 @@ const App = () => {
         <Route path="/all" component={CritterpediaPage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
       {/* the global modals */}
+      <GlobalStyle />
     </CacheProvider>
   );
 };
