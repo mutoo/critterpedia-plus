@@ -66,7 +66,7 @@ const CritterpediaPage = () => {
       <Swiper
         containerClass="swiper-container acnh-critterpedia-slides"
         slidesPerView="auto"
-        spaceBetween={-2}
+        spaceBetween={0}
         mousewheel
         getSwiper={setSwiper}
       >
@@ -75,6 +75,11 @@ const CritterpediaPage = () => {
             className="acnh-critterpedia-slide"
             flexDirection="column"
             width="120px"
+            sx={{
+              '&+&': {
+                ml: '-2px',
+              },
+            }}
             // eslint-disable-next-line react/no-array-index-key
             key={`${activeTab}-slide-${idx}`}
           >

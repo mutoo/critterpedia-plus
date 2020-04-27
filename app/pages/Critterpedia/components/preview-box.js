@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { Flex, Image } from 'rebass';
+import { Flex, Box, Image } from 'rebass';
 import NameTag from 'pages/Critterpedia/components/name-tag';
 
 const PreviewBox = ({ avatar, category, data, ...props }) => {
   const [theAvatar, setAvatar] = useState(avatar);
+  const [isLoaded, setLoaded] = useState(false);
   return (
     <Flex
       className="acnh-preview-box"
@@ -39,13 +40,29 @@ const PreviewBox = ({ avatar, category, data, ...props }) => {
       }}
       {...props}
     >
+      <Box
+        sx={{
+          color: 'rgba(0,0,0,0.1)',
+          transition: 'transform ease-out 0.3s',
+          transform: theAvatar && isLoaded ? 'scale(0)' : 'scale(1)',
+        }}
+      >
+        {category}
+      </Box>
       {theAvatar ? (
         <Image
           src={theAvatar}
           sx={{
             width: 64,
             height: 64,
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            transition: 'opacity ease-out 0.3s',
+            opacity: isLoaded ? 1 : 0,
           }}
+          onLoad={() => setLoaded(true)}
           onError={() => setAvatar(null)}
         />
       ) : (
