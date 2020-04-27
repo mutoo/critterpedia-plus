@@ -12,6 +12,7 @@ html {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 body.fontLoaded {
@@ -20,6 +21,10 @@ body.fontLoaded {
 
 body.ReactModal__Body--open {
   overflow: hidden;
+}
+
+.swiper-container.acnh-critterpedia-slides {
+  overflow: visible;
 }
 
 /* the animation for loader.svg */
