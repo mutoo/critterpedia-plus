@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const achnapi = axios.create({
-  baseURL: 'http://acnhapi.com/',
+export const acnhapi = axios.create({
+  baseURL: 'http://acnhapi.com',
 });
