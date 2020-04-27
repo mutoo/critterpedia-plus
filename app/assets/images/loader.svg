@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(0 50 50) translate(0 -30)" style="animation:1s linear 0s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(330 50 50) translate(0 -30)" style="animation:1s linear -.08333333333333333s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(300 50 50) translate(0 -30)" style="animation:1s linear -.16666666666666666s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(270 50 50) translate(0 -30)" style="animation:1s linear -.25s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(240 50 50) translate(0 -30)" style="animation:1s linear -.3333333333333333s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(210 50 50) translate(0 -30)" style="animation:1s linear -.4166666666666667s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(180 50 50) translate(0 -30)" style="animation:1s linear -.5s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(150 50 50) translate(0 -30)" style="animation:1s linear -.5833333333333334s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(120 50 50) translate(0 -30)" style="animation:1s linear -.6666666666666666s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(90 50 50) translate(0 -30)" style="animation:1s linear -.75s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(60 50 50) translate(0 -30)" style="animation:1s linear -.8333333333333334s infinite loader-fade"/>
+  <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="currentColor" transform="rotate(30 50 50) translate(0 -30)" style="animation:1s linear -.9166666666666666s infinite loader-fade"/>
+</svg>
