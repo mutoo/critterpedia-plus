@@ -48,16 +48,34 @@ module.exports = options => ({
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
         exclude: /node_modules/,
-        use: [
-          'style-loader',
+        oneOf: [
           {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-            },
+            resourceQuery: /global/, // foo.css?inline
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: false,
+                  importLoaders: 1,
+                },
+              },
+              'postcss-loader',
+            ],
           },
-          'postcss-loader',
+          {
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  importLoaders: 1,
+                },
+              },
+              'postcss-loader',
+            ],
+          },
         ],
       },
       {
