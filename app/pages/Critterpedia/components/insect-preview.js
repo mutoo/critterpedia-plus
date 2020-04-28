@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InsectIcon from 'assets/images/insects.svg';
+import InsectIcon from 'assets/icons/insects.svg';
 import PreviewBox from './preview-box';
 import { acnhapi } from '../../../configureAxios';
 
