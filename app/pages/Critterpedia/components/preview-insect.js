@@ -4,7 +4,7 @@ import InsectIcon from 'assets/icons/insects.svg';
 import PreviewBox from './preview-box';
 import { acnhapi } from '../../../configureAxios';
 
-const InsectPreview = ({ data, ...props }) => (
+const PreviewInsect = ({ data, ...props }) => (
   <PreviewBox
     data={data}
     avatar={`${acnhapi.defaults.baseURL}/icons/bugs/${data.id}`}
@@ -13,8 +13,8 @@ const InsectPreview = ({ data, ...props }) => (
   />
 );
 
-export default InsectPreview;
+export default PreviewInsect;
 
-InsectPreview.propTypes = {
+PreviewInsect.propTypes = {
   data: PropTypes.object.isRequired,
 };

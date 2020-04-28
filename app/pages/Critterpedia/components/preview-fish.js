@@ -4,7 +4,7 @@ import FishIcon from 'assets/icons/fish.svg';
 import PreviewBox from './preview-box';
 import { acnhapi } from '../../../configureAxios';
 
-const FishPreview = ({ data, ...props }) => (
+const PreviewFish = ({ data, ...props }) => (
   <PreviewBox
     data={data}
     avatar={`${acnhapi.defaults.baseURL}/icons/fish/${data.id}`}
@@ -13,8 +13,8 @@ const FishPreview = ({ data, ...props }) => (
   />
 );
 
-export default FishPreview;
+export default PreviewFish;
 
-FishPreview.propTypes = {
+PreviewFish.propTypes = {
   data: PropTypes.object.isRequired,
 };

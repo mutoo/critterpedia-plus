@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Flex, Box, Image } from 'rebass';
-import NameTag from 'pages/Critterpedia/components/name-tag';
+import NameTag from 'components/name-tag';
 
 const PreviewBox = ({ avatar, category, data, ...props }) => {
   const [theAvatar, setAvatar] = useState(avatar);
