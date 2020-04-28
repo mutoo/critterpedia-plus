@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FishIcon from 'assets/images/fish.svg';
+import FishIcon from 'assets/icons/fish.svg';
 import PreviewBox from './preview-box';
 import { acnhapi } from '../../../configureAxios';
 

@@ -32,10 +32,7 @@ const App = () => {
 
   return (
     <CacheProvider value={cache}>
-      <Helmet
-        titleTemplate="%s | ACNH-Critterpedia"
-        defaultTitle="ACNH-Critterpedia"
-      >
+      <Helmet titleTemplate="%s | ACNH" defaultTitle="ACNH">
         <meta name="description" content="" />
       </Helmet>
       <Switch>

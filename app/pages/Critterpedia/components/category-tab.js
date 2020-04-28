@@ -37,6 +37,8 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
           py: 'sm',
           px: 'lg',
           transform: 'translateX(-50%)',
+          fontSize: '14px',
+          zIndex: 2,
         }}
       >
         {label}

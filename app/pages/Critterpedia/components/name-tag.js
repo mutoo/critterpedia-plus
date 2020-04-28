@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Box } from 'rebass';
+import nameTabBorder from '!file-loader!assets/images/name-tag-border.svg';
 
 const NameTag = ({ names }) => (
   <Box
@@ -37,10 +38,13 @@ const NameTag = ({ names }) => (
     <Box
       sx={{
         whiteSpace: 'nowrap',
-        p: 'md',
         backgroundColor: 'white',
         transform: 'rotate(-4deg)',
         boxShadow: '-2px 2px 3px 0px rgba(0,0,0,0.2)',
+        border: '12px solid',
+        borderImage: `url(${nameTabBorder}) 40 round`,
+        borderImageWidth: '12px',
+        fontSize: '12px',
       }}
     >
       {names['name-en']}
