@@ -8,9 +8,11 @@ import Swiper from 'react-id-swiper';
 import { chunk } from 'lodash';
 import { Helmet } from 'react-helmet-async';
 import Container from 'containers/Container';
+import ModalCritterDetail from 'containers/ModalCritterDetail';
+import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
 import CategoryTab from './components/category-tab';
-import FishPreview from './components/fish-preview';
-import InsectPreview from './components/insect-preview';
+import PreviewFish from './components/preview-fish';
+import PreviewInsect from './components/preview-insect';
 import { name as key, reducer, updateActiveTab } from './slice';
 import saga from './saga';
 import selector from './selectors';
@@ -42,10 +44,10 @@ const CritterpediaPage = () => {
   let CategoryPreview = null;
   switch (activeTab) {
     case 'Fish':
-      CategoryPreview = FishPreview;
+      CategoryPreview = PreviewFish;
       break;
     case 'Insects':
-      CategoryPreview = InsectPreview;
+      CategoryPreview = PreviewInsect;
       break;
     default:
   }
@@ -111,6 +113,14 @@ const CritterpediaPage = () => {
                   <CategoryPreview
                     data={i}
                     key={`${activeTab}-preview-${i.id}`}
+                    onClick={() =>
+                      dispatch(
+                        openCritterDetail({
+                          category: activeTab,
+                          id: i.id,
+                        }),
+                      )
+                    }
                   />
                 ))}
               </Flex>
@@ -124,6 +134,7 @@ const CritterpediaPage = () => {
           </Swiper>
         </Box>
       </Box>
+      <ModalCritterDetail />
     </>
   );
 };

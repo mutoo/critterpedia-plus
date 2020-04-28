@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from 'rebass';
 import nameTabBorder from '!file-loader!assets/images/name-tag-border.svg';
 
-const NameTag = ({ names }) => (
+const NameTag = ({ names, fontSize = '12px', ...props }) => (
   <Box
     sx={{
       position: 'relative',
@@ -34,17 +34,20 @@ const NameTag = ({ names }) => (
         opacity: 1,
       },
     }}
+    {...props}
   >
     <Box
       sx={{
         whiteSpace: 'nowrap',
-        backgroundColor: 'white',
+        backgroundColor: 'rgb(249,246,229)',
         transform: 'rotate(-4deg)',
         boxShadow: '-2px 2px 3px 0px rgba(0,0,0,0.2)',
         border: '12px solid',
         borderImage: `url(${nameTabBorder}) 40 round`,
         borderImageWidth: '12px',
-        fontSize: '12px',
+        fontSize,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
       }}
     >
       {names['name-en']}
@@ -56,4 +59,5 @@ export default NameTag;
 
 NameTag.propTypes = {
   names: PropTypes.object.isRequired,
+  fontSize: PropTypes.string,
 };
