@@ -6,10 +6,10 @@ import { getMonth } from 'date-fns';
 import { ALL_MONTHS } from 'utils/data';
 import Heading from './heading';
 
-const Seasonality = ({ availableMonths = ALL_MONTHS }) => {
+const Seasonality = ({ availableMonths = ALL_MONTHS, ...props }) => {
   const currentMonth = getMonth(new Date());
   return (
-    <Box>
+    <Box {...props}>
       <Heading>Seasonality</Heading>
       <Flex
         sx={{
@@ -26,6 +26,7 @@ const Seasonality = ({ availableMonths = ALL_MONTHS }) => {
               mb: '-1px',
               padding: '4px',
               position: 'relative',
+              opacity: availableMonths[m] ? '1' : '0.5',
               '&::after':
                 currentMonth === m
                   ? {
@@ -50,7 +51,7 @@ const Seasonality = ({ availableMonths = ALL_MONTHS }) => {
                 fontStyle: 'italic',
                 fontWeight: 'bold',
                 textAlign: 'center',
-                backgroundColor: availableMonths[m] ? 'green' : '',
+                backgroundColor: availableMonths[m] ? '#b8d252' : '',
               }}
             >
               {localize.month(m, { width: 'abbreviated' })}.

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Flex, Box, Image } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { parseAvailableMonths } from 'utils/data';
+import { parseAvailableMonths, parseAvailableHours } from 'utils/data';
+import ActiveHours from 'components/active-hours';
 import { acnhapi } from '../../../configureAxios';
 
 const DetailFish = ({ data }) => (
@@ -23,16 +24,37 @@ const DetailFish = ({ data }) => (
       }}
     >
       <NameTag names={data.name} fontSize="16px" mb="10px" />
-      <Image
+      <Box
         sx={{
           width: '100%',
           maxWidth: '640px',
+          position: 'relative',
+          '&::after': {
+            content: '""',
+            display: 'block',
+            width: '100%',
+            paddingBottom: '50%',
+          },
         }}
-        src={`${acnhapi.defaults.baseURL}/images/fish/${data.id}`}
-      />
+      >
+        <Image
+          sx={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            left: 0,
+            top: 0,
+          }}
+          src={`${acnhapi.defaults.baseURL}/images/fish/${data.id}`}
+        />
+      </Box>
     </Flex>
-    <Flex>
+    <Flex justifyContent="space-around" p="30px">
       <Seasonality availableMonths={parseAvailableMonths(data.availability)} />
+      <ActiveHours
+        availableMonths={parseAvailableMonths(data.availability)}
+        availableHours={parseAvailableHours(data.availability)}
+      />
     </Flex>
   </Box>
 );
