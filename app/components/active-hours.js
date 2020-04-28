@@ -29,7 +29,7 @@ const ActiveHours = ({
   }, []);
   return (
     <Box {...props}>
-      <Heading>Current Active Hours</Heading>
+      <Heading mb="md">Current Active Hours</Heading>
       <Box sx={{ position: 'relative', opacity: onMonth ? '1' : '0.5' }}>
         <Flex sx={{ transform: 'translate(-0.4ex)' }}>
           <Text flex="0 0 50%">AM</Text>
@@ -75,74 +75,72 @@ const ActiveHours = ({
         </Flex>
         {/* indicator */}
         {onMonth && (
-          <>
-            <Flex
-              sx={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                paddingBottom: '1px',
-                bottom: '3px',
-                borderBottom: '1px solid',
-                borderBottomColor: 'grey-99',
-                flexWrap: 'wrap',
-              }}
-            >
-              {ALL_HOURS.map((_, h) => (
-                <Box
-                  sx={{
-                    flex: '1 1 auto',
-                    width: '4%',
-                    height: '10px',
-                    backgroundColor: availableHours[h]
-                      ? '#b8d252'
-                      : 'transparent',
-                    borderRadius: () => {
-                      if (h === 0 || !availableHours[h - 1]) {
-                        return '5px 0 0 5px';
-                      }
-                      if (h === 23 || !availableHours[h + 1]) {
-                        return '0 5px 5px 0';
-                      }
-                      return '0';
-                    },
-                  }}
-                  /* eslint-disable-next-line react/no-array-index-key */
-                  key={h}
-                />
-              ))}
-            </Flex>
-            <Box
-              sx={{
-                height: '25px',
-                width: '2px',
-                backgroundColor: 'red',
-                position: 'absolute',
-                bottom: '-2px',
-                zIndex: 2,
-                left: `calc(${timeOffset}% - 1px)`,
-                '&:before, &:after': {
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  left: '-2px',
-                  border: '3px solid',
-                  borderColor: 'red',
-                  borderLeftColor: 'transparent',
-                  borderRightColor: 'transparent',
-                },
-                '&:before': {
-                  top: '0',
-                  borderBottom: '0',
-                },
-                '&:after': {
-                  bottom: '0',
-                  borderTop: '0',
-                },
-              }}
-            />
-          </>
+          <Flex
+            sx={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              paddingBottom: '1px',
+              bottom: '3px',
+              borderBottom: '1px solid',
+              borderBottomColor: 'grey-99',
+              flexWrap: 'wrap',
+            }}
+          >
+            {ALL_HOURS.map((_, h) => (
+              <Box
+                sx={{
+                  flex: '1 1 auto',
+                  width: '4%',
+                  height: '10px',
+                  backgroundColor: availableHours[h]
+                    ? '#b8d252'
+                    : 'transparent',
+                  borderRadius: () => {
+                    if (h === 0 || !availableHours[h - 1]) {
+                      return '5px 0 0 5px';
+                    }
+                    if (h === 23 || !availableHours[h + 1]) {
+                      return '0 5px 5px 0';
+                    }
+                    return '0';
+                  },
+                }}
+                /* eslint-disable-next-line react/no-array-index-key */
+                key={h}
+              />
+            ))}
+          </Flex>
         )}
+        <Box
+          sx={{
+            height: '25px',
+            width: '2px',
+            backgroundColor: 'red',
+            position: 'absolute',
+            bottom: '-2px',
+            zIndex: 2,
+            left: `calc(${timeOffset}% - 1px)`,
+            '&:before, &:after': {
+              content: '""',
+              display: 'block',
+              position: 'absolute',
+              left: '-2px',
+              border: '3px solid',
+              borderColor: 'red',
+              borderLeftColor: 'transparent',
+              borderRightColor: 'transparent',
+            },
+            '&:before': {
+              top: '0',
+              borderBottom: '0',
+            },
+            '&:after': {
+              bottom: '0',
+              borderTop: '0',
+            },
+          }}
+        />
       </Box>
     </Box>
   );

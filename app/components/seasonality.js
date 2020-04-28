@@ -10,7 +10,7 @@ const Seasonality = ({ availableMonths = ALL_MONTHS, ...props }) => {
   const currentMonth = getMonth(new Date());
   return (
     <Box {...props}>
-      <Heading>Seasonality</Heading>
+      <Heading mb="md">Seasonality</Heading>
       <Flex
         sx={{
           flexWrap: 'wrap',

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box, Image } from 'rebass';
+import { Flex, Box, Image, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
 import { parseAvailableMonths, parseAvailableHours } from 'utils/data';
 import ActiveHours from 'components/active-hours';
+import Heading from 'components/heading';
+import Container from 'containers/Container';
 import { acnhapi } from '../../../configureAxios';
 
 const DetailFish = ({ data }) => (
@@ -49,12 +51,34 @@ const DetailFish = ({ data }) => (
         />
       </Box>
     </Flex>
-    <Flex justifyContent="space-around" p="30px">
-      <Seasonality availableMonths={parseAvailableMonths(data.availability)} />
-      <ActiveHours
-        availableMonths={parseAvailableMonths(data.availability)}
-        availableHours={parseAvailableHours(data.availability)}
-      />
+    <Flex py="24px">
+      <Container>
+        <Seasonality
+          availableMonths={parseAvailableMonths(data.availability)}
+        />
+      </Container>
+      <Container>
+        <ActiveHours
+          availableMonths={parseAvailableMonths(data.availability)}
+          availableHours={parseAvailableHours(data.availability)}
+        />
+      </Container>
+    </Flex>
+    <Flex py="24px">
+      <Container>
+        <Heading mr="lg">Location</Heading>
+        <Text
+          as="span"
+          sx={{
+            fontSize: '14px',
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+          }}
+        >
+          {data?.availability?.location}
+        </Text>
+      </Container>
+      <Container />
     </Flex>
   </Box>
 );
