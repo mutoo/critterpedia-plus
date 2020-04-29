@@ -1,5 +1,5 @@
 window.siteConfig = {
-  GA: 'UA-51692869-1',
+  GA: 'UA-8876369-13',
   DebugGA: 0,
   SimulateDelay: 0,
 };

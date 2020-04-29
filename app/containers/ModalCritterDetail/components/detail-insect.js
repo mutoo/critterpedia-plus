@@ -20,7 +20,7 @@ const DetailInsect = ({ data }) => (
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      py="30px"
+      p="30px"
       sx={{
         flex: '1 1 auto',
         width: '60%',
@@ -28,6 +28,7 @@ const DetailInsect = ({ data }) => (
         borderRightColor: 'grey-99',
       }}
     >
+      <NameTag names={data.name} fontSize="16px" />
       <Box
         sx={{
           width: '100%',
@@ -52,7 +53,6 @@ const DetailInsect = ({ data }) => (
           src={`${acnhapi.defaults.baseURL}/images/bugs/${data.id}`}
         />
       </Box>
-      <NameTag names={data.name} fontSize="16px" />
     </Flex>
     <Flex
       py="24px"

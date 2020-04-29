@@ -74,44 +74,40 @@ const ActiveHours = ({
           ))}
         </Flex>
         {/* indicator */}
-        {onMonth && (
-          <Flex
-            sx={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              paddingBottom: '1px',
-              bottom: '3px',
-              borderBottom: '1px solid',
-              borderBottomColor: 'grey-99',
-              flexWrap: 'wrap',
-            }}
-          >
-            {ALL_HOURS.map((_, h) => (
-              <Box
-                sx={{
-                  flex: '1 1 auto',
-                  width: '4%',
-                  height: '10px',
-                  backgroundColor: availableHours[h]
-                    ? '#b8d252'
-                    : 'transparent',
-                  borderRadius: () => {
-                    if (h === 0 || !availableHours[h - 1]) {
-                      return '5px 0 0 5px';
-                    }
-                    if (h === 23 || !availableHours[h + 1]) {
-                      return '0 5px 5px 0';
-                    }
-                    return '0';
-                  },
-                }}
-                /* eslint-disable-next-line react/no-array-index-key */
-                key={h}
-              />
-            ))}
-          </Flex>
-        )}
+        <Flex
+          sx={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            paddingBottom: '1px',
+            bottom: '3px',
+            borderBottom: '1px solid',
+            borderBottomColor: 'grey-99',
+            flexWrap: 'wrap',
+          }}
+        >
+          {ALL_HOURS.map((_, h) => (
+            <Box
+              sx={{
+                flex: '1 1 auto',
+                width: '4%',
+                height: '10px',
+                backgroundColor: availableHours[h] ? '#b8d252' : 'transparent',
+                borderRadius: () => {
+                  if (h === 0 || !availableHours[h - 1]) {
+                    return '5px 0 0 5px';
+                  }
+                  if (h === 23 || !availableHours[h + 1]) {
+                    return '0 5px 5px 0';
+                  }
+                  return '0';
+                },
+              }}
+              /* eslint-disable-next-line react/no-array-index-key */
+              key={h}
+            />
+          ))}
+        </Flex>
         <Box
           sx={{
             height: '25px',
