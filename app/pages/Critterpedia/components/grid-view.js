@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Flex, Box } from 'rebass';
 import { useDispatch, useSelector } from 'react-redux';
 import Swiper from 'react-id-swiper';
-import { chunk } from 'lodash';
+import { chunk, flatten } from 'lodash';
 import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
 import PreviewFish from './preview-fish';
 import PreviewInsect from './preview-insect';
@@ -85,6 +85,7 @@ const GridView = () => {
                     openCritterDetail({
                       category: activeTab,
                       id: i.id,
+                      collection: flatten(previewSlides).map(e => e.id),
                     }),
                   )
                 }

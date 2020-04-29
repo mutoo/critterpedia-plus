@@ -14,14 +14,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // The initial state of the ReposManager container
-export const initialState = {};
+export const initialState = {
+  config: {
+    hemisphere: 'Northern',
+  },
+};
 
 const ACHNSlice = createSlice({
   name: 'achn',
   initialState,
-  reducers: {},
+  reducers: {
+    changeHemisphere(state, action) {
+      state.config.hemisphere = action.payload;
+    },
+  },
 });
 
-// export const {} = ACHNSlice.actions;
+export const { changeHemisphere } = ACHNSlice.actions;
 
 export const { name, reducer } = ACHNSlice;
