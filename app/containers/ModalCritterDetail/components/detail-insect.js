@@ -129,7 +129,7 @@ const DetailInsect = ({ data }) => {
           />
         </Container>
         <Container>
-          <Heading mr="lg">Location</Heading>
+          <Heading mb="md">Location</Heading>
           <Text
             sx={{
               fontSize: '14px',
