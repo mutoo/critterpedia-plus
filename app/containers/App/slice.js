@@ -16,7 +16,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // The initial state of the ReposManager container
 export const initialState = {
   config: {
-    hemisphere: 'Northern',
+    hemisphere: 'Southern',
   },
 };
 

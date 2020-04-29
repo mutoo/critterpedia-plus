@@ -8,7 +8,7 @@ import PreviewFish from './preview-fish';
 import PreviewInsect from './preview-insect';
 import selector from '../selectors';
 
-const GridView = () => {
+const GridView = ({ ...props }) => {
   const { fish, insects, activeTab } = useSelector(selector);
   const dispatch = useDispatch();
   const previewSlides = useMemo(() => {
@@ -49,6 +49,7 @@ const GridView = () => {
         borderBottom: '2px solid',
         borderBottomColor: 'grey-99',
       }}
+      {...props}
     >
       <Swiper
         containerClass="swiper-container acnh-critterpedia-slides"

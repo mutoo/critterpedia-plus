@@ -1,3 +1,5 @@
+import { getHours, getMonth } from 'date-fns';
+
 // eslint-disable-next-line no-unused-vars
 export const ALL_MONTHS = Array.from({ length: 12 }, _ => true);
 
@@ -60,4 +62,30 @@ export const parseAvailableHours = available => {
     });
     return newHours;
   }, []);
+};
+
+const AVAILABILITY_LEVEL_NA = 0;
+const AVAILABILITY_LEVEL_GLOBAL_MO = 1;
+const AVAILABILITY_LEVEL_GLOBAL_NOW = 2;
+const AVAILABILITY_LEVEL_MO = 3;
+const AVAILABILITY_LEVEL_NOW = 4;
+
+export const calculateAvailability = (available, hemisphere) => {
+  const now = new Date();
+  const month = getMonth(now);
+  const months = parseAvailableMonths(available, hemisphere);
+  const hour = getHours(now);
+  const hours = parseAvailableHours(available);
+  if (months[month]) {
+    if (hours[hour]) return AVAILABILITY_LEVEL_NOW;
+    return AVAILABILITY_LEVEL_MO;
+  }
+  const theOtherHemisphere =
+    hemisphere === 'northern' ? 'southern' : 'northern';
+  const theOtherMonths = parseAvailableMonths(available, theOtherHemisphere);
+  if (theOtherMonths[month]) {
+    if (hours[hour]) return AVAILABILITY_LEVEL_GLOBAL_NOW;
+    return AVAILABILITY_LEVEL_GLOBAL_MO;
+  }
+  return AVAILABILITY_LEVEL_NA;
 };

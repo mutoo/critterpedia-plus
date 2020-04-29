@@ -1,11 +1,44 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Flex, Box, Image } from 'rebass';
 import NameTag from 'components/name-tag';
+import { HemisphereContext, ModeContext } from 'utils/contexts';
+import { calculateAvailability } from 'utils/data';
+import {
+  MODE_ALL,
+  MODE_COLLECTION,
+  MODE_DISCOVERY,
+  AVAILABILITY_LEVEL_NOW,
+  AVAILABILITY_LEVEL_MO,
+} from 'utils/const';
 
 const PreviewBox = ({ avatar, category, data, ...props }) => {
   const [theAvatar, setAvatar] = useState(avatar);
   const [isLoaded, setLoaded] = useState(false);
+  const [hemisphere] = useContext(HemisphereContext);
+  const mode = useContext(ModeContext);
+  const [availability, setAvailability] = useState(AVAILABILITY_LEVEL_NOW);
+  const updateAvailability = useMemo(
+    () => () =>
+      setAvailability(
+        calculateAvailability(data.availability, hemisphere.toLowerCase()),
+      ),
+    [data, hemisphere],
+  );
+  useEffect(() => {
+    switch (mode) {
+      case MODE_DISCOVERY:
+        updateAvailability();
+        // eslint-disable-next-line no-case-declarations
+        const timer = setInterval(updateAvailability, 60 * 1000);
+        return () => clearInterval(timer);
+      case MODE_COLLECTION:
+      case MODE_ALL:
+      default:
+        setAvailability(AVAILABILITY_LEVEL_NOW);
+    }
+    return () => {};
+  }, [mode, updateAvailability]);
   return (
     <Flex
       className="acnh-preview-box"
@@ -49,7 +82,7 @@ const PreviewBox = ({ avatar, category, data, ...props }) => {
       >
         {category}
       </Box>
-      {theAvatar ? (
+      {theAvatar && availability ? (
         <Image
           src={theAvatar}
           sx={{
@@ -60,13 +93,29 @@ const PreviewBox = ({ avatar, category, data, ...props }) => {
             top: '50%',
             transform: 'translate(-50%, -50%)',
             transition: 'opacity ease-out 0.3s',
-            opacity: isLoaded ? 1 : 0,
+            opacity: isLoaded ? `${20 + (availability / 4) ** 1 * 80}%` : 0,
+            filter: () => {
+              if (isLoaded && availability < AVAILABILITY_LEVEL_MO) {
+                return 'grayscale(1)';
+              }
+              return '';
+            },
           }}
           onLoad={() => setLoaded(true)}
           onError={() => setAvatar(null)}
         />
       ) : (
-        category
+        <Box
+          sx={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            opacity: '10%',
+          }}
+        >
+          {category}
+        </Box>
       )}
       <NameTag names={data.name} />
     </Flex>

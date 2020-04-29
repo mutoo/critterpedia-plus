@@ -16,6 +16,10 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
   insects: null,
   fish: null,
+  collection: {
+    fish: {},
+    insects: {},
+  },
   ui: {
     activeTab: 'Insects',
   },
