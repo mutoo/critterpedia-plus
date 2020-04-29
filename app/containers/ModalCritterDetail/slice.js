@@ -22,8 +22,8 @@ const modalCritterDetailSlice = createSlice({
   initialState,
   reducers: {
     openCritterDetail(state, action) {
-      const { category, id } = action.payload;
-      state.selected = { category, id };
+      const { category, id, collection } = action.payload;
+      state.selected = { category, id, collection };
     },
     closeCritterDetail(state) {
       state.selected = null;

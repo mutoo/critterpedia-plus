@@ -1,4 +1,4 @@
 import { createContext } from 'react';
 
-export const HemisphereContent = createContext();
-HemisphereContent.displayName = 'HemisphereContent';
+export const HemisphereContext = createContext();
+HemisphereContext.displayName = 'HemisphereContext';
