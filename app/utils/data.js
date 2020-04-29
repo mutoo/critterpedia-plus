@@ -37,7 +37,7 @@ export const parseAvailableHours = available => {
     const newHours = [...hours];
     const [from, to] = segment
       .trim()
-      .split('-')
+      .split(/-|to/)
       .map(part => {
         const trimmed = part.trim();
         const h = parseInt(trimmed, 10);

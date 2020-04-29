@@ -7,11 +7,12 @@ const NameTag = ({ names, fontSize = '12px', ...props }) => (
   <Box
     sx={{
       position: 'relative',
+      pointerEvents: 'none',
       '&::after': {
         content: '""',
         display: 'block',
         position: 'absolute',
-        zIndex: '-1',
+        zIndex: 0,
         top: 0,
         left: 0,
         width: '100%',
@@ -38,6 +39,8 @@ const NameTag = ({ names, fontSize = '12px', ...props }) => (
   >
     <Box
       sx={{
+        position: 'relative',
+        zIndex: 1,
         whiteSpace: 'nowrap',
         backgroundColor: 'rgb(249,246,229)',
         transform: 'rotate(-4deg)',
