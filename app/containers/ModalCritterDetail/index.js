@@ -16,10 +16,11 @@ import styles from './style.css';
 import selector from './selectors';
 import { name as key, reducer, closeCritterDetail } from './slice';
 import DetailFish from './components/detail-fish';
+import DetailInsect from './components/detail-insect';
 
 function ModalCritterDetail() {
   useInjectReducer({ key, reducer });
-  const { isModalCritterDetailOpen, data } = useSelector(selector);
+  const { isModalCritterDetailOpen, category, data } = useSelector(selector);
 
   const dispatch = useDispatch();
   return (
@@ -37,7 +38,8 @@ function ModalCritterDetail() {
           backgroundImage: `url(${BackgroundImg})`,
         }}
       >
-        {data && <DetailFish data={data} />}
+        {data && category === 'Fish' && <DetailFish data={data} />}
+        {data && category === 'Insects' && <DetailInsect data={data} />}
       </Box>
     </Modal>
   );

@@ -9,8 +9,8 @@ import Heading from 'components/heading';
 import Container from 'containers/Container';
 import { acnhapi } from '../../../configureAxios';
 
-const DetailFish = ({ data }) => (
-  <Box
+const DetailInsect = ({ data }) => (
+  <Flex
     sx={{
       width: '100%',
       maxWidth: '960px',
@@ -19,23 +19,25 @@ const DetailFish = ({ data }) => (
     <Flex
       flexDirection="column"
       alignItems="center"
-      p="30px"
+      justifyContent="center"
+      py="30px"
       sx={{
-        borderBottom: '4px double',
-        borderBottomColor: 'grey-99',
+        flex: '1 1 auto',
+        width: '60%',
+        borderRight: '4px double',
+        borderRightColor: 'grey-99',
       }}
     >
-      <NameTag names={data.name} fontSize="16px" mb="10px" />
       <Box
         sx={{
           width: '100%',
-          maxWidth: '640px',
+          maxWidth: '600px',
           position: 'relative',
           '&::after': {
             content: '""',
             display: 'block',
             width: '100%',
-            paddingBottom: '50%',
+            paddingBottom: '100%',
           },
         }}
       >
@@ -47,15 +49,18 @@ const DetailFish = ({ data }) => (
             left: 0,
             top: 0,
           }}
-          src={`${acnhapi.defaults.baseURL}/images/fish/${data.id}`}
+          src={`${acnhapi.defaults.baseURL}/images/bugs/${data.id}`}
         />
       </Box>
+      <NameTag names={data.name} fontSize="16px" />
     </Flex>
     <Flex
       py="24px"
+      flexDirection="column"
+      justifyContent="space-around"
       sx={{
-        borderBottom: '1px solid',
-        borderBottomColor: 'grey-99',
+        flex: '1 1 auto',
+        width: '40%',
       }}
     >
       <Container>
@@ -69,12 +74,9 @@ const DetailFish = ({ data }) => (
           availableHours={parseAvailableHours(data.availability)}
         />
       </Container>
-    </Flex>
-    <Flex py="24px">
       <Container>
         <Heading mr="lg">Location</Heading>
         <Text
-          as="span"
           sx={{
             fontSize: '14px',
             fontWeight: 'bold',
@@ -86,11 +88,11 @@ const DetailFish = ({ data }) => (
       </Container>
       <Container />
     </Flex>
-  </Box>
+  </Flex>
 );
 
-export default DetailFish;
+export default DetailInsect;
 
-DetailFish.propTypes = {
+DetailInsect.propTypes = {
   data: PropTypes.object.isRequired,
 };
