@@ -7,8 +7,9 @@ import { acnhapi } from '../../../configureAxios';
 const PreviewInsect = ({ data, ...props }) => (
   <PreviewBox
     data={data}
+    category="insects"
     avatar={`${acnhapi.defaults.baseURL}/icons/bugs/${data.id}`}
-    category={<InsectIcon width={32} height={32} />}
+    preview={<InsectIcon width={32} height={32} />}
     {...props}
   />
 );
