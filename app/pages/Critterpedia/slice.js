@@ -13,6 +13,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  CATEGORY_INSECTS,
   COLLECTION_CAUGHT,
   COLLECTION_DONATED,
   COLLECTION_NA,
@@ -27,7 +28,7 @@ export const initialState = {
     insects: {},
   },
   ui: {
-    activeTab: 'Insects',
+    activeTab: CATEGORY_INSECTS,
     mode: MODE_DISCOVERY,
     selected: {},
   },

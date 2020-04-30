@@ -5,7 +5,7 @@ import Swiper from 'react-id-swiper';
 import { chunk, flatten } from 'lodash';
 import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
 import { ModeContext } from 'utils/contexts';
-import { MODE_COLLECTION } from 'utils/const';
+import { CATEGORY_FISH, CATEGORY_INSECTS, MODE_COLLECTION } from 'utils/const';
 import {
   markSelectedAsCaught,
   markSelectedAsDonated,
@@ -22,33 +22,22 @@ import PreviewInsect from './preview-insect';
 import selector from '../selectors';
 
 const GridView = ({ ...props }) => {
-  const { fish, insects, activeTab, selected } = useSelector(selector);
+  const { activeCategory, activeTab, selected } = useSelector(selector);
   const dispatch = useDispatch();
   const mode = useContext(ModeContext);
-  const previewSlides = useMemo(() => {
-    let category = [];
-    switch (activeTab) {
-      case 'Fish':
-        category = fish;
-        break;
-      case 'Insects':
-        category = insects;
-        break;
-      default:
-        return category;
-    }
-    return chunk(category, 5);
-  }, [fish, insects, activeTab]);
+  const previewSlides = useMemo(() => chunk(activeCategory, 5), [
+    activeCategory,
+  ]);
   const [swiper, setSwiper] = useState(null);
   useEffect(() => {
     if (swiper) swiper.update();
   }, [swiper, previewSlides]);
   let CategoryPreview = null;
   switch (activeTab) {
-    case 'Fish':
+    case CATEGORY_FISH:
       CategoryPreview = PreviewFish;
       break;
-    case 'Insects':
+    case CATEGORY_INSECTS:
       CategoryPreview = PreviewInsect;
       break;
     default:

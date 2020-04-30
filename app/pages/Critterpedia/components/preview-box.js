@@ -202,6 +202,8 @@ const PreviewBox = ({
               right: '8px',
               bottom: '8px',
               color: 'grey-66',
+              transition: 'opacity ease-out 0.2s',
+              opacity: mode === MODE_COLLECTION ? 1 : 0.5,
             }}
           >
             <MuseumIcon width="16px" height="16px" />

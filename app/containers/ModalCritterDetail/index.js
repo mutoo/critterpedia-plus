@@ -13,6 +13,7 @@ import Modal from 'react-modal';
 import BackgroundImg from 'assets/images/background.jpg';
 import { Box } from 'rebass';
 import { HemisphereContext } from 'utils/contexts';
+import { CATEGORY_FISH, CATEGORY_INSECTS } from 'utils/const';
 import styles from './style.css';
 import selector from './selectors';
 import { name as key, reducer, closeCritterDetail } from './slice';
@@ -46,8 +47,10 @@ function ModalCritterDetail() {
             backgroundImage: `url(${BackgroundImg})`,
           }}
         >
-          {data && category === 'Fish' && <DetailFish data={data} />}
-          {data && category === 'Insects' && <DetailInsect data={data} />}
+          {data && category === CATEGORY_FISH && <DetailFish data={data} />}
+          {data && category === CATEGORY_INSECTS && (
+            <DetailInsect data={data} />
+          )}
         </Box>
       </HemisphereContext.Provider>
     </Modal>
