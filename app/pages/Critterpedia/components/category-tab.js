@@ -31,7 +31,7 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
           background: 'orange',
           borderRadius: '10px 10px',
           color: 'grey-33',
-          bottom: '80%',
+          bottom: '85%',
           left: '50%',
           whiteSpace: 'nowrap',
           py: 'sm',

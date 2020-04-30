@@ -12,7 +12,13 @@ import Container from 'containers/Container';
 import ModalCritterDetail from 'containers/ModalCritterDetail';
 import { HemisphereContext, ModeContext } from 'utils/contexts';
 import { changeHemisphere } from 'containers/App/slice';
-import { MODE_ALL, MODE_COLLECTION, MODE_DISCOVERY } from 'utils/const';
+import {
+  CATEGORY_FISH,
+  CATEGORY_INSECTS,
+  MODE_ALL,
+  MODE_COLLECTION,
+  MODE_DISCOVERY,
+} from 'utils/const';
 import Heading from 'components/heading';
 import HemispherePicker from 'components/hemisphere-picker';
 import {
@@ -21,6 +27,7 @@ import {
   setActiveTab,
   setMode,
 } from 'pages/Critterpedia/slice';
+import Statistic from './components/statistic';
 import CategoryTab from './components/category-tab';
 
 import saga from './saga';
@@ -84,34 +91,34 @@ const CritterpediaPage = () => {
               <Flex mr="50px">
                 <CategoryTab
                   label="Insects"
-                  active={activeTab === 'Insects'}
+                  active={activeTab === CATEGORY_INSECTS}
                   icon={<Insects width={32} height={32} />}
-                  onClick={() => dispatch(setActiveTab('Insects'))}
+                  onClick={() => dispatch(setActiveTab(CATEGORY_INSECTS))}
                 />
                 <CategoryTab
                   label="Fish"
-                  active={activeTab === 'Fish'}
+                  active={activeTab === CATEGORY_FISH}
                   icon={<Fish width={32} height={32} />}
-                  onClick={() => dispatch(setActiveTab('Fish'))}
+                  onClick={() => dispatch(setActiveTab(CATEGORY_FISH))}
                 />
               </Flex>
               <Flex>
                 <CategoryTab
                   label={MODE_DISCOVERY}
                   active={mode === MODE_DISCOVERY}
-                  icon={<CompassIcon width={24} height={24} />}
+                  icon={<CompassIcon width={32} height={32} />}
                   onClick={() => dispatch(setMode(MODE_DISCOVERY))}
                 />
                 <CategoryTab
                   label={MODE_COLLECTION}
                   active={mode === MODE_COLLECTION}
-                  icon={<AtlasIcon width={24} height={24} />}
+                  icon={<AtlasIcon width={32} height={32} />}
                   onClick={() => dispatch(setMode(MODE_COLLECTION))}
                 />
                 <CategoryTab
                   label={MODE_ALL}
                   active={mode === MODE_ALL}
-                  icon={<EyeIcon width={24} height={24} />}
+                  icon={<EyeIcon width={32} height={32} />}
                   onClick={() => dispatch(setMode(MODE_ALL))}
                 />
               </Flex>
@@ -166,6 +173,7 @@ const CritterpediaPage = () => {
                     caught or donated.{' '}
                   </p>
                 </Text>
+                <Statistic />
               </>
             )}
             {mode === MODE_ALL && (
@@ -181,6 +189,7 @@ const CritterpediaPage = () => {
                     Crossing: New Horizons game.
                   </p>
                 </Text>
+                <Statistic />
               </>
             )}
           </Container>
