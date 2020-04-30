@@ -12,6 +12,8 @@
  */
 
 import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // The initial state of the ReposManager container
 export const initialState = {
@@ -32,4 +34,11 @@ const ACHNSlice = createSlice({
 
 export const { changeHemisphere } = ACHNSlice.actions;
 
-export const { name, reducer } = ACHNSlice;
+export const { name } = ACHNSlice;
+export const reducer = persistReducer(
+  {
+    key: name,
+    storage,
+  },
+  ACHNSlice.reducer,
+);

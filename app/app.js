@@ -13,6 +13,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { ThemeProvider } from 'emotion-theming';
+import { PersistGate } from 'redux-persist/integration/react';
 // import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 
@@ -26,7 +27,7 @@ import '!file-loader?name=[name].[ext]!./assets/images/favicon.png';
 import 'file-loader?name=.htaccess!./.htaccess';
 
 import { HelmetProvider } from 'react-helmet-async';
-import { store } from './configureStore';
+import { persistor, store } from './configureStore';
 import './configureGA';
 
 // Theme
@@ -36,15 +37,17 @@ const MOUNT_NODE = document.getElementById('app');
 ReactModal.setAppElement(MOUNT_NODE);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <ThemeProvider theme={theme}>
-        <HelmetProvider>
-          <App />
-        </HelmetProvider>
-      </ThemeProvider>
-    </ConnectedRouter>
-  </Provider>,
+  <PersistGate loading={null} persistor={persistor}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ThemeProvider theme={theme}>
+          <HelmetProvider>
+            <App />
+          </HelmetProvider>
+        </ThemeProvider>
+      </ConnectedRouter>
+    </Provider>
+  </PersistGate>,
   MOUNT_NODE,
 );
 
