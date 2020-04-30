@@ -102,6 +102,7 @@
     "react-scroll": "1.7.16",
     "rebass": "4.0.7",
     "redux-injectors": "1.2.0",
+    "redux-persist": "6.0.0",
     "redux-saga": "1.1.3",
     "reselect": "4.0.0",
     "sanitize.css": "11.0.0",

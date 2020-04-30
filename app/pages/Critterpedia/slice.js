@@ -12,6 +12,8 @@
  */
 
 import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import {
   CATEGORY_INSECTS,
   COLLECTION_CAUGHT,
@@ -113,4 +115,12 @@ export const {
   markSelectedAsDonated,
 } = critterpediaSlice.actions;
 
-export const { name, reducer } = critterpediaSlice;
+export const { name } = critterpediaSlice;
+
+export const reducer = persistReducer(
+  {
+    key: name,
+    storage,
+  },
+  critterpediaSlice.reducer,
+);
