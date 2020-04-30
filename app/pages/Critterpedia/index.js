@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Flex, Box, Text } from 'rebass';
 import Insects from 'assets/icons/insects.svg';
 import Fish from 'assets/icons/fish.svg';
@@ -15,8 +15,14 @@ import { changeHemisphere } from 'containers/App/slice';
 import { MODE_ALL, MODE_COLLECTION, MODE_DISCOVERY } from 'utils/const';
 import Heading from 'components/heading';
 import HemispherePicker from 'components/hemisphere-picker';
+import {
+  name as key,
+  reducer,
+  setActiveTab,
+  setMode,
+} from 'pages/Critterpedia/slice';
 import CategoryTab from './components/category-tab';
-import { name as key, reducer, updateActiveTab } from './slice';
+
 import saga from './saga';
 import selector from './selectors';
 import GridView from './components/grid-view';
@@ -24,10 +30,8 @@ import GridView from './components/grid-view';
 const CritterpediaPage = () => {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
-  const { activeTab, hemisphere } = useSelector(selector);
+  const { activeTab, mode, hemisphere } = useSelector(selector);
   const dispatch = useDispatch();
-  const setActiveTab = useCallback(tab => dispatch(updateActiveTab(tab)), []);
-  const [mode, setMode] = useState('Discovery');
   const [view /* , setView */] = useState('Grid');
   return (
     <HemisphereContext.Provider
@@ -46,8 +50,10 @@ const CritterpediaPage = () => {
               }}
             >
               <p>
-                Hello everyone! I built this side-project to provide some more
-                inside information than critterpedia did.
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                Hello everyone! I'm Ninja from HiddenLeaf island. I built this
+                app to provide some more inside information than critterpedia
+                does.
               </p>
               <p>
                 If you are curious about these questions below, it would be a
@@ -80,13 +86,13 @@ const CritterpediaPage = () => {
                   label="Insects"
                   active={activeTab === 'Insects'}
                   icon={<Insects width={32} height={32} />}
-                  onClick={() => setActiveTab('Insects')}
+                  onClick={() => dispatch(setActiveTab('Insects'))}
                 />
                 <CategoryTab
                   label="Fish"
                   active={activeTab === 'Fish'}
                   icon={<Fish width={32} height={32} />}
-                  onClick={() => setActiveTab('Fish')}
+                  onClick={() => dispatch(setActiveTab('Fish'))}
                 />
               </Flex>
               <Flex>
@@ -94,19 +100,19 @@ const CritterpediaPage = () => {
                   label={MODE_DISCOVERY}
                   active={mode === MODE_DISCOVERY}
                   icon={<CompassIcon width={24} height={24} />}
-                  onClick={() => setMode(MODE_DISCOVERY)}
+                  onClick={() => dispatch(setMode(MODE_DISCOVERY))}
                 />
                 <CategoryTab
                   label={MODE_COLLECTION}
                   active={mode === MODE_COLLECTION}
                   icon={<AtlasIcon width={24} height={24} />}
-                  onClick={() => setMode(MODE_COLLECTION)}
+                  onClick={() => dispatch(setMode(MODE_COLLECTION))}
                 />
                 <CategoryTab
                   label={MODE_ALL}
                   active={mode === MODE_ALL}
                   icon={<EyeIcon width={24} height={24} />}
-                  onClick={() => setMode(MODE_ALL)}
+                  onClick={() => dispatch(setMode(MODE_ALL))}
                 />
               </Flex>
               {/* (
@@ -129,7 +135,7 @@ const CritterpediaPage = () => {
           </Container>
           {view === 'Grid' && <GridView mb="30px" />}
           {view === 'List' && <Box>Building</Box>}
-          <Container maxWidth="660px">
+          <Container maxWidth="660px" mb="100px">
             {mode === MODE_DISCOVERY && (
               <>
                 <Heading>Discovery Mode</Heading>
@@ -145,6 +151,21 @@ const CritterpediaPage = () => {
                     time.
                   </p>
                 </Text>
+                <Heading>Filters</Heading>
+                <Text fontSize="18px">
+                  <p>Here are the filters for you to inspect the details:</p>
+                </Text>
+              </>
+            )}
+            {mode === MODE_COLLECTION && (
+              <>
+                <Heading>Collection Mode</Heading>
+                <Text fontSize="18px">
+                  <p>
+                    In this mode, you can mark all the critters you had already
+                    caught or donated.{' '}
+                  </p>
+                </Text>
               </>
             )}
             {mode === MODE_ALL && (
@@ -155,7 +176,6 @@ const CritterpediaPage = () => {
                     fontSize: '18px',
                   }}
                 >
-                  {' '}
                   <p>
                     In this mode, you can view all the critters in the Animal
                     Crossing: New Horizons game.

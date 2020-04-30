@@ -8,7 +8,8 @@ const PreviewFish = ({ data, ...props }) => (
   <PreviewBox
     data={data}
     avatar={`${acnhapi.defaults.baseURL}/icons/fish/${data.id}`}
-    category={<FishIcon width={32} height={32} />}
+    preview={<FishIcon width={32} height={32} />}
+    category="fish"
     {...props}
   />
 );

@@ -1,16 +1,30 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Flex, Box } from 'rebass';
 import { useDispatch, useSelector } from 'react-redux';
 import Swiper from 'react-id-swiper';
 import { chunk, flatten } from 'lodash';
 import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
+import { ModeContext } from 'utils/contexts';
+import { MODE_COLLECTION } from 'utils/const';
+import {
+  markSelectedAsCaught,
+  markSelectedAsDonated,
+  toggleCritter,
+  resetSelected,
+} from 'pages/Critterpedia/slice';
+import Container from 'containers/Container';
+import ClearIcon from 'assets/icons/times-circle.svg';
+import NetIcon from 'assets/images/net.png';
+import MuseumIcon from 'assets/icons/museum.svg';
+import Action from './action';
 import PreviewFish from './preview-fish';
 import PreviewInsect from './preview-insect';
 import selector from '../selectors';
 
 const GridView = ({ ...props }) => {
-  const { fish, insects, activeTab } = useSelector(selector);
+  const { fish, insects, activeTab, selected } = useSelector(selector);
   const dispatch = useDispatch();
+  const mode = useContext(ModeContext);
   const previewSlides = useMemo(() => {
     let category = [];
     switch (activeTab) {
@@ -39,6 +53,10 @@ const GridView = ({ ...props }) => {
       break;
     default:
   }
+  const [hasSelected, setHasSelected] = useState(false);
+  useEffect(() => {
+    setHasSelected(Object.values(selected).some(Boolean));
+  }, [selected]);
   return (
     <Box
       sx={{
@@ -55,7 +73,7 @@ const GridView = ({ ...props }) => {
         containerClass="swiper-container acnh-critterpedia-slides"
         slidesPerView="auto"
         spaceBetween={0}
-        mousewheel
+        mousewheel={false}
         getSwiper={setSwiper}
       >
         <Box
@@ -81,15 +99,24 @@ const GridView = ({ ...props }) => {
               <CategoryPreview
                 data={i}
                 key={`${activeTab}-preview-${i.id}`}
-                onClick={() =>
-                  dispatch(
-                    openCritterDetail({
-                      category: activeTab,
-                      id: i.id,
-                      collection: flatten(previewSlides).map(e => e.id),
-                    }),
-                  )
-                }
+                selected={selected[i.id]}
+                onClick={() => {
+                  switch (mode) {
+                    case MODE_COLLECTION:
+                      dispatch(
+                        toggleCritter({ id: i.id, selected: !selected[i.id] }),
+                      );
+                      break;
+                    default:
+                      dispatch(
+                        openCritterDetail({
+                          category: activeTab,
+                          id: i.id,
+                          collection: flatten(previewSlides).map(e => e.id),
+                        }),
+                      );
+                  }
+                }}
               />
             ))}
           </Flex>
@@ -101,6 +128,41 @@ const GridView = ({ ...props }) => {
           }}
         />
       </Swiper>
+      <Container
+        mt="30px"
+        sx={{
+          maxHeight: mode === MODE_COLLECTION && hasSelected ? '60px' : '0',
+          transition: `max-height ease-out 0.3s`,
+          overflow: 'hidden',
+        }}
+      >
+        <Flex justifyContent="center">
+          <Action
+            icon={<ClearIcon width={32} height={32} />}
+            label="Clear"
+            onClick={() => dispatch(resetSelected())}
+          />
+          <Action
+            icon={
+              <Box
+                width="32px"
+                height="32px"
+                sx={{
+                  backgroundImage: `url(${NetIcon})`,
+                  backgroundSize: 'cover',
+                }}
+              />
+            }
+            label="Catch"
+            onClick={() => dispatch(markSelectedAsCaught())}
+          />
+          <Action
+            icon={<MuseumIcon width={32} height={32} color="grey-33" />}
+            label="Donate"
+            onClick={() => dispatch(markSelectedAsDonated())}
+          />
+        </Flex>
+      </Container>
     </Box>
   );
 };

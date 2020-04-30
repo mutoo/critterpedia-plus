@@ -11,3 +11,6 @@ export const AVAILABILITY_LEVEL_NOW = 4;
 export const COLLECTION_NA = 0;
 export const COLLECTION_CAUGHT = 1;
 export const COLLECTION_DONATED = 2;
+
+export const CATEGORY_FISH = 'Fish';
+export const CATEGORY_INSECTS = 'Insects';
