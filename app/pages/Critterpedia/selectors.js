@@ -18,6 +18,7 @@ export const getCollectionState = (category, id) => state =>
   state[key]?.collection[category]?.[id] || COLLECTION_NA;
 export const getCollectionStatus = category => state =>
   state[key]?.collection[category] || emptyObject;
+export const getFilters = state => state[key]?.ui.filters || emptyObject;
 
 export default createStructuredSelector({
   activeCategory: state =>
@@ -27,5 +28,6 @@ export default createStructuredSelector({
   activeTab: getActiveTab,
   mode: getMode,
   selected: getSelected,
+  filters: getFilters,
   hemisphere: getHemisphere,
 });

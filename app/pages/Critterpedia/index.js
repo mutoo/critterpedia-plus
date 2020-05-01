@@ -26,7 +26,10 @@ import {
   reducer,
   setActiveTab,
   setMode,
+  updateFilterMonth,
 } from 'pages/Critterpedia/slice';
+import MonthPicker from 'pages/Critterpedia/components/month-picker';
+import { getMonth } from 'date-fns';
 import Statistic from './components/statistic';
 import CategoryTab from './components/category-tab';
 
@@ -37,7 +40,14 @@ import GridView from './components/grid-view';
 const CritterpediaPage = () => {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
-  const { activeTab, mode, hemisphere } = useSelector(selector);
+  const {
+    activeTab,
+    mode,
+    hemisphere,
+    filters: { month },
+  } = useSelector(selector);
+  const now = new Date();
+  const currentMonth = getMonth(now);
   const dispatch = useDispatch();
   const [view /* , setView */] = useState('Grid');
   return (
@@ -162,6 +172,10 @@ const CritterpediaPage = () => {
                 <Text fontSize="18px">
                   <p>Here are the filters for you to inspect the details:</p>
                 </Text>
+                <MonthPicker
+                  month={month !== null ? month : currentMonth}
+                  onChange={m => dispatch(updateFilterMonth(m))}
+                />
               </>
             )}
             {mode === MODE_COLLECTION && (

@@ -55,6 +55,8 @@ const GridView = ({ ...props }) => {
         borderTopColor: 'grey-99',
         borderBottom: '2px solid',
         borderBottomColor: 'grey-99',
+        width: '100%',
+        overflowX: 'hidden',
       }}
       {...props}
     >

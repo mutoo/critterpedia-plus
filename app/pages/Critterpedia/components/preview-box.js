@@ -15,7 +15,7 @@ import {
   COLLECTION_DONATED,
 } from 'utils/const';
 import { createStructuredSelector } from 'reselect';
-import { getCollectionState } from 'pages/Critterpedia/selectors';
+import selector, { getCollectionState } from 'pages/Critterpedia/selectors';
 import { useSelector } from 'react-redux';
 import { leftToRight } from 'utils/animations';
 import MuseumIcon from 'assets/icons/museum.svg';
@@ -30,23 +30,31 @@ const PreviewBox = ({
 }) => {
   const [theAvatar, setAvatar] = useState(avatar);
   const [isLoaded, setLoaded] = useState(false);
-  const selector = useMemo(
+  const stateSelector = useMemo(
     () =>
       createStructuredSelector({
         collectionState: getCollectionState(category, data.id),
       }),
     [category, data],
   );
-  const { collectionState } = useSelector(selector);
+  const {
+    filters: { month, hour },
+  } = useSelector(selector);
+  const { collectionState } = useSelector(stateSelector);
   const [hemisphere] = useContext(HemisphereContext);
   const mode = useContext(ModeContext);
   const [availability, setAvailability] = useState(AVAILABILITY_LEVEL_NOW);
   const updateAvailability = useMemo(
     () => () =>
       setAvailability(
-        calculateAvailability(data.availability, hemisphere.toLowerCase()),
+        calculateAvailability(
+          data.availability,
+          hemisphere.toLowerCase(),
+          month,
+          hour,
+        ),
       ),
-    [data, hemisphere],
+    [data, hemisphere, month, hour],
   );
   useEffect(() => {
     switch (mode) {
@@ -155,22 +163,16 @@ const PreviewBox = ({
               width: '100%',
               height: 'auto',
               transition: 'opacity ease-out 0.3s, filter ease-out 0.3s',
-              opacity: () => {
-                if (!isLoaded) return 0;
-                switch (mode) {
-                  case MODE_DISCOVERY:
-                    return `${20 + (availability / 4) ** 2 * 80}%`;
-                  default:
-                }
-                return 1;
-              },
+              opacity: isLoaded ? 1 : 0,
               filter: () => {
                 switch (mode) {
                   case MODE_DISCOVERY:
-                    if (isLoaded && availability < AVAILABILITY_LEVEL_NOW) {
-                      return 'brightness(0)';
-                    }
-                    break;
+                    // eslint-disable-next-line no-case-declarations
+                    const brightness =
+                      isLoaded && availability < AVAILABILITY_LEVEL_NOW ? 0 : 1;
+                    // eslint-disable-next-line no-case-declarations
+                    const alpha = 20 + (availability / 4) ** 2 * 80;
+                    return `brightness(${brightness}) opacity(${alpha / 100})`;
                   default:
                 }
                 return '';
@@ -187,7 +189,7 @@ const PreviewBox = ({
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            opacity: '10%',
+            color: 'rgba(0,0,0,0.1)',
           }}
         >
           {preview}

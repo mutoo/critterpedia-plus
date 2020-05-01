@@ -70,21 +70,21 @@ const AVAILABILITY_LEVEL_GLOBAL_NOW = 2;
 const AVAILABILITY_LEVEL_MO = 3;
 const AVAILABILITY_LEVEL_NOW = 4;
 
-export const calculateAvailability = (available, hemisphere) => {
+export const calculateAvailability = (available, hemisphere, month, hour) => {
   const now = new Date();
-  const month = getMonth(now);
+  const theMonth = !month && month !== 0 ? getMonth(now) : month;
   const months = parseAvailableMonths(available, hemisphere);
-  const hour = getHours(now);
+  const theHour = !hour && hour !== 0 ? getHours(now) : hour;
   const hours = parseAvailableHours(available);
-  if (months[month]) {
-    if (hours[hour]) return AVAILABILITY_LEVEL_NOW;
+  if (months[theMonth]) {
+    if (hours[theHour]) return AVAILABILITY_LEVEL_NOW;
     return AVAILABILITY_LEVEL_MO;
   }
   const theOtherHemisphere =
     hemisphere === 'northern' ? 'southern' : 'northern';
   const theOtherMonths = parseAvailableMonths(available, theOtherHemisphere);
-  if (theOtherMonths[month]) {
-    if (hours[hour]) return AVAILABILITY_LEVEL_GLOBAL_NOW;
+  if (theOtherMonths[theMonth]) {
+    if (hours[theHour]) return AVAILABILITY_LEVEL_GLOBAL_NOW;
     return AVAILABILITY_LEVEL_GLOBAL_MO;
   }
   return AVAILABILITY_LEVEL_NA;
