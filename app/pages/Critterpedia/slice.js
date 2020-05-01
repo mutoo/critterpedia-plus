@@ -121,6 +121,7 @@ export const reducer = persistReducer(
   {
     key: name,
     storage,
+    blacklist: ['fish', 'insects'],
   },
   critterpediaSlice.reducer,
 );
