@@ -32,6 +32,10 @@ export const initialState = {
   ui: {
     activeTab: CATEGORY_INSECTS,
     mode: MODE_DISCOVERY,
+    filters: {
+      month: null,
+      hour: null,
+    },
     selected: {},
   },
 };
@@ -100,6 +104,9 @@ const critterpediaSlice = createSlice({
       });
       state.ui.selected = {};
     },
+    updateFilterMonth(state, action) {
+      state.ui.filters.month = action.payload;
+    },
   },
 });
 
@@ -113,6 +120,7 @@ export const {
   resetSelected,
   markSelectedAsCaught,
   markSelectedAsDonated,
+  updateFilterMonth,
 } = critterpediaSlice.actions;
 
 export const { name } = critterpediaSlice;
@@ -121,7 +129,7 @@ export const reducer = persistReducer(
   {
     key: name,
     storage,
-    blacklist: ['fish', 'insects'],
+    blacklist: ['fish', 'insects', 'ui'],
   },
   critterpediaSlice.reducer,
 );
