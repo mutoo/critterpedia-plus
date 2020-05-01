@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Flex, Box, Image, Text, Button } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { parseAvailableMonths, parseAvailableHours } from 'utils/data';
+import { fishImage } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import selector from 'containers/ModalCritterDetail/selectors';
 import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
 import { HemisphereContext } from 'utils/contexts';
-import { acnhapi } from '../../../configureAxios';
 
 const DetailFish = ({ data }) => {
   const { category, nextId, prevId, collection } = useSelector(selector);
@@ -57,7 +56,7 @@ const DetailFish = ({ data }) => {
               left: 0,
               top: 0,
             }}
-            src={`${acnhapi.defaults.baseURL}/images/fish/${data.id}`}
+            src={fishImage(data.id)}
             key={`fish-${data.id}`}
           />
         </Box>
@@ -108,19 +107,17 @@ const DetailFish = ({ data }) => {
       >
         <Container>
           <Seasonality
-            availableMonths={parseAvailableMonths(
-              data.availability,
-              hemisphere.toLowerCase(),
-            )}
+            availableMonths={
+              data.availability[`month-${hemisphere.toLowerCase()}`]
+            }
           />
         </Container>
         <Container>
           <ActiveHours
-            availableMonths={parseAvailableMonths(
-              data.availability,
-              hemisphere.toLowerCase(),
-            )}
-            availableHours={parseAvailableHours(data.availability)}
+            availableMonths={
+              data.availability[`month-${hemisphere.toLowerCase()}`]
+            }
+            availableHours={data.availability.time}
           />
         </Container>
       </Flex>

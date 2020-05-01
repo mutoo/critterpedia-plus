@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Flex, Box, Image, Text, Button } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { parseAvailableMonths, parseAvailableHours } from 'utils/data';
+import { insectImage } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
@@ -13,7 +13,6 @@ import ArrowLeftIcon from 'assets/icons/arrow-circle-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-circle-right.svg';
 import { HemisphereContext } from 'utils/contexts';
 import selector from '../selectors';
-import { acnhapi } from '../../../configureAxios';
 
 const DetailInsect = ({ data }) => {
   const { category, nextId, prevId, collection } = useSelector(selector);
@@ -60,7 +59,7 @@ const DetailInsect = ({ data }) => {
               left: 0,
               top: 0,
             }}
-            src={`${acnhapi.defaults.baseURL}/images/bugs/${data.id}`}
+            src={insectImage(data.id)}
             key={`insect-${data.id}`}
           />
         </Box>
@@ -113,19 +112,17 @@ const DetailInsect = ({ data }) => {
       >
         <Container>
           <Seasonality
-            availableMonths={parseAvailableMonths(
-              data.availability,
-              hemisphere.toLowerCase(),
-            )}
+            availableMonths={
+              data.availability[`month-${hemisphere.toLowerCase()}`]
+            }
           />
         </Container>
         <Container>
           <ActiveHours
-            availableMonths={parseAvailableMonths(
-              data.availability,
-              hemisphere.toLowerCase(),
-            )}
-            availableHours={parseAvailableHours(data.availability)}
+            availableMonths={
+              data.availability[`month-${hemisphere.toLowerCase()}`]
+            }
+            availableHours={data.availability.time}
           />
         </Container>
         <Container>

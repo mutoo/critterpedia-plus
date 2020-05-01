@@ -4,7 +4,7 @@ import { Flex, Box, Image } from 'rebass';
 import { css } from '@emotion/core';
 import NameTag from 'components/name-tag';
 import { HemisphereContext, ModeContext } from 'utils/contexts';
-import { calculateAvailability } from 'utils/data';
+import { calculateAvailability, fishIcon, insectIcon } from 'utils/data';
 import {
   MODE_ALL,
   MODE_COLLECTION,
@@ -13,29 +13,27 @@ import {
   COLLECTION_NA,
   AVAILABILITY_LEVEL_NA,
   COLLECTION_DONATED,
+  CATEGORY_FISH,
 } from 'utils/const';
 import { createStructuredSelector } from 'reselect';
 import selector, { getCollectionState } from 'pages/Critterpedia/selectors';
 import { useSelector } from 'react-redux';
 import { leftToRight } from 'utils/animations';
 import MuseumIcon from 'assets/icons/museum.svg';
+import FishIcon from 'assets/icons/fish.svg';
+import InsectIcon from 'assets/icons/insects.svg';
 
-const PreviewBox = ({
-  avatar,
-  category,
-  preview,
-  data,
-  selected,
-  ...props
-}) => {
-  const [theAvatar, setAvatar] = useState(avatar);
+const PreviewBox = ({ data, selected, ...props }) => {
   const [isLoaded, setLoaded] = useState(false);
   const stateSelector = useMemo(
     () =>
       createStructuredSelector({
-        collectionState: getCollectionState(category, data.id),
+        collectionState: getCollectionState(
+          data.category.toLowerCase(),
+          data.id,
+        ),
       }),
-    [category, data],
+    [data],
   );
   const {
     filters: { month, hour },
@@ -55,6 +53,18 @@ const PreviewBox = ({
         ),
       ),
     [data, hemisphere, month, hour],
+  );
+  const avatar =
+    data.category === CATEGORY_FISH ? fishIcon(data.id) : insectIcon(data.id);
+  const [theAvatar, setAvatar] = useState(avatar);
+  const categoryIcon = useMemo(
+    () =>
+      data.category === CATEGORY_FISH ? (
+        <FishIcon width={32} height={32} />
+      ) : (
+        <InsectIcon width={32} height={32} />
+      ),
+    [data],
   );
   useEffect(() => {
     switch (mode) {
@@ -145,7 +155,7 @@ const PreviewBox = ({
           transform: theAvatar && isLoaded ? 'scale(0)' : 'scale(1)',
         }}
       >
-        {preview}
+        {categoryIcon}
       </Box>
       {theAvatar && (selected || availability) ? (
         <Box
@@ -192,7 +202,7 @@ const PreviewBox = ({
             color: 'rgba(0,0,0,0.1)',
           }}
         >
-          {preview}
+          {categoryIcon}
         </Box>
       )}
       <NameTag names={data.name} />
@@ -218,9 +228,6 @@ const PreviewBox = ({
 export default PreviewBox;
 
 PreviewBox.propTypes = {
-  avatar: PropTypes.string,
-  preview: PropTypes.node.isRequired,
-  category: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   selected: PropTypes.bool,
 };

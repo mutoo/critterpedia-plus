@@ -23,8 +23,10 @@ import {
 } from 'utils/const';
 
 export const initialState = {
-  insects: null,
-  fish: null,
+  data: {
+    insects: null,
+    fish: null,
+  },
   collection: {
     fish: {},
     insects: {},
@@ -46,8 +48,7 @@ const critterpediaSlice = createSlice({
   reducers: {
     storeCritterpediaData(state, action) {
       const { insects, fish } = action.payload;
-      state.insects = insects;
-      state.fish = fish;
+      state.data = { insects, fish };
     },
     setActiveTab(state, action) {
       const newTab = action.payload;
@@ -129,7 +130,7 @@ export const reducer = persistReducer(
   {
     key: name,
     storage,
-    blacklist: ['fish', 'insects', 'ui'],
+    blacklist: ['data', 'ui'],
   },
   critterpediaSlice.reducer,
 );
