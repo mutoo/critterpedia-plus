@@ -55,7 +55,7 @@ const MonthPicker = ({ month, onChange, ...props }) => {
         <Box
           onClick={() => {
             const now = new Date();
-            debouncedOnChange(getMonth(now));
+            onChange(getMonth(now));
           }}
         >
           Reset

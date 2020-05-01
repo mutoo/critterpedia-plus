@@ -6,13 +6,13 @@ import { name as key } from './slice';
 const emptyArray = [];
 const emptyObject = {};
 
-export const getFish = state => state[key]?.fish || emptyArray;
-export const getInsects = state => state[key]?.insects || emptyArray;
+export const getFish = state => state[key]?.data.fish || emptyArray;
+export const getInsects = state => state[key]?.data.insects || emptyArray;
 export const getActiveTab = state =>
   state[key]?.ui.activeTab || CATEGORY_INSECTS;
 export const getMode = state => state[key]?.ui.mode || MODE_DISCOVERY;
 export const getDetailByCategoryAndId = (category, id) => state =>
-  state[key]?.[category]?.find(i => i.id === id);
+  state[key]?.data[category]?.find(i => i.id === id);
 export const getSelected = state => state[key]?.ui.selected || emptyObject;
 export const getCollectionState = (category, id) => state =>
   state[key]?.collection[category]?.[id] || COLLECTION_NA;

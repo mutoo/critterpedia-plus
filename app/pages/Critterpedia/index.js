@@ -78,8 +78,8 @@ const CritterpediaPage = () => {
               </p>
               <ul>
                 <li>What critters are available at the moment?</li>
-                <li>What critters will be available in next month?</li>
                 <li>What critters are available in the other hemisphere?</li>
+                <li>What critters will be available in next month?</li>
               </ul>
               <p>This app provides some filters for you to play with.</p>
               <p>In addition, you can mark your critters in Collection Mode.</p>
@@ -132,22 +132,6 @@ const CritterpediaPage = () => {
                   onClick={() => dispatch(setMode(MODE_ALL))}
                 />
               </Flex>
-              {/* (
-              <Flex>
-                <CategoryTab
-                  label="Grid"
-                  active={mode === 'Grid'}
-                  icon={<GridIcon width={32} height={32} />}
-                  onClick={() => setMode('Grid')}
-                />
-                <CategoryTab
-                  label="List"
-                  active={mode === 'List'}
-                  icon={<ListIcon width={32} height={32} />}
-                  onClick={() => setMode('List')}
-                />
-              </Flex>
-            ) */}
             </Flex>
           </Container>
           {view === 'Grid' && <GridView mb="30px" />}
@@ -170,7 +154,10 @@ const CritterpediaPage = () => {
                 </Text>
                 <Heading>Filters</Heading>
                 <Text fontSize="18px">
-                  <p>Here are the filters for you to inspect the details:</p>
+                  <p>
+                    Here are the filters for you to inspect the details on
+                    different dimensions:
+                  </p>
                 </Text>
                 <MonthPicker
                   month={month !== null ? month : currentMonth}

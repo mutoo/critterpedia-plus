@@ -1,4 +1,5 @@
 import { getHours, getMonth } from 'date-fns';
+import { acnhapi } from '../configureAxios';
 
 // eslint-disable-next-line no-unused-vars
 export const ALL_MONTHS = Array.from({ length: 12 }, _ => true);
@@ -73,19 +74,25 @@ const AVAILABILITY_LEVEL_NOW = 4;
 export const calculateAvailability = (available, hemisphere, month, hour) => {
   const now = new Date();
   const theMonth = !month && month !== 0 ? getMonth(now) : month;
-  const months = parseAvailableMonths(available, hemisphere);
+  const months = available[`month-${hemisphere}`];
   const theHour = !hour && hour !== 0 ? getHours(now) : hour;
-  const hours = parseAvailableHours(available);
+  const hours = available.time;
   if (months[theMonth]) {
     if (hours[theHour]) return AVAILABILITY_LEVEL_NOW;
     return AVAILABILITY_LEVEL_MO;
   }
   const theOtherHemisphere =
     hemisphere === 'northern' ? 'southern' : 'northern';
-  const theOtherMonths = parseAvailableMonths(available, theOtherHemisphere);
+  const theOtherMonths = available[`month-${theOtherHemisphere}`];
   if (theOtherMonths[theMonth]) {
     if (hours[theHour]) return AVAILABILITY_LEVEL_GLOBAL_NOW;
     return AVAILABILITY_LEVEL_GLOBAL_MO;
   }
   return AVAILABILITY_LEVEL_NA;
 };
+
+export const fishImage = id => `${acnhapi.defaults.baseURL}/images/fish/${id}`;
+export const insectImage = id =>
+  `${acnhapi.defaults.baseURL}/images/bugs/${id}`;
+export const fishIcon = id => `${acnhapi.defaults.baseURL}/icons/fish/${id}`;
+export const insectIcon = id => `${acnhapi.defaults.baseURL}/icons/bugs/${id}`;
