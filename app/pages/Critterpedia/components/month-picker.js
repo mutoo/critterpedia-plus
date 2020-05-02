@@ -13,7 +13,7 @@ const MonthPicker = ({ month, onChange, ...props }) => {
   const wrapRef = useRef(null);
   const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }));
   const debouncedOnChange = useMemo(
-    () => debounce(onChange || (() => {}), 500),
+    () => debounce(onChange || (() => {}), 300),
     [onChange],
   );
   const bind = useDrag(
