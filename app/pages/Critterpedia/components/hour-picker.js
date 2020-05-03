@@ -61,7 +61,7 @@ const HourPicker = ({ hour, onChange, ...props }) => {
     // 1. update immediately
     onUpdate();
     // 2. update minutely
-    const timer = setTimeout(onUpdate, 60 * 1000);
+    const timer = setInterval(onUpdate, 60 * 1000);
     return () => clearInterval(timer);
   }, [onUpdate]);
   return (
