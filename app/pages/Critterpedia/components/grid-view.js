@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Flex, Box } from 'rebass';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Swiper from 'react-id-swiper';
 import { chunk, flatten } from 'lodash';
 import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
-import { ModeContext } from 'utils/contexts';
-import { MODE_COLLECTION } from 'utils/const';
+import { CATEGORY_FISH, MODE_COLLECTION } from 'utils/const';
 import {
   markSelectedAsCaught,
   markSelectedAsDonated,
@@ -20,9 +20,10 @@ import PreviewBox from './preview-box';
 import selector from '../selectors';
 
 const GridView = ({ ...props }) => {
-  const { activeCategory, activeTab, selected } = useSelector(selector);
+  const { insects, fish, selected } = useSelector(selector);
+  const { mode, category } = useParams();
+  const activeCategory = category === CATEGORY_FISH ? fish : insects;
   const dispatch = useDispatch();
-  const mode = useContext(ModeContext);
   const previewSlides = useMemo(() => chunk(activeCategory, 5), [
     activeCategory,
   ]);
@@ -72,11 +73,11 @@ const GridView = ({ ...props }) => {
               },
             }}
             // eslint-disable-next-line react/no-array-index-key
-            key={`${activeTab}-slide-${idx}`}
+            key={`${category}-slide-${idx}`}
           >
             {slide.map(i => (
               <PreviewBox
-                key={`${activeTab}-preview-${i.id}`}
+                key={`${category}-preview-${i.id}`}
                 selected={selected[i.id]}
                 data={i}
                 onClick={() => {
@@ -119,7 +120,7 @@ const GridView = ({ ...props }) => {
           <Action
             icon={<SvgIcon icon="times-circle" fontSize={[24, '', '', 32]} />}
             label="Clear"
-            onClick={() => dispatch(resetSelected())}
+            onClick={() => dispatch(resetSelected({ category }))}
           />
           <Action
             icon={
@@ -133,12 +134,12 @@ const GridView = ({ ...props }) => {
               />
             }
             label="Catch"
-            onClick={() => dispatch(markSelectedAsCaught())}
+            onClick={() => dispatch(markSelectedAsCaught({ category }))}
           />
           <Action
             icon={<SvgIcon icon="museum" fontSize={[24, '', '', 32]} />}
             label="Donate"
-            onClick={() => dispatch(markSelectedAsDonated())}
+            onClick={() => dispatch(markSelectedAsDonated({ category }))}
           />
         </Flex>
       </Container>

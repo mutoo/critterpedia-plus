@@ -1,19 +1,26 @@
 import React, { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import Heading from 'components/heading';
 import { Text } from 'rebass';
 import { useSelector } from 'react-redux';
 import selectors, { getCollectionStatus } from 'pages/Critterpedia/selectors';
 import { createStructuredSelector } from 'reselect';
-import { COLLECTION_CAUGHT, COLLECTION_DONATED } from 'utils/const';
+import {
+  CATEGORY_FISH,
+  COLLECTION_CAUGHT,
+  COLLECTION_DONATED,
+} from 'utils/const';
 
 const Statistic = () => {
-  const { activeTab, activeCategory } = useSelector(selectors);
+  const { fish, insects } = useSelector(selectors);
+  const { category } = useParams();
+  const activeCategory = category === CATEGORY_FISH ? fish : insects;
   const statusSelector = useMemo(
     () =>
       createStructuredSelector({
-        status: getCollectionStatus(activeTab.toLowerCase()),
+        status: getCollectionStatus(category),
       }),
-    [activeTab],
+    [category],
   );
   const { status } = useSelector(statusSelector);
   const total = activeCategory.length;
@@ -31,7 +38,7 @@ const Statistic = () => {
       <Heading>Statistic</Heading>
       <Text fontSize="18px">
         <p>
-          In {activeTab} category, you had caught {caught} of {total}, donated{' '}
+          In category {category}, you had caught {caught} of {total}, donated{' '}
           {donated} of {total}.
         </p>
         {donated < total && <p>Keep moving on! {total - donated} to go!</p>}
