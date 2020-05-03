@@ -18,6 +18,13 @@ import { CacheProvider } from '@emotion/core';
 import createCache from '@emotion/cache';
 import queryString from 'query-string';
 import GlobalStyle from 'containers/GlobalStyles';
+import {
+  CATEGORY_FISH,
+  CATEGORY_INSECTS,
+  MODE_ALL,
+  MODE_COLLECTION,
+  MODE_DISCOVERY,
+} from 'utils/const';
 import { name, reducer } from './slice';
 
 const App = () => {
@@ -36,8 +43,15 @@ const App = () => {
         <meta name="description" content="" />
       </Helmet>
       <Switch>
-        <Redirect exact from="/" to="/all" />
-        <Route path="/all" component={CritterpediaPage} />
+        <Redirect
+          exact
+          from="/"
+          to={`/${MODE_DISCOVERY}/${CATEGORY_INSECTS}`}
+        />
+        <Route
+          path={`/:mode(${MODE_COLLECTION}|${MODE_DISCOVERY}|${MODE_ALL})/:category(${CATEGORY_FISH}|${CATEGORY_INSECTS})`}
+          component={CritterpediaPage}
+        />
         <Route component={NotFoundPage} />
       </Switch>
       {/* the global modals */}

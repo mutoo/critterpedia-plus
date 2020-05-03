@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Flex, Box, Image } from 'rebass';
 import { css } from '@emotion/core';
 import NameTag from 'components/name-tag';
-import { HemisphereContext, ModeContext } from 'utils/contexts';
+import { HemisphereContext } from 'utils/contexts';
 import { calculateAvailability, fishIcon, insectIcon } from 'utils/data';
 import {
   MODE_ALL,
@@ -38,7 +39,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
   } = useSelector(selector);
   const { collectionState } = useSelector(stateSelector);
   const [hemisphere] = useContext(HemisphereContext);
-  const mode = useContext(ModeContext);
+  const { mode } = useParams();
   const [availability, setAvailability] = useState(AVAILABILITY_LEVEL_NOW);
   const updateAvailability = useMemo(
     () => () =>

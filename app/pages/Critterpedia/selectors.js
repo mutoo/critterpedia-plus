@@ -1,6 +1,6 @@
 import { createStructuredSelector } from 'reselect';
 import { getHemisphere } from 'containers/App/selectors';
-import { CATEGORY_INSECTS, COLLECTION_NA, MODE_DISCOVERY } from 'utils/const';
+import { COLLECTION_NA, MODE_DISCOVERY } from 'utils/const';
 import { name as key } from './slice';
 
 const emptyArray = [];
@@ -8,8 +8,6 @@ const emptyObject = {};
 
 export const getFish = state => state[key]?.data.fish || emptyArray;
 export const getInsects = state => state[key]?.data.insects || emptyArray;
-export const getActiveTab = state =>
-  state[key]?.ui.activeTab || CATEGORY_INSECTS;
 export const getMode = state => state[key]?.ui.mode || MODE_DISCOVERY;
 export const getDetailByCategoryAndId = (category, id) => state =>
   state[key]?.data[category]?.find(i => i.id === id);
@@ -21,11 +19,8 @@ export const getCollectionStatus = category => state =>
 export const getFilters = state => state[key]?.ui.filters || emptyObject;
 
 export default createStructuredSelector({
-  activeCategory: state =>
-    getActiveTab(state) === CATEGORY_INSECTS
-      ? getInsects(state)
-      : getFish(state),
-  activeTab: getActiveTab,
+  insects: getInsects,
+  fish: getFish,
   mode: getMode,
   selected: getSelected,
   filters: getFilters,

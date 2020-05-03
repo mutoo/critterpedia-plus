@@ -15,11 +15,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
-  CATEGORY_INSECTS,
   COLLECTION_CAUGHT,
   COLLECTION_DONATED,
   COLLECTION_NA,
-  MODE_DISCOVERY,
 } from 'utils/const';
 
 export const initialState = {
@@ -32,8 +30,6 @@ export const initialState = {
     insects: {},
   },
   ui: {
-    activeTab: CATEGORY_INSECTS,
-    mode: MODE_DISCOVERY,
     filters: {
       month: null,
       hour: null,
@@ -49,16 +45,6 @@ const critterpediaSlice = createSlice({
     storeCritterpediaData(state, action) {
       const { insects, fish } = action.payload;
       state.data = { insects, fish };
-    },
-    setActiveTab(state, action) {
-      const newTab = action.payload;
-      if (newTab !== state.ui.activeTab) {
-        state.ui.selected = {};
-      }
-      state.ui.activeTab = newTab;
-    },
-    setMode(state, action) {
-      state.ui.mode = action.payload;
     },
     catchCritter(state, action) {
       const { category, id } = action.payload;
@@ -78,8 +64,8 @@ const critterpediaSlice = createSlice({
       const { id, selected } = action.payload;
       state.ui.selected[id] = selected;
     },
-    resetSelected(state) {
-      const category = state.ui.activeTab.toLowerCase();
+    resetSelected(state, action) {
+      const { category } = action.payload;
       Object.entries(state.ui.selected).forEach(([id, selected]) => {
         if (selected) {
           state.collection[category][id] = COLLECTION_NA;
@@ -87,8 +73,8 @@ const critterpediaSlice = createSlice({
       });
       state.ui.selected = {};
     },
-    markSelectedAsCaught(state) {
-      const category = state.ui.activeTab.toLowerCase();
+    markSelectedAsCaught(state, action) {
+      const { category } = action.payload;
       Object.entries(state.ui.selected).forEach(([id, selected]) => {
         if (selected) {
           state.collection[category][id] = COLLECTION_CAUGHT;
@@ -96,13 +82,16 @@ const critterpediaSlice = createSlice({
       });
       state.ui.selected = {};
     },
-    markSelectedAsDonated(state) {
-      const category = state.ui.activeTab.toLowerCase();
+    markSelectedAsDonated(state, action) {
+      const { category } = action.payload;
       Object.entries(state.ui.selected).forEach(([id, selected]) => {
         if (selected) {
           state.collection[category][id] = COLLECTION_DONATED;
         }
       });
+      state.ui.selected = {};
+    },
+    clearSelected(state) {
       state.ui.selected = {};
     },
     updateFilterMonth(state, action) {
@@ -116,10 +105,6 @@ const critterpediaSlice = createSlice({
 
 export const {
   storeCritterpediaData,
-  setActiveTab,
-  setMode,
-  catchCritter,
-  donateCritter,
   toggleCritter,
   resetSelected,
   markSelectedAsCaught,
