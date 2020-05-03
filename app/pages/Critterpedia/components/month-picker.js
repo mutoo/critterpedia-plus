@@ -12,19 +12,19 @@ import { localize } from 'date-fns/locale/en-AU';
 import Heading from 'components/heading';
 import { useSpring, animated, interpolate } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
-import { debounce } from 'lodash';
+import { throttle } from 'lodash';
 
 const MonthPicker = ({ month, onChange, ...props }) => {
   const currentMonth = getMonth(new Date());
   const wrapRef = useRef(null);
   const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }));
   // reduce the update rate
-  const debouncedOnChange = useMemo(
-    () => debounce(onChange || (() => {}), 300),
+  const throttledOnChange = useMemo(
+    () => throttle(onChange || (() => {}), 500, { leading: false }),
     [onChange],
   );
   const bind = useDrag(
-    ({ xy: [cx, cy] }) => {
+    ({ xy: [cx, cy], event }) => {
       if (!wrapRef.current) return;
       const bbox = wrapRef.current.getBoundingClientRect();
       const offsetX = cx - bbox.x;
@@ -38,11 +38,15 @@ const MonthPicker = ({ month, onChange, ...props }) => {
       // calculate month from cell idx
       const newMonth = row * 4 + col;
       if (month !== newMonth) {
-        debouncedOnChange(row * 4 + col);
+        throttledOnChange(row * 4 + col);
       }
+      event.preventDefault();
     },
     // prevent scroll on mobile
-    { eventOptions: { passive: false } },
+    {
+      domTarget: wrapRef,
+      eventOptions: { passive: false },
+    },
   );
   const onUpdate = useMemo(
     () => () => {

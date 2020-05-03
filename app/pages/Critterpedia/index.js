@@ -85,13 +85,25 @@ const CritterpediaPage = () => {
             </Text>
             <Heading>Profile</Heading>
             <Text sx={{ fontSize: '18px' }}>
-              <p>Firstly, which hemisphere are you live in?</p>
+              <p>Firstly, which hemisphere are you playing in?</p>
               <HemispherePicker
                 hemisphere={hemisphere}
                 setHemisphere={h => dispatch(changeHemisphere(h))}
                 justifyContent="center"
               />
             </Text>
+            <Text fontSize="18px">
+              <p>You might also want to do some time travelling!</p>
+            </Text>
+            <MonthPicker
+              month={month}
+              onChange={m => dispatch(updateFilterMonth(m))}
+              mb="lg"
+            />
+            <HourPicker
+              hour={hour}
+              onChange={h => dispatch(updateFilterHour(h))}
+            />
           </Container>
         </Box>
         <Box my="50px">
@@ -158,15 +170,6 @@ const CritterpediaPage = () => {
                     different dimensions:
                   </p>
                 </Text>
-                <MonthPicker
-                  month={month}
-                  onChange={m => dispatch(updateFilterMonth(m))}
-                  mb="lg"
-                />
-                <HourPicker
-                  hour={hour}
-                  onChange={h => dispatch(updateFilterHour(h))}
-                />
               </>
             )}
             {mode === MODE_COLLECTION && (

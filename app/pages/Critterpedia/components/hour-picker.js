@@ -5,30 +5,38 @@ import { differenceInMilliseconds, getHours, startOfToday } from 'date-fns';
 import { ALL_HOURS } from 'utils/data';
 import Heading from 'components/heading';
 import { animated, interpolate, useSpring } from 'react-spring';
-import { debounce } from 'lodash';
+import { throttle } from 'lodash';
 import { useDrag } from 'react-use-gesture';
 
 const HourPicker = ({ hour, onChange, ...props }) => {
   const wrapRef = useRef(null);
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   // reduce the update rate
-  const debouncedOnChange = useMemo(
-    () => debounce(onChange || (() => {}), 300),
+  const throttledOnChange = useMemo(
+    () => throttle(onChange || (() => {}), 500, { leading: false }),
     [onChange],
   );
-  const bind = useDrag(({ xy: [cx] }) => {
-    if (!wrapRef.current) return;
-    const bbox = wrapRef.current.getBoundingClientRect();
-    const offsetX = cx - bbox.x;
-    const cellWidth = bbox.width / 24;
-    // snap to closest cell
-    const col = Math.max(0, Math.min(Math.floor(offsetX / cellWidth), 23));
-    set({ x: col * cellWidth });
-    // calculate hour from cell idx
-    if (hour !== col) {
-      debouncedOnChange(col);
-    }
-  });
+  const bind = useDrag(
+    ({ xy: [cx], event }) => {
+      if (!wrapRef.current) return;
+      const bbox = wrapRef.current.getBoundingClientRect();
+      const offsetX = cx - bbox.x;
+      const cellWidth = bbox.width / 24;
+      // snap to closest cell
+      const col = Math.max(0, Math.min(Math.floor(offsetX / cellWidth), 23));
+      set({ x: col * cellWidth });
+      // calculate hour from cell idx
+      if (hour !== col) {
+        throttledOnChange(col);
+      }
+      event.preventDefault();
+    },
+    // prevent scroll on mobile
+    {
+      domTarget: wrapRef,
+      eventOptions: { passive: false },
+    },
+  );
   const [minuteOffset, setMinuteOffset] = useState(0);
   const onUpdate = useMemo(
     () => () => {

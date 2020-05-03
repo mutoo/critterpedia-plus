@@ -42,7 +42,7 @@ const HemispherePicker = ({ hemisphere, setHemisphere, ...props }) => (
             transform: 'rotate(90deg)',
           }}
         >
-          <AdjustIcon width={18} height={18} />
+          <AdjustIcon width="1em" height="1em" />
         </Box>
       }
       active={hemisphere === 'Northern'}
@@ -57,7 +57,7 @@ const HemispherePicker = ({ hemisphere, setHemisphere, ...props }) => (
             transform: 'rotate(-90deg)',
           }}
         >
-          <AdjustIcon width={18} height={18} />
+          <AdjustIcon width="1em" height="1em" />
         </Box>
       }
       active={hemisphere === 'Southern'}
