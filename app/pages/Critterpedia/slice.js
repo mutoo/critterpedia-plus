@@ -108,6 +108,9 @@ const critterpediaSlice = createSlice({
     updateFilterMonth(state, action) {
       state.ui.filters.month = action.payload;
     },
+    updateFilterHour(state, action) {
+      state.ui.filters.hour = action.payload;
+    },
   },
 });
 
@@ -122,6 +125,7 @@ export const {
   markSelectedAsCaught,
   markSelectedAsDonated,
   updateFilterMonth,
+  updateFilterHour,
 } = critterpediaSlice.actions;
 
 export const { name } = critterpediaSlice;
