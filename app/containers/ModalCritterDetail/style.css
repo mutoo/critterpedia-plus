@@ -17,7 +17,7 @@
   position: relative;
   width: 100%;
   max-width: 960px;
-  max-height: 100vh;
+  max-height: calc(100vh - 100px);
   overflow-y: auto;
   z-index: 2001;
   background-color: white;

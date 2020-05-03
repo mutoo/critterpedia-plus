@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 import { Flex, Box, Text } from 'rebass';
-import Insects from 'assets/icons/insects.svg';
-import Fish from 'assets/icons/fish.svg';
-import CompassIcon from 'assets/icons/compass.svg';
-import AtlasIcon from 'assets/icons/atlas.svg';
-import EyeIcon from 'assets/icons/eye.svg';
 import { useInjectReducer, useInjectSaga } from 'redux-injectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
@@ -29,6 +24,7 @@ import {
   updateFilterMonth,
   updateFilterHour,
 } from 'pages/Critterpedia/slice';
+import SvgIcon from 'components/svg-icon';
 import MonthPicker from './components/month-picker';
 import HourPicker from './components/hour-picker';
 import Statistic from './components/statistic';
@@ -85,7 +81,7 @@ const CritterpediaPage = () => {
             </Text>
             <Heading>Profile</Heading>
             <Text sx={{ fontSize: '18px' }}>
-              <p>Firstly, which hemisphere are you playing in?</p>
+              <p>Firstly, which hemisphere do you play?</p>
               <HemispherePicker
                 hemisphere={hemisphere}
                 setHemisphere={h => dispatch(changeHemisphere(h))}
@@ -113,13 +109,13 @@ const CritterpediaPage = () => {
                 <CategoryTab
                   label="Insects"
                   active={activeTab === CATEGORY_INSECTS}
-                  icon={<Insects width={32} height={32} />}
+                  icon={<SvgIcon icon="insects" />}
                   onClick={() => dispatch(setActiveTab(CATEGORY_INSECTS))}
                 />
                 <CategoryTab
                   label="Fish"
                   active={activeTab === CATEGORY_FISH}
-                  icon={<Fish width={32} height={32} />}
+                  icon={<SvgIcon icon="fish" />}
                   onClick={() => dispatch(setActiveTab(CATEGORY_FISH))}
                 />
               </Flex>
@@ -127,19 +123,19 @@ const CritterpediaPage = () => {
                 <CategoryTab
                   label={MODE_DISCOVERY}
                   active={mode === MODE_DISCOVERY}
-                  icon={<CompassIcon width={32} height={32} />}
+                  icon={<SvgIcon icon="compass" />}
                   onClick={() => dispatch(setMode(MODE_DISCOVERY))}
                 />
                 <CategoryTab
                   label={MODE_COLLECTION}
                   active={mode === MODE_COLLECTION}
-                  icon={<AtlasIcon width={32} height={32} />}
+                  icon={<SvgIcon icon="atlas" />}
                   onClick={() => dispatch(setMode(MODE_COLLECTION))}
                 />
                 <CategoryTab
                   label={MODE_ALL}
                   active={mode === MODE_ALL}
-                  icon={<EyeIcon width={32} height={32} />}
+                  icon={<SvgIcon icon="eye" />}
                   onClick={() => dispatch(setMode(MODE_ALL))}
                 />
               </Flex>

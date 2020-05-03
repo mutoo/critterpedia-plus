@@ -13,9 +13,8 @@ import {
   resetSelected,
 } from 'pages/Critterpedia/slice';
 import Container from 'containers/Container';
-import ClearIcon from 'assets/icons/times-circle.svg';
 import NetIcon from 'assets/images/net.png';
-import MuseumIcon from 'assets/icons/museum.svg';
+import SvgIcon from 'components/svg-icon';
 import Action from './action';
 import PreviewBox from './preview-box';
 import selector from '../selectors';
@@ -59,14 +58,14 @@ const GridView = ({ ...props }) => {
         <Box
           sx={{
             width: 'calc((100vw - 1600px) / 2)',
-            minWidth: ['20px', '', '30px', '50px'],
+            minWidth: ['10px', '', '30px', '50px'],
           }}
         />
         {previewSlides.map((slide, idx) => (
           <Flex
             className="acnh-critterpedia-slide"
             flexDirection="column"
-            width="100px"
+            width={['75px', '', '', '100px']}
             sx={{
               '&+&': {
                 ml: '-2px',
@@ -104,7 +103,7 @@ const GridView = ({ ...props }) => {
         <Box
           sx={{
             width: 'calc((100vw - 1600px) / 2)',
-            minWidth: ['20px', '', '30px', '50px'],
+            minWidth: ['10px', '', '30px', '50px'],
           }}
         />
       </Swiper>
@@ -118,15 +117,15 @@ const GridView = ({ ...props }) => {
       >
         <Flex justifyContent="center">
           <Action
-            icon={<ClearIcon width={32} height={32} />}
+            icon={<SvgIcon icon="times-circle" fontSize={[24, '', '', 32]} />}
             label="Clear"
             onClick={() => dispatch(resetSelected())}
           />
           <Action
             icon={
               <Box
-                width="32px"
-                height="32px"
+                width={[24, '', '', 32]}
+                height={[24, '', '', 32]}
                 sx={{
                   backgroundImage: `url(${NetIcon})`,
                   backgroundSize: 'cover',
@@ -137,7 +136,7 @@ const GridView = ({ ...props }) => {
             onClick={() => dispatch(markSelectedAsCaught())}
           />
           <Action
-            icon={<MuseumIcon width={32} height={32} color="grey-33" />}
+            icon={<SvgIcon icon="museum" fontSize={[24, '', '', 32]} />}
             label="Donate"
             onClick={() => dispatch(markSelectedAsDonated())}
           />

@@ -8,10 +8,12 @@ import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
-import ArrowLeftIcon from 'assets/icons/arrow-circle-left.svg';
-import ArrowRightIcon from 'assets/icons/arrow-circle-right.svg';
+import {
+  closeCritterDetail,
+  openCritterDetail,
+} from 'containers/ModalCritterDetail/slice';
 import { HemisphereContext } from 'utils/contexts';
+import SvgIcon from 'components/svg-icon';
 import selector from '../selectors';
 
 const DetailInsect = ({ data }) => {
@@ -20,6 +22,7 @@ const DetailInsect = ({ data }) => {
   const dispatch = useDispatch();
   return (
     <Flex
+      flexDirection={['column', '', 'row']}
       sx={{
         width: '100%',
         maxWidth: '960px',
@@ -29,11 +32,11 @@ const DetailInsect = ({ data }) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        p="30px"
+        p={['30px', '', '30px']}
         sx={{
           flex: '1 1 auto',
-          width: '60%',
-          borderRight: '4px double',
+          width: ['100%', '', '60%'],
+          borderRight: ['none', '', '4px double'],
           borderRightColor: 'grey-99',
         }}
       >
@@ -57,13 +60,25 @@ const DetailInsect = ({ data }) => {
               width: '100%',
               height: '100%',
               left: 0,
+              top: ['2px', '', '', '5px'],
+              filter: 'brightness(0) opacity(0.5) blur(1px)',
+            }}
+            src={insectImage(data.id)}
+            key={`insect-${data.id}-shadow`}
+          />
+          <Image
+            sx={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              left: 0,
               top: 0,
             }}
             src={insectImage(data.id)}
             key={`insect-${data.id}`}
           />
         </Box>
-        {prevId !== nextId && (
+        {prevId !== nextId ? (
           <Flex
             sx={{
               width: '100%',
@@ -82,7 +97,13 @@ const DetailInsect = ({ data }) => {
                 )
               }
             >
-              <ArrowLeftIcon width={32} height={32} />
+              <SvgIcon icon="arrow-circle-left" fontSize={32} />
+            </Button>
+            <Button
+              sx={{ color: 'grey-33', background: 'transparent' }}
+              onClick={() => dispatch(closeCritterDetail())}
+            >
+              <SvgIcon icon="times-circle" fontSize={32} />
             </Button>
             <Button
               sx={{ color: 'grey-33', background: 'transparent' }}
@@ -96,9 +117,16 @@ const DetailInsect = ({ data }) => {
                 )
               }
             >
-              <ArrowRightIcon width={32} height={32} />
+              <SvgIcon icon="arrow-circle-right" fontSize={32} />
             </Button>
           </Flex>
+        ) : (
+          <Button
+            sx={{ color: 'grey-33', background: 'transparent' }}
+            onClick={() => dispatch(closeCritterDetail())}
+          >
+            <SvgIcon icon="times-circle" fontSize={32} />
+          </Button>
         )}
       </Flex>
       <Flex
@@ -107,17 +135,17 @@ const DetailInsect = ({ data }) => {
         justifyContent="space-around"
         sx={{
           flex: '1 1 auto',
-          width: '40%',
+          width: ['100%', '', '40%'],
         }}
       >
-        <Container>
+        <Container mb="lg">
           <Seasonality
             availableMonths={
               data.availability[`month-${hemisphere.toLowerCase()}`]
             }
           />
         </Container>
-        <Container>
+        <Container mb="lg">
           <ActiveHours
             availableMonths={
               data.availability[`month-${hemisphere.toLowerCase()}`]
@@ -125,8 +153,34 @@ const DetailInsect = ({ data }) => {
             availableHours={data.availability.time}
           />
         </Container>
+        <Flex mb="lg">
+          <Container>
+            <Heading mb="md">Location</Heading>
+            <Text
+              sx={{
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+              }}
+            >
+              {data?.availability?.location || 'Unknown'}
+            </Text>
+          </Container>
+          <Container>
+            <Heading mb="md">Rarity</Heading>
+            <Text
+              sx={{
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+              }}
+            >
+              {data?.availability?.rarity}
+            </Text>
+          </Container>
+        </Flex>
         <Container>
-          <Heading mb="md">Location</Heading>
+          <Heading mb="md">Price</Heading>
           <Text
             sx={{
               fontSize: '14px',
@@ -134,10 +188,9 @@ const DetailInsect = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.availability?.location}
+            {data?.price} bells ( {data?.['price-flick']} when sell to Flick. )
           </Text>
         </Container>
-        <Container />
       </Flex>
     </Flex>
   );

@@ -19,9 +19,7 @@ import { createStructuredSelector } from 'reselect';
 import selector, { getCollectionState } from 'pages/Critterpedia/selectors';
 import { useSelector } from 'react-redux';
 import { leftToRight } from 'utils/animations';
-import MuseumIcon from 'assets/icons/museum.svg';
-import FishIcon from 'assets/icons/fish.svg';
-import InsectIcon from 'assets/icons/insects.svg';
+import SvgIcon from 'components/svg-icon';
 
 const PreviewBox = ({ data, selected, ...props }) => {
   const [isLoaded, setLoaded] = useState(false);
@@ -60,9 +58,9 @@ const PreviewBox = ({ data, selected, ...props }) => {
   const categoryIcon = useMemo(
     () =>
       data.category === CATEGORY_FISH ? (
-        <FishIcon width={32} height={32} />
+        <SvgIcon icon="fish" fontSize={[24, '', '', 32]} />
       ) : (
-        <InsectIcon width={32} height={32} />
+        <SvgIcon icon="insects" fontSize={[24, '', '', 32]} />
       ),
     [data],
   );
@@ -93,8 +91,8 @@ const PreviewBox = ({ data, selected, ...props }) => {
         position: 'relative',
         border: '2px solid',
         borderColor: 'grey-99',
-        width: 100,
-        height: 100,
+        width: [75, '', '', 100],
+        height: [75, '', '', 100],
         p: 'md',
         alignItems: 'center',
         justifyContent: 'center',
@@ -102,10 +100,10 @@ const PreviewBox = ({ data, selected, ...props }) => {
         '&::after': {
           content: '""',
           position: 'absolute',
-          top: '4px',
-          bottom: '4px',
-          left: '4px',
-          right: '4px',
+          top: ['2px', '', '', '4px'],
+          bottom: ['2px', '', '', '4px'],
+          left: ['2px', '', '', '4px'],
+          right: ['2px', '', '', '4px'],
           border: '2px dashed',
           borderColor: 'grey-66',
           opacity: '0',
@@ -120,14 +118,21 @@ const PreviewBox = ({ data, selected, ...props }) => {
       }}
       {...props}
     >
+      {/* selected circle */}
       <Box
         sx={{
           position: 'absolute',
           left: '50%',
           top: '50%',
           transform: 'translate(-50%, -50%)',
-          width: mode === MODE_COLLECTION && selected ? '64px' : '0',
-          height: mode === MODE_COLLECTION && selected ? '64px' : '0',
+          width:
+            mode === MODE_COLLECTION && selected
+              ? ['48px', '', '', '64px']
+              : '0',
+          height:
+            mode === MODE_COLLECTION && selected
+              ? ['48px', '', '', '64px']
+              : '0',
           opacity: mode === MODE_COLLECTION && selected ? 1 : 0,
           borderRadius: '50%',
           transition: 'all ease-out 0.2s',
@@ -135,8 +140,12 @@ const PreviewBox = ({ data, selected, ...props }) => {
           '&::after': {
             content: '""',
             display: 'block',
-            backgroundImage:
+            backgroundImage: [
+              'repeating-linear-gradient(-45deg, orange 0px, orange 8.49px, yellow 8.49px, yellow 16.97px)',
+              '',
+              '',
               'repeating-linear-gradient(-45deg, orange 0px, orange 11.31px, yellow 11.31px, yellow 22.62px)',
+            ],
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -148,6 +157,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
           },
         }}
       />
+      {/* placeholder */}
       <Box
         sx={{
           color: 'rgba(0,0,0,0.1)',
@@ -164,7 +174,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '64px',
+            width: ['48px', '', '', '64px'],
           }}
         >
           <Image
@@ -211,14 +221,14 @@ const PreviewBox = ({ data, selected, ...props }) => {
           <Box
             sx={{
               position: 'absolute',
-              right: '8px',
-              bottom: '8px',
+              right: ['5px', '', '', '8px'],
+              bottom: ['5px', '', '', '8px'],
               color: 'grey-66',
               transition: 'opacity ease-out 0.2s',
               opacity: mode === MODE_COLLECTION ? 1 : 0.5,
             }}
           >
-            <MuseumIcon width="16px" height="16px" />
+            <SvgIcon icon="museum" fontSize={['10px', '', '', '16px']} />
           </Box>
         )}
     </Flex>

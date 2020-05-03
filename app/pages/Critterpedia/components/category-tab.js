@@ -1,4 +1,4 @@
-import { Flex, Text } from 'rebass';
+import { Flex, Box, Text } from 'rebass';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,7 +7,6 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
     alignItems="center"
     justifyContent="center"
     p="lg"
-    mr="-10px"
     sx={{
       position: 'relative',
       backgroundColor: 'white',
@@ -20,10 +19,19 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
         transform: `scale(${active ? 1.2 : 1})`,
         transition: 'transform ease-out 0.2s',
       },
+      '&:not(:last-of-type)': {
+        mr: '-10px',
+      },
     }}
     {...props}
   >
-    {icon}
+    <Box
+      sx={{
+        fontSize: ['24px', '', '', '32px'],
+      }}
+    >
+      {icon}
+    </Box>
     {active && (
       <Text
         sx={{
@@ -37,7 +45,7 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
           py: 'sm',
           px: 'lg',
           transform: 'translateX(-50%)',
-          fontSize: '14px',
+          fontSize: ['12px', '', '', '14px'],
           zIndex: 2,
         }}
       >

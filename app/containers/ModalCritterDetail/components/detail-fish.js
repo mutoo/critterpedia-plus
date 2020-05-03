@@ -7,14 +7,15 @@ import { fishImage } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
-import ArrowLeftIcon from 'assets/icons/arrow-circle-left.svg';
-import ArrowRightIcon from 'assets/icons/arrow-circle-right.svg';
-import QuestionIcon from 'assets/icons/question-circle.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import selector from 'containers/ModalCritterDetail/selectors';
-import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
+import {
+  closeCritterDetail,
+  openCritterDetail,
+} from 'containers/ModalCritterDetail/slice';
 import { HemisphereContext } from 'utils/contexts';
 import FishShadow from 'components/fish-shadow';
+import SvgIcon from 'components/svg-icon';
 
 const DetailFish = ({ data }) => {
   const { category, nextId, prevId, collection } = useSelector(selector);
@@ -58,13 +59,25 @@ const DetailFish = ({ data }) => {
               width: '100%',
               height: '100%',
               left: 0,
+              top: ['2px', '', '', '5px'],
+              filter: 'brightness(0) opacity(0.5) blur(1px)',
+            }}
+            src={fishImage(data.id)}
+            key={`fish-${data.id}-shadow`}
+          />
+          <Image
+            sx={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              left: 0,
               top: 0,
             }}
             src={fishImage(data.id)}
             key={`fish-${data.id}`}
           />
         </Box>
-        {prevId !== nextId && (
+        {prevId !== nextId ? (
           <Flex
             sx={{
               width: '100%',
@@ -83,7 +96,13 @@ const DetailFish = ({ data }) => {
                 )
               }
             >
-              <ArrowLeftIcon width={32} height={32} />
+              <SvgIcon icon="arrow-circle-left" fontSize={32} />
+            </Button>
+            <Button
+              sx={{ color: 'grey-33', background: 'transparent' }}
+              onClick={() => dispatch(closeCritterDetail())}
+            >
+              <SvgIcon icon="times-circle" fontSize={32} />
             </Button>
             <Button
               sx={{ color: 'grey-33', background: 'transparent' }}
@@ -97,19 +116,27 @@ const DetailFish = ({ data }) => {
                 )
               }
             >
-              <ArrowRightIcon width={32} height={32} />
+              <SvgIcon icon="arrow-circle-right" fontSize={32} />
             </Button>
           </Flex>
+        ) : (
+          <Button
+            sx={{ color: 'grey-33', background: 'transparent' }}
+            onClick={() => dispatch(closeCritterDetail())}
+          >
+            <SvgIcon icon="times-circle" fontSize={32} />
+          </Button>
         )}
       </Flex>
       <Flex
+        flexDirection={['column', '', 'row']}
         py="24px"
         sx={{
           borderBottom: '1px solid',
           borderBottomColor: 'grey-99',
         }}
       >
-        <Container>
+        <Container mb={['lg', '', '0']}>
           <Seasonality
             availableMonths={
               data.availability[`month-${hemisphere.toLowerCase()}`]
@@ -126,7 +153,7 @@ const DetailFish = ({ data }) => {
         </Container>
       </Flex>
       <Flex flexWrap="wrap" py="24px">
-        <Container flex="0 0 50%" mb="lg">
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
           <Heading mr="lg">Location</Heading>
           <Text
             as="span"
@@ -139,7 +166,7 @@ const DetailFish = ({ data }) => {
             {data?.availability?.location}
           </Text>
         </Container>
-        <Container flex="0 0 50%" mb="lg">
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
           <Heading mr="lg">Shadow Size</Heading>
           <Text
             as="span"
@@ -159,15 +186,19 @@ const DetailFish = ({ data }) => {
                   e.stopPropagation();
                 }}
               >
-                {data.shadow} <QuestionIcon width={14} height={14} />
+                {data.shadow} <SvgIcon icon="question-circle" inline />
                 {shouldPreviewShadow && (
                   <FishShadow
                     description={data.shadow}
                     sx={{
-                      position: 'absolute',
-                      bottom: '100%',
+                      position: ['fixed', '', 'absolute'],
+                      bottom: ['50%', '', '100%'],
                       left: '50%',
-                      transform: 'translate(-50%, -20px)',
+                      transform: [
+                        'translate(-50%, 50%) scale(0.75)',
+                        '',
+                        'translate(-50%, -20px)',
+                      ],
                       borderRadius: '40%',
                       overflow: 'hidden',
                       zIndex: 3,
@@ -181,7 +212,7 @@ const DetailFish = ({ data }) => {
             )}
           </Text>
         </Container>
-        <Container flex="0 0 50%" mb="lg">
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
           <Heading mr="lg">Price</Heading>
           <Text
             as="span"
@@ -194,7 +225,7 @@ const DetailFish = ({ data }) => {
             {data?.price} bells ( {data?.['price-cj']} when sell to C.J. )
           </Text>
         </Container>
-        <Container flex="0 0 50%" mb="lg">
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
           <Heading mr="lg">Rarity</Heading>
           <Text
             as="span"
