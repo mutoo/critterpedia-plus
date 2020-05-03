@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { ALL_MONTHS } from 'utils/data';
 import { Box, Flex, Text } from 'rebass';
-import { getMonth } from 'date-fns';
+import {
+  getMonth,
+  startOfMonth,
+  addMonths,
+  differenceInMilliseconds,
+} from 'date-fns';
 import { localize } from 'date-fns/locale/en-AU';
 import Heading from 'components/heading';
 import { useSpring, animated, interpolate } from 'react-spring';
@@ -10,8 +15,10 @@ import { useDrag } from 'react-use-gesture';
 import { debounce } from 'lodash';
 
 const MonthPicker = ({ month, onChange, ...props }) => {
+  const currentMonth = getMonth(new Date());
   const wrapRef = useRef(null);
   const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }));
+  // reduce the update rate
   const debouncedOnChange = useMemo(
     () => debounce(onChange || (() => {}), 300),
     [onChange],
@@ -24,42 +31,67 @@ const MonthPicker = ({ month, onChange, ...props }) => {
       const offsetY = cy - bbox.y;
       const cellWidth = bbox.width / 4;
       const cellHeight = bbox.height / 3;
+      // snap to closest cell
       const col = Math.max(0, Math.min(Math.floor(offsetX / cellWidth), 3));
       const row = Math.max(0, Math.min(Math.floor(offsetY / cellHeight), 2));
       set({ x: col * cellWidth, y: row * cellHeight });
+      // calculate month from cell idx
       const newMonth = row * 4 + col;
       if (month !== newMonth) {
         debouncedOnChange(row * 4 + col);
       }
     },
+    // prevent scroll on mobile
     { eventOptions: { passive: false } },
   );
-  useEffect(() => {
-    const onRender = () => {
+  const onUpdate = useMemo(
+    () => () => {
+      // if no month had been set on filter
+      // then use current month
+      const theMonth = month !== null ? month : currentMonth;
+      // can't update if there is no wrap element
       if (!wrapRef.current) return;
       const bbox = wrapRef.current.getBoundingClientRect();
       const cellWidth = bbox.width / 4;
       const cellHeight = bbox.height / 3;
-      const col = month % 4;
-      const row = Math.floor(month / 4);
+      const col = theMonth % 4;
+      const row = Math.floor(theMonth / 4);
       set({ x: col * cellWidth, y: row * cellHeight });
+    },
+    [month, currentMonth],
+  );
+  useEffect(() => {
+    // 1. calculate timeout to next month
+    // and then set a timer to update
+    const now = new Date();
+    const firstDatOfCurrentMonth = startOfMonth(now);
+    const nextMonth = addMonths(firstDatOfCurrentMonth, 1);
+    const timeout = differenceInMilliseconds(nextMonth, now);
+    const timer = setTimeout(onUpdate, timeout);
+    // 2. update on resize
+    window.addEventListener('resize', onUpdate);
+    // 3. update immediately
+    onUpdate();
+    return () => {
+      window.removeEventListener('resize', onUpdate);
+      clearTimeout(timer);
     };
-    onRender();
-    window.addEventListener('resize', onRender);
-    return () => window.removeEventListener('resize', onRender);
-  }, [month]);
+  }, [onUpdate]);
   return (
     <Box {...props}>
       <Flex justifyContent="space-between" mb="md">
         <Heading>Month</Heading>
-        <Box
-          onClick={() => {
-            const now = new Date();
-            onChange(getMonth(now));
-          }}
-        >
-          Reset
-        </Box>
+        {month !== null ? (
+          <Box
+            onClick={() => {
+              onChange(null);
+            }}
+          >
+            Reset
+          </Box>
+        ) : (
+          <Box>Current</Box>
+        )}
       </Flex>
       <animated.div {...bind()}>
         <Flex
@@ -83,20 +115,19 @@ const MonthPicker = ({ month, onChange, ...props }) => {
                 position: 'relative',
                 pointerEvents: 'none',
                 zIndex: 1,
-                // opacity: availableMonths[m] ? '1' : '0.5',
-                // '&::after':
-                //   currentMonth === m
-                //     ? {
-                //       content: '""',
-                //       position: 'absolute',
-                //       top: 0,
-                //       left: 0,
-                //       width: '100%',
-                //       height: '100%',
-                //       border: '2px solid',
-                //       borderColor: 'red',
-                //     }
-                //     : null,
+                '&::after':
+                  currentMonth === m
+                    ? {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        border: '2px solid',
+                        borderColor: month === null ? 'red' : 'grey-66',
+                      }
+                    : null,
               }}
               /* eslint-disable-next-line react/no-array-index-key */
               key={m}
@@ -146,7 +177,7 @@ const MonthPicker = ({ month, onChange, ...props }) => {
 };
 
 MonthPicker.propTypes = {
-  month: PropTypes.number.isRequired,
+  month: PropTypes.number,
   onChange: PropTypes.func,
 };
 

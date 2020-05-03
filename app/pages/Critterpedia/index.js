@@ -27,9 +27,10 @@ import {
   setActiveTab,
   setMode,
   updateFilterMonth,
+  updateFilterHour,
 } from 'pages/Critterpedia/slice';
-import MonthPicker from 'pages/Critterpedia/components/month-picker';
-import { getMonth } from 'date-fns';
+import MonthPicker from './components/month-picker';
+import HourPicker from './components/hour-picker';
 import Statistic from './components/statistic';
 import CategoryTab from './components/category-tab';
 
@@ -44,10 +45,8 @@ const CritterpediaPage = () => {
     activeTab,
     mode,
     hemisphere,
-    filters: { month },
+    filters: { month, hour },
   } = useSelector(selector);
-  const now = new Date();
-  const currentMonth = getMonth(now);
   const dispatch = useDispatch();
   const [view /* , setView */] = useState('Grid');
   return (
@@ -160,8 +159,13 @@ const CritterpediaPage = () => {
                   </p>
                 </Text>
                 <MonthPicker
-                  month={month !== null ? month : currentMonth}
+                  month={month}
                   onChange={m => dispatch(updateFilterMonth(m))}
+                  mb="lg"
+                />
+                <HourPicker
+                  hour={hour}
+                  onChange={h => dispatch(updateFilterHour(h))}
                 />
               </>
             )}
