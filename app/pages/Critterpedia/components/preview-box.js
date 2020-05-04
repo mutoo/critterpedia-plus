@@ -165,6 +165,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
           transition: 'transform ease-out 0.3s',
           transform: theAvatar && isLoaded ? 'scale(0)' : 'scale(1)',
         }}
+        key={`${data.category}-${data.id}`}
       >
         {categoryIcon}
       </Box>
@@ -227,9 +228,10 @@ const PreviewBox = ({ data, selected, ...props }) => {
               color: 'grey-66',
               transition: 'opacity ease-out 0.2s',
               opacity: mode === MODE_COLLECTION ? 1 : 0.5,
+              fontSize: ['10px', '', '', '16px'],
             }}
           >
-            <SvgIcon icon="museum" fontSize={['10px', '', '', '16px']} />
+            <SvgIcon icon="museum" />
           </Box>
         )}
     </Flex>

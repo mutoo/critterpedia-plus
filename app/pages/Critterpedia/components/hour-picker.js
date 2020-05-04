@@ -152,6 +152,9 @@ const HourPicker = ({ hour, onChange, ...props }) => {
           </Box>
 
           <Box
+            style={{
+              left: `calc(${minuteOffset}% - 1px)`,
+            }}
             sx={{
               height: '25px',
               width: '2px',
@@ -159,7 +162,6 @@ const HourPicker = ({ hour, onChange, ...props }) => {
               position: 'absolute',
               bottom: '-2px',
               zIndex: 2,
-              left: `calc(${minuteOffset}% - 1px)`,
               '&:before, &:after': {
                 content: '""',
                 display: 'block',

@@ -38,6 +38,8 @@ const DetailInsect = ({ data }) => {
           width: ['100%', '', '60%'],
           borderRight: ['none', '', '4px double'],
           borderRightColor: 'grey-99',
+          borderBottom: ['4px double', '', 'none'],
+          borderBottomColor: 'grey-99',
         }}
       >
         <NameTag names={data.name} fontSize="16px" />

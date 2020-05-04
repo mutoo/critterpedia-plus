@@ -9,6 +9,7 @@ import { CATEGORY_FISH, MODE_COLLECTION } from 'utils/const';
 import {
   markSelectedAsCaught,
   markSelectedAsDonated,
+  clearSelected,
   toggleCritter,
   resetSelected,
 } from 'pages/Critterpedia/slice';
@@ -35,6 +36,9 @@ const GridView = ({ ...props }) => {
   useEffect(() => {
     setHasSelected(Object.values(selected).some(Boolean));
   }, [selected]);
+  useEffect(() => {
+    dispatch(clearSelected());
+  }, [category]);
   return (
     <Box
       sx={{
@@ -111,17 +115,18 @@ const GridView = ({ ...props }) => {
       <Container
         mt="30px"
         sx={{
-          maxHeight: mode === MODE_COLLECTION && hasSelected ? '60px' : '0',
-          transition: `max-height ease-out 0.3s`,
-          overflow: 'hidden',
+          position: 'fixed',
+          bottom: '100px',
+          left: '50%',
+          transform:
+            mode === MODE_COLLECTION && hasSelected
+              ? 'translateX(-50%) scale(1)'
+              : 'translateX(-50%) scale(0)',
+          transition: `transform ease-out 0.3s`,
+          zIndex: 10,
         }}
       >
         <Flex justifyContent="center">
-          <Action
-            icon={<SvgIcon icon="times-circle" fontSize={[24, '', '', 32]} />}
-            label="Clear"
-            onClick={() => dispatch(resetSelected({ category }))}
-          />
           <Action
             icon={
               <Box
@@ -140,6 +145,11 @@ const GridView = ({ ...props }) => {
             icon={<SvgIcon icon="museum" fontSize={[24, '', '', 32]} />}
             label="Donate"
             onClick={() => dispatch(markSelectedAsDonated({ category }))}
+          />
+          <Action
+            icon={<SvgIcon icon="times-circle" fontSize={[24, '', '', 32]} />}
+            label="Clear"
+            onClick={() => dispatch(resetSelected({ category }))}
           />
         </Flex>
       </Container>
