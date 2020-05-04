@@ -12,6 +12,7 @@ import { localize } from 'date-fns/locale/en-AU';
 import Heading from 'components/heading';
 import { useSpring, animated, interpolate } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
+import SvgIcon from 'components/svg-icon';
 import { throttle } from 'lodash';
 import { trackCategoryEvent } from '../../../configureGA';
 
@@ -89,15 +90,16 @@ const MonthPicker = ({ month, onChange, ...props }) => {
   }, [onUpdate]);
   return (
     <Box {...props}>
-      <Flex justifyContent="space-between" mb="md">
-        <Heading>Month</Heading>
+      <Flex justifyContent="flex-start" mb="md">
+        <Heading mr="md">Month</Heading>
         {month !== null ? (
           <Box
+            sx={{ cursor: 'pointer' }}
             onClick={() => {
               onChange(null);
             }}
           >
-            Reset
+            Reset <SvgIcon icon="redo-alt" inline />
           </Box>
         ) : (
           <Box>Current</Box>

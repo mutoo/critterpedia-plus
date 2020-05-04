@@ -80,3 +80,7 @@ a {
 .bmc-button > span {
   margin-left: 15px;
 }
+
+[id^="google_ads_iframe"] {
+  margin: 0 auto;
+}

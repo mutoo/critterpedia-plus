@@ -7,6 +7,7 @@ import Heading from 'components/heading';
 import { animated, interpolate, useSpring } from 'react-spring';
 import { throttle } from 'lodash';
 import { useDrag } from 'react-use-gesture';
+import SvgIcon from 'components/svg-icon';
 import { trackCategoryEvent } from '../../../configureGA';
 
 const HourPicker = ({ hour, onChange, ...props }) => {
@@ -55,7 +56,6 @@ const HourPicker = ({ hour, onChange, ...props }) => {
       // the use current hour
       const currentHour = getHours(new Date());
       const theHour = hour !== null ? hour : currentHour;
-      console.log(theHour);
       // can't update if there is no wrap element
       if (!wrapRef.current) return;
       const bbox = wrapRef.current.getBoundingClientRect();
@@ -73,15 +73,16 @@ const HourPicker = ({ hour, onChange, ...props }) => {
   }, [onUpdate]);
   return (
     <Box {...props}>
-      <Flex justifyContent="space-between" mb="md">
-        <Heading>Hour</Heading>
+      <Flex justifyContent="flex-start" mb="md">
+        <Heading mr="md">Hour</Heading>
         {hour !== null ? (
           <Box
+            sx={{ cursor: 'pointer' }}
             onClick={() => {
               onChange(null);
             }}
           >
-            Reset
+            Reset <SvgIcon icon="redo-alt" inline />
           </Box>
         ) : (
           <Box>Current</Box>
