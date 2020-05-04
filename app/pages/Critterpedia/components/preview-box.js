@@ -90,7 +90,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
       className="acnh-preview-box"
       sx={{
         position: 'relative',
-        border: '2px solid',
+        border: ['1px solid', '', '', '2px solid'],
         borderColor: 'grey-99',
         width: [75, '', '', 100],
         height: [75, '', '', 100],
@@ -114,7 +114,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
           opacity: 1,
         },
         '.acnh-critterpedia-slide &:not(:last-of-type)': {
-          mb: '-2px',
+          mb: ['-1px', '', '', '-2px'],
         },
       }}
       {...props}
