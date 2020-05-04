@@ -102,11 +102,11 @@ const CritterpediaPage = () => {
                   What critters are available <b>in the other hemisphere</b>?
                 </li>
                 <li>
-                  What critters will be available <b>in next month</b>?
+                  What critters will be available <b>next month</b>?
                 </li>
               </ul>
               <p>By the way, you can mark your critters in Collection Mode.</p>
-              <p>If you like this app, please share it to your friends, </p>
+              <p>If you like this app, please share it with your friends, </p>
               <p>
                 or support me via{' '}
                 <a
@@ -139,7 +139,7 @@ const CritterpediaPage = () => {
               />
             </Text>
             <Text fontSize="18px">
-              <p>You might also want to do some time travelling:</p>
+              <p>You might also want to do some time traveling:</p>
             </Text>
             <MonthPicker
               month={month}
@@ -151,7 +151,7 @@ const CritterpediaPage = () => {
               onChange={h => dispatch(updateFilterHour(h))}
             />
             <Text fontSize="14px">
-              <p>N.B. these settings only applicable to Discovery Mode.</p>
+              <p>N.B. these settings are only applicable to Discovery Mode.</p>
             </Text>
           </Box>
           <Box ref={modeAnchorRef} />
@@ -161,7 +161,7 @@ const CritterpediaPage = () => {
               <Text fontSize="18px">
                 {' '}
                 <p>
-                  In this mode, you can view the the critters with{' '}
+                  In this mode, you can view the critters with{' '}
                   <b>availability</b>, based on your selected hemisphere, date,
                   and time, above this section.
                 </p>
@@ -248,7 +248,7 @@ const CritterpediaPage = () => {
             <>
               <Heading>Graph</Heading>
               <Text fontSize="18px">
-                <p>The critter are shown in different status: </p>
+                <p>The critters are shown in different status: </p>
                 <ul>
                   <li>
                     <b>Colorful</b>: It is available right now! Go and find
@@ -256,11 +256,11 @@ const CritterpediaPage = () => {
                   </li>
                   <li>
                     <b>Dark shade</b>: It is available this month, but not at
-                    current hour, try the other time then.
+                    the current hour, try the other time then.
                   </li>
                   <li>
                     <b>Light shade</b>: It is available on the other hemisphere,
-                    visit your long distance friends and pay attention to the
+                    visit your long-distance friends and pay attention to the
                     critters!
                   </li>
                 </ul>
@@ -289,7 +289,10 @@ const CritterpediaPage = () => {
         >
           <GPT
             adUnitPath="/21918258587/critterpedia-index"
-            slotSize={[728, 90]}
+            sizeMapping={[
+              { viewport: [0, 0], slot: [320, 50] },
+              { viewport: [750, 0], slot: [728, 90] },
+            ]}
           />
         </Box>
         <Container maxWidth="660px" mb="50px">
