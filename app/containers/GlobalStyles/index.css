@@ -12,6 +12,7 @@ html {
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+  font-size: 14px;
 }
 
 body.fontLoaded {
@@ -54,7 +55,7 @@ a {
   text-decoration: none;
   display: inline-flex;
   color: #ffffff;
-  background-color: #FF813F;
+  background-color: #e39034;
   border-radius: 5px;
   border: 1px solid transparent;
   padding: 7px 10px 7px 10px;

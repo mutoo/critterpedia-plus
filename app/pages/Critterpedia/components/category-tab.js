@@ -12,10 +12,10 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
       backgroundColor: 'white',
       borderRadius: '50%',
       cursor: 'pointer',
+      color: active ? 'tab-active' : 'tab-icon',
       '& > svg': {
         position: 'relative',
         zIndex: 1,
-        color: active ? 'orange' : 'grey-66',
         transform: `scale(${active ? 1.2 : 1})`,
         transition: 'transform ease-out 0.2s',
       },
@@ -36,9 +36,9 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
       <Text
         sx={{
           position: 'absolute',
-          background: 'orange',
+          backgroundColor: 'tab-active',
           borderRadius: '10px 10px',
-          color: 'grey-33',
+          color: 'tab-icon',
           bottom: '85%',
           left: '50%',
           whiteSpace: 'nowrap',
@@ -46,6 +46,7 @@ const CategoryTab = ({ label, active, icon, ...props }) => (
           px: 'lg',
           transform: 'translateX(-50%)',
           fontSize: ['12px', '', '', '14px'],
+          fontWeight: 'bold',
           zIndex: 2,
         }}
       >

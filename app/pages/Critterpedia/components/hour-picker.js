@@ -55,6 +55,7 @@ const HourPicker = ({ hour, onChange, ...props }) => {
       // the use current hour
       const currentHour = getHours(new Date());
       const theHour = hour !== null ? hour : currentHour;
+      console.log(theHour);
       // can't update if there is no wrap element
       if (!wrapRef.current) return;
       const bbox = wrapRef.current.getBoundingClientRect();

@@ -6,10 +6,12 @@ const Heading = ({ ...props }) => (
     as="h3"
     sx={{
       display: 'inline-box',
-      fontSize: '16px',
       fontStyle: 'italic',
       lineHeight: 1,
-      backgroundColor: 'lightgreen',
+      backgroundColor: 'title-bg',
+      borderRadius: '4px',
+      p: '3px',
+      color: 'title',
     }}
     {...props}
   />

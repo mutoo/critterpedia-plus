@@ -13,11 +13,14 @@ import {
   openCritterDetail,
 } from 'containers/ModalCritterDetail/slice';
 import { HemisphereContext } from 'utils/contexts';
+import { COLLECTION_DONATED } from 'utils/const';
 import selector from '../selectors';
 import IconButton from './icon-button';
 
 const DetailInsect = ({ data }) => {
-  const { category, nextId, prevId, collection } = useSelector(selector);
+  const { category, nextId, prevId, collection, collectionState } = useSelector(
+    selector,
+  );
   const [hemisphere] = useContext(HemisphereContext);
   const dispatch = useDispatch();
   return (
@@ -42,7 +45,11 @@ const DetailInsect = ({ data }) => {
           borderBottomColor: 'grey-99',
         }}
       >
-        <NameTag names={data.name} fontSize="16px" />
+        <NameTag
+          names={data.name}
+          fontSize="16px"
+          donated={collectionState === COLLECTION_DONATED}
+        />
         <Box
           sx={{
             width: '100%',
@@ -62,7 +69,7 @@ const DetailInsect = ({ data }) => {
               width: '100%',
               height: '100%',
               left: 0,
-              top: ['2px', '', '', '5px'],
+              top: ['2px', '', '', '6px'],
               filter: 'brightness(0) opacity(0.5) blur(1px)',
             }}
             src={insectImage(data.id)}

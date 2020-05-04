@@ -16,11 +16,15 @@ import {
 import { HemisphereContext } from 'utils/contexts';
 import FishShadow from 'components/fish-shadow';
 import SvgIcon from 'components/svg-icon';
+import { COLLECTION_DONATED } from 'utils/const';
 import IconButton from './icon-button';
 import { trackCategoryEvent } from '../../../configureGA';
+import { colors } from '../../../theme';
 
 const DetailFish = ({ data }) => {
-  const { category, nextId, prevId, collection } = useSelector(selector);
+  const { category, nextId, prevId, collection, collectionState } = useSelector(
+    selector,
+  );
   const [hemisphere] = useContext(HemisphereContext);
   const [shouldPreviewShadow, previewShadow] = useState(false);
   const dispatch = useDispatch();
@@ -41,7 +45,12 @@ const DetailFish = ({ data }) => {
           borderBottomColor: 'grey-99',
         }}
       >
-        <NameTag names={data.name} fontSize="16px" mb="10px" />
+        <NameTag
+          names={data.name}
+          donated={collectionState === COLLECTION_DONATED}
+          fontSize="16px"
+          mb="10px"
+        />
         <Box
           sx={{
             width: '100%',
@@ -61,7 +70,7 @@ const DetailFish = ({ data }) => {
               width: '100%',
               height: '100%',
               left: 0,
-              top: ['2px', '', '', '5px'],
+              top: ['2px', '', '', '6px'],
               filter: 'brightness(0) opacity(0.5) blur(1px)',
             }}
             src={fishImage(data.id)}
@@ -182,7 +191,8 @@ const DetailFish = ({ data }) => {
                   e.stopPropagation();
                 }}
               >
-                {data.shadow} <SvgIcon icon="question-circle" inline />
+                {data.shadow}{' '}
+                <SvgIcon color={colors.alert} icon="question-circle" inline />
                 {shouldPreviewShadow && (
                   <FishShadow
                     description={data.shadow}
