@@ -4,6 +4,7 @@ import { Box, Button, Flex, Text } from 'rebass';
 import HomeIcon from 'assets/icons/home.svg';
 import AdjustIcon from 'assets/icons/adjust.svg';
 import { trackCategoryEvent } from '../configureGA';
+import { colors } from '../theme';
 
 const Hemisphere = ({ label, icon, active, ...props }) => (
   <Button
@@ -11,7 +12,7 @@ const Hemisphere = ({ label, icon, active, ...props }) => (
       py: '0',
       px: 'md',
       background: 'transparent',
-      color: 'grey-33',
+      color: 'action-active',
       display: 'inline-flex',
       alignItems: 'center',
       cursor: 'pointer',
@@ -22,7 +23,11 @@ const Hemisphere = ({ label, icon, active, ...props }) => (
   >
     {label}
     <Box sx={{ lineHeight: '1', ml: 'sm' }}>
-      {active ? <HomeIcon width={18} height={18} color="orange" /> : icon}
+      {active ? (
+        <HomeIcon width={18} height={18} color={colors.indicator} />
+      ) : (
+        icon
+      )}
     </Box>
   </Button>
 );

@@ -1,6 +1,9 @@
 import { createStructuredSelector } from 'reselect';
 import { getHemisphere } from 'containers/App/selectors';
-import { getDetailByCategoryAndId } from 'pages/Critterpedia/selectors';
+import {
+  getCollectionState,
+  getDetailByCategoryAndId,
+} from 'pages/Critterpedia/selectors';
 import { name as key } from './slice';
 
 export const getSelected = state => state[key]?.selected;
@@ -38,6 +41,11 @@ export default createStructuredSelector({
   isModalCritterDetailOpen: state => !!getData(state),
   category: getCategory,
   data: getData,
+  collectionState: state => {
+    const data = getData(state);
+    if (!data) return null;
+    return getCollectionState(data.category.toLowerCase(), data.id)(state);
+  },
   nextId: getNextId,
   prevId: getPreviousId,
   collection: getCollection,

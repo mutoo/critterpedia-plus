@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Box } from 'rebass';
+import SvgIcon from 'components/svg-icon';
 import nameTabBorder from '!file-loader!assets/images/name-tag-border.svg';
 
-const NameTag = ({ names, fontSize = '12px', ...props }) => (
+const NameTag = ({ names, donated, fontSize = '12px', ...props }) => (
   <Box
     sx={{
       position: 'relative',
@@ -53,6 +54,18 @@ const NameTag = ({ names, fontSize = '12px', ...props }) => (
         fontWeight: 'bold',
       }}
     >
+      {donated && (
+        <>
+          <SvgIcon
+            icon="museum"
+            inline
+            style={{
+              fontSize: '1.2em',
+              transform: 'rotate(4deg)',
+            }}
+          />{' '}
+        </>
+      )}
       {names['name-en']}
     </Box>
   </Box>
@@ -62,5 +75,6 @@ export default NameTag;
 
 NameTag.propTypes = {
   names: PropTypes.object.isRequired,
+  donated: PropTypes.bool,
   fontSize: PropTypes.string,
 };

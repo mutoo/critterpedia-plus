@@ -25,6 +25,7 @@ import {
   updateFilterHour,
 } from 'pages/Critterpedia/slice';
 import SvgIcon from 'components/svg-icon';
+import { Bling as GPT } from 'react-gpt';
 import MonthPicker from './components/month-picker';
 import HourPicker from './components/hour-picker';
 import Statistic from './components/statistic';
@@ -81,7 +82,7 @@ const CritterpediaPage = () => {
       <Box my="50px">
         <Container maxWidth="660px">
           <Box as="section" mb="50px">
-            <Heading>Critterpedia Plus</Heading>
+            <Heading as="h1">Critterpedia Plus</Heading>
             <Text fontSize="18px">
               <p>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -107,7 +108,7 @@ const CritterpediaPage = () => {
               <p>By the way, you can mark your critters in Collection Mode.</p>
               <p>If you like this app, please share it to your friends, </p>
               <p>
-                or{' '}
+                or support me via{' '}
                 <a
                   className="bmc-button"
                   target="_blank"
@@ -123,7 +124,7 @@ const CritterpediaPage = () => {
             </Text>
           </Box>
           <Box as="section" mb="50px">
-            <Heading>Getting Started</Heading>
+            <Heading as="h2">Getting Started</Heading>
             <Text fontSize="18px">
               <p>
                 Which <b>hemisphere</b> do you play on?
@@ -149,13 +150,14 @@ const CritterpediaPage = () => {
               hour={hour}
               onChange={h => dispatch(updateFilterHour(h))}
             />
+            <Text fontSize="14px">
+              <p>N.B. these settings only applicable to Discovery Mode.</p>
+            </Text>
           </Box>
-          <Box ref={modeAnchorRef}>
-            <Heading>Mode</Heading>
-          </Box>
+          <Box ref={modeAnchorRef} />
           {mode === MODE_DISCOVERY && (
             <>
-              <Heading>Discovery</Heading>
+              <Heading as="h2">Discovery Mode</Heading>
               <Text fontSize="18px">
                 {' '}
                 <p>
@@ -168,7 +170,7 @@ const CritterpediaPage = () => {
           )}
           {mode === MODE_COLLECTION && (
             <>
-              <Heading>Collection</Heading>
+              <Heading as="h2">Collection Mode</Heading>
               <Text fontSize="18px">
                 <p>
                   In this mode, you can <b>mark</b> all the critters you had
@@ -180,7 +182,7 @@ const CritterpediaPage = () => {
           )}
           {mode === MODE_ALL && (
             <>
-              <Heading>All</Heading>
+              <Heading as="h2">All Mode</Heading>
               <Text fontSize="18px">
                 <p>
                   In this mode, you can view <b>all the critters</b> in the
@@ -276,7 +278,23 @@ const CritterpediaPage = () => {
             </>
           )}
         </Container>
-        <Container maxWidth="660px">{disqus}</Container>
+        <Box
+          sx={{
+            margin: '0 auto',
+            maxWidth: '728px',
+            backgroundColor: 'title-bg',
+            backgroundClip: 'content-box',
+            mb: '50px',
+          }}
+        >
+          <GPT
+            adUnitPath="/21918258587/critterpedia-index"
+            slotSize={[728, 90]}
+          />
+        </Box>
+        <Container maxWidth="660px" mb="50px">
+          {disqus}
+        </Container>
       </Box>
       <ModalCritterDetail />
     </HemisphereContext.Provider>

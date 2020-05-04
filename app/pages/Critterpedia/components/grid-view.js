@@ -21,15 +21,6 @@ import PreviewBox from './preview-box';
 import selector from '../selectors';
 import { trackCategoryEvent } from '../../../configureGA';
 
-const Padding = () => (
-  <Box
-    sx={{
-      width: 'calc((100vw - 1600px) / 2)',
-      minWidth: ['20px', '', '30px', '50px'],
-    }}
-  />
-);
-
 const GridView = ({ ...props }) => {
   const { insects, fish, selected } = useSelector(selector);
   const { mode, category } = useParams();
@@ -70,7 +61,12 @@ const GridView = ({ ...props }) => {
         mousewheel={false}
         getSwiper={setSwiper}
       >
-        <Padding />
+        <Box
+          sx={{
+            width: 'calc((100vw - 1600px) / 2)',
+            minWidth: ['20px', '', '30px', '50px'],
+          }}
+        />
         {previewSlides.map((slide, idx) => (
           <Flex
             className="acnh-critterpedia-slide"
@@ -110,7 +106,12 @@ const GridView = ({ ...props }) => {
             ))}
           </Flex>
         ))}
-        <Padding />
+        <Box
+          sx={{
+            width: 'calc((100vw - 1600px) / 2)',
+            minWidth: ['20px', '', '30px', '50px'],
+          }}
+        />
       </Swiper>
       <Container
         mt="30px"

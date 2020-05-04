@@ -5,7 +5,16 @@ import React from 'react';
 
 const IconButton = ({ icon, ...props }) => (
   <Button
-    sx={{ color: 'grey-33', background: 'transparent', outline: 'none' }}
+    sx={{
+      color: 'action',
+      background: 'transparent',
+      outline: 'none',
+      cursor: 'pointer',
+      transition: 'color ease-out 0.2s',
+      '&:hover': {
+        color: 'action-active',
+      },
+    }}
     {...props}
   >
     <SvgIcon icon={icon} fontSize={32} />
