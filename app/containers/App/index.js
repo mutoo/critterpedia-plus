@@ -35,7 +35,7 @@ const App = () => {
     const cssEditabledInDevTools =
       debugCSS || process.env.NODE_ENV !== 'production';
     return createCache({ speedy: !cssEditabledInDevTools });
-  }, [location]);
+  }, []);
 
   return (
     <CacheProvider value={cache}>

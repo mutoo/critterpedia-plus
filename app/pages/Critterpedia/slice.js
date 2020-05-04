@@ -109,6 +109,7 @@ export const {
   resetSelected,
   markSelectedAsCaught,
   markSelectedAsDonated,
+  clearSelected,
   updateFilterMonth,
   updateFilterHour,
 } = critterpediaSlice.actions;

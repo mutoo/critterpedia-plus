@@ -9,6 +9,9 @@ const Action = ({ icon, label, ...props }) => (
       padding: '10px 20px',
       alignItems: 'center',
       cursor: 'pointer',
+      whiteSpace: 'nowrap',
+      boxShadow: '0 4px 0 0 rgba(0,0,0,0.1)',
+
       '&:first-of-type': {
         borderRadius: '25px 0 0 25px',
       },

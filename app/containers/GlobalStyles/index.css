@@ -18,8 +18,10 @@ body.fontLoaded {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-body.ReactModal__Body--open {
-  overflow: hidden;
+body.ReactModal__Body--open {}
+
+a {
+  color: black;
 }
 
 .swiper-container.acnh-critterpedia-slides {
@@ -34,4 +36,46 @@ body.ReactModal__Body--open {
   to {
     opacity: 0;
   }
+}
+
+.bmc-button img {
+  height: 22px;
+  width: 25px;
+  margin-bottom: 1px;
+  box-shadow: none;
+  border: none;
+  vertical-align: middle;
+}
+
+.bmc-button {
+  line-height: 25px;
+  height: 39px;
+  min-width: 217px;
+  text-decoration: none;
+  display: inline-flex;
+  color: #ffffff;
+  background-color: #FF813F;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 7px 10px 7px 10px;
+  font-size: 18px;
+  letter-spacing: 0.6px;
+  box-shadow: 0 1px 2px rgba(190, 190, 190, 0.5);
+  margin: 0 auto;
+  font-family: 'Cookie', cursive;
+  box-sizing: border-box;
+  transition: 0.3s all linear;
+  position: relative;
+  top: 0.25ex;
+}
+
+.bmc-button:hover, .bmc-button:active, .bmc-button:focus {
+  text-decoration: none;
+  box-shadow: 0 1px 2px 2px rgba(190, 190, 190, 0.5);
+  opacity: 0.85;
+  color: #ffffff;
+}
+
+.bmc-button > span {
+  margin-left: 15px;
 }
