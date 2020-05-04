@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box, Image, Text, Button } from 'rebass';
+import { Flex, Box, Image, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
 import { fishImage } from 'utils/data';
@@ -16,6 +16,8 @@ import {
 import { HemisphereContext } from 'utils/contexts';
 import FishShadow from 'components/fish-shadow';
 import SvgIcon from 'components/svg-icon';
+import IconButton from './icon-button';
+import { trackCategoryEvent } from '../../../configureGA';
 
 const DetailFish = ({ data }) => {
   const { category, nextId, prevId, collection } = useSelector(selector);
@@ -77,15 +79,15 @@ const DetailFish = ({ data }) => {
             key={`fish-${data.id}`}
           />
         </Box>
-        {prevId !== nextId ? (
-          <Flex
-            sx={{
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Button
-              sx={{ color: 'grey-33', background: 'transparent' }}
+        <Flex
+          sx={{
+            width: '100%',
+            justifyContent: 'space-between',
+          }}
+        >
+          {prevId !== nextId && (
+            <IconButton
+              icon="arrow-circle-left"
               onClick={() =>
                 dispatch(
                   openCritterDetail({
@@ -95,17 +97,15 @@ const DetailFish = ({ data }) => {
                   }),
                 )
               }
-            >
-              <SvgIcon icon="arrow-circle-left" fontSize={32} />
-            </Button>
-            <Button
-              sx={{ color: 'grey-33', background: 'transparent' }}
-              onClick={() => dispatch(closeCritterDetail())}
-            >
-              <SvgIcon icon="times-circle" fontSize={32} />
-            </Button>
-            <Button
-              sx={{ color: 'grey-33', background: 'transparent' }}
+            />
+          )}
+          <IconButton
+            icon="times-circle"
+            onClick={() => dispatch(closeCritterDetail())}
+          />
+          {prevId !== nextId && (
+            <IconButton
+              icon="arrow-circle-right"
               onClick={() =>
                 dispatch(
                   openCritterDetail({
@@ -115,18 +115,9 @@ const DetailFish = ({ data }) => {
                   }),
                 )
               }
-            >
-              <SvgIcon icon="arrow-circle-right" fontSize={32} />
-            </Button>
-          </Flex>
-        ) : (
-          <Button
-            sx={{ color: 'grey-33', background: 'transparent' }}
-            onClick={() => dispatch(closeCritterDetail())}
-          >
-            <SvgIcon icon="times-circle" fontSize={32} />
-          </Button>
-        )}
+            />
+          )}
+        </Flex>
       </Flex>
       <Flex
         flexDirection={['column', '', 'row']}
@@ -182,6 +173,11 @@ const DetailFish = ({ data }) => {
                 as="span"
                 sx={{ cursor: 'pointer' }}
                 onClick={e => {
+                  trackCategoryEvent(
+                    'ModalCritterDetail',
+                    'preview shadow',
+                    `${data.id}`,
+                  );
                   previewShadow(true);
                   e.stopPropagation();
                 }}

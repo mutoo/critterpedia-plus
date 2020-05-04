@@ -19,6 +19,16 @@ import SvgIcon from 'components/svg-icon';
 import Action from './action';
 import PreviewBox from './preview-box';
 import selector from '../selectors';
+import { trackCategoryEvent } from '../../../configureGA';
+
+const Padding = () => (
+  <Box
+    sx={{
+      width: 'calc((100vw - 1600px) / 2)',
+      minWidth: ['20px', '', '30px', '50px'],
+    }}
+  />
+);
 
 const GridView = ({ ...props }) => {
   const { insects, fish, selected } = useSelector(selector);
@@ -60,20 +70,15 @@ const GridView = ({ ...props }) => {
         mousewheel={false}
         getSwiper={setSwiper}
       >
-        <Box
-          sx={{
-            width: 'calc((100vw - 1600px) / 2)',
-            minWidth: ['10px', '', '30px', '50px'],
-          }}
-        />
+        <Padding />
         {previewSlides.map((slide, idx) => (
           <Flex
             className="acnh-critterpedia-slide"
             flexDirection="column"
             width={['75px', '', '', '100px']}
             sx={{
-              '&+&': {
-                ml: '-2px',
+              '& + &': {
+                ml: ['-1px', '', '', '-2px'],
               },
             }}
             // eslint-disable-next-line react/no-array-index-key
@@ -105,12 +110,7 @@ const GridView = ({ ...props }) => {
             ))}
           </Flex>
         ))}
-        <Box
-          sx={{
-            width: 'calc((100vw - 1600px) / 2)',
-            minWidth: ['10px', '', '30px', '50px'],
-          }}
-        />
+        <Padding />
       </Swiper>
       <Container
         mt="30px"
@@ -139,17 +139,26 @@ const GridView = ({ ...props }) => {
               />
             }
             label="Catch"
-            onClick={() => dispatch(markSelectedAsCaught({ category }))}
+            onClick={() => {
+              trackCategoryEvent('used', 'catch', category);
+              return dispatch(markSelectedAsCaught({ category }));
+            }}
           />
           <Action
             icon={<SvgIcon icon="museum" fontSize={[24, '', '', 32]} />}
             label="Donate"
-            onClick={() => dispatch(markSelectedAsDonated({ category }))}
+            onClick={() => {
+              trackCategoryEvent('used', 'donate', category);
+              return dispatch(markSelectedAsDonated({ category }));
+            }}
           />
           <Action
             icon={<SvgIcon icon="times-circle" fontSize={[24, '', '', 32]} />}
             label="Clear"
-            onClick={() => dispatch(resetSelected({ category }))}
+            onClick={() => {
+              trackCategoryEvent('used', 'clear', category);
+              return dispatch(resetSelected({ category }));
+            }}
           />
         </Flex>
       </Container>

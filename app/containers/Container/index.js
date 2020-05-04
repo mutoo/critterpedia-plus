@@ -12,7 +12,7 @@ export const Container = ({ maxWidth = '1320px', ...props }) => (
     sx={{
       margin: '0 auto',
       py: '0',
-      px: ['10px', '20px', '25px', '30px'],
+      px: ['20px', '', '25px', '30px'],
       width: '100%',
       maxWidth,
     }}

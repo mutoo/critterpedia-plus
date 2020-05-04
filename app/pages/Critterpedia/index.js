@@ -33,6 +33,7 @@ import CategoryTab from './components/category-tab';
 import saga from './saga';
 import selector from './selectors';
 import GridView from './components/grid-view';
+import { trackCategoryEvent } from '../../configureGA';
 
 const CritterpediaPage = () => {
   useInjectReducer({ key, reducer });
@@ -129,7 +130,10 @@ const CritterpediaPage = () => {
               </p>
               <HemispherePicker
                 hemisphere={hemisphere}
-                setHemisphere={h => dispatch(changeHemisphere(h))}
+                setHemisphere={h => {
+                  trackCategoryEvent('app', 'setHemisphere', h);
+                  return dispatch(changeHemisphere(h));
+                }}
                 justifyContent="center"
               />
             </Text>

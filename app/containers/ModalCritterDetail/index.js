@@ -24,6 +24,7 @@ import {
 } from './slice';
 import DetailFish from './components/detail-fish';
 import DetailInsect from './components/detail-insect';
+import { trackCategoryEvent } from '../../configureGA';
 
 function ModalCritterDetail() {
   useInjectReducer({ key, reducer });
@@ -67,6 +68,11 @@ function ModalCritterDetail() {
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [nextId, prevId]);
+  useEffect(() => {
+    if (data) {
+      trackCategoryEvent('ModalCritterDetail', data.category, `${data.id}`);
+    }
+  }, [data]);
   return (
     <Modal
       isOpen={isModalCritterDetailOpen}
@@ -74,14 +80,12 @@ function ModalCritterDetail() {
         const { scrollY } = window;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${scrollY}px`;
-        // document.body.style.overflow = 'hidden';
         setHemisphere(hemisphere);
       }}
       onAfterClose={() => {
         const scrollY = document.body.style.top;
         document.body.style.position = '';
         document.body.style.top = '';
-        // document.body.style.overflow = '';
         window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
       }}
       onRequestClose={() => {

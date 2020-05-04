@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box, Image, Text, Button } from 'rebass';
+import { Flex, Box, Image, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
 import { insectImage } from 'utils/data';
@@ -13,8 +13,8 @@ import {
   openCritterDetail,
 } from 'containers/ModalCritterDetail/slice';
 import { HemisphereContext } from 'utils/contexts';
-import SvgIcon from 'components/svg-icon';
 import selector from '../selectors';
+import IconButton from './icon-button';
 
 const DetailInsect = ({ data }) => {
   const { category, nextId, prevId, collection } = useSelector(selector);
@@ -80,15 +80,15 @@ const DetailInsect = ({ data }) => {
             key={`insect-${data.id}`}
           />
         </Box>
-        {prevId !== nextId ? (
-          <Flex
-            sx={{
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Button
-              sx={{ color: 'grey-33', background: 'transparent' }}
+        <Flex
+          sx={{
+            width: '100%',
+            justifyContent: 'space-between',
+          }}
+        >
+          {prevId !== nextId && (
+            <IconButton
+              icon="arrow-circle-left"
               onClick={() =>
                 dispatch(
                   openCritterDetail({
@@ -98,17 +98,15 @@ const DetailInsect = ({ data }) => {
                   }),
                 )
               }
-            >
-              <SvgIcon icon="arrow-circle-left" fontSize={32} />
-            </Button>
-            <Button
-              sx={{ color: 'grey-33', background: 'transparent' }}
-              onClick={() => dispatch(closeCritterDetail())}
-            >
-              <SvgIcon icon="times-circle" fontSize={32} />
-            </Button>
-            <Button
-              sx={{ color: 'grey-33', background: 'transparent' }}
+            />
+          )}
+          <IconButton
+            icon="times-circle"
+            onClick={() => dispatch(closeCritterDetail())}
+          />
+          {prevId !== nextId && (
+            <IconButton
+              icon="arrow-circle-right"
               onClick={() =>
                 dispatch(
                   openCritterDetail({
@@ -118,18 +116,9 @@ const DetailInsect = ({ data }) => {
                   }),
                 )
               }
-            >
-              <SvgIcon icon="arrow-circle-right" fontSize={32} />
-            </Button>
-          </Flex>
-        ) : (
-          <Button
-            sx={{ color: 'grey-33', background: 'transparent' }}
-            onClick={() => dispatch(closeCritterDetail())}
-          >
-            <SvgIcon icon="times-circle" fontSize={32} />
-          </Button>
-        )}
+            />
+          )}
+        </Flex>
       </Flex>
       <Flex
         py="24px"

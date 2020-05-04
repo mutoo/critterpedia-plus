@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Button, Flex, Text } from 'rebass';
 import HomeIcon from 'assets/icons/home.svg';
 import AdjustIcon from 'assets/icons/adjust.svg';
+import { trackCategoryEvent } from '../configureGA';
 
 const Hemisphere = ({ label, icon, active, ...props }) => (
   <Button
@@ -46,7 +47,10 @@ const HemispherePicker = ({ hemisphere, setHemisphere, ...props }) => (
         </Box>
       }
       active={hemisphere === 'Northern'}
-      onClick={() => setHemisphere('Northern')}
+      onClick={() => {
+        trackCategoryEvent('used', 'hemisphere', 'Northern');
+        setHemisphere('Northern');
+      }}
     />
     <Text mx="sm">/</Text>
     <Hemisphere
@@ -61,7 +65,10 @@ const HemispherePicker = ({ hemisphere, setHemisphere, ...props }) => (
         </Box>
       }
       active={hemisphere === 'Southern'}
-      onClick={() => setHemisphere('Southern')}
+      onClick={() => {
+        trackCategoryEvent('used', 'hemisphere', 'Southern');
+        return setHemisphere('Southern');
+      }}
     />
   </Flex>
 );

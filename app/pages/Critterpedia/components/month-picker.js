@@ -13,10 +13,12 @@ import Heading from 'components/heading';
 import { useSpring, animated, interpolate } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { throttle } from 'lodash';
+import { trackCategoryEvent } from '../../../configureGA';
 
 const MonthPicker = ({ month, onChange, ...props }) => {
   const currentMonth = getMonth(new Date());
   const wrapRef = useRef(null);
+  const usedRef = useRef(null);
   const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }));
   // reduce the update rate
   const throttledOnChange = useMemo(
@@ -39,6 +41,10 @@ const MonthPicker = ({ month, onChange, ...props }) => {
       const newMonth = row * 4 + col;
       if (month !== newMonth) {
         throttledOnChange(row * 4 + col);
+        if (!usedRef.current) {
+          trackCategoryEvent('used', 'month-picker', month);
+          usedRef.current = true;
+        }
       }
       event.preventDefault();
     },

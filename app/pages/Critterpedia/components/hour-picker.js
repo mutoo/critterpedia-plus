@@ -7,9 +7,11 @@ import Heading from 'components/heading';
 import { animated, interpolate, useSpring } from 'react-spring';
 import { throttle } from 'lodash';
 import { useDrag } from 'react-use-gesture';
+import { trackCategoryEvent } from '../../../configureGA';
 
 const HourPicker = ({ hour, onChange, ...props }) => {
   const wrapRef = useRef(null);
+  const usedRef = useRef(null);
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   // reduce the update rate
   const throttledOnChange = useMemo(
@@ -28,6 +30,10 @@ const HourPicker = ({ hour, onChange, ...props }) => {
       // calculate hour from cell idx
       if (hour !== col) {
         throttledOnChange(col);
+        if (!usedRef.current) {
+          trackCategoryEvent('used', 'hour-picker', hour);
+          usedRef.current = true;
+        }
       }
       event.preventDefault();
     },
