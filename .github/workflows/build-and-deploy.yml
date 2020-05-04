@@ -14,8 +14,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v1
-          with:
-            node-version: '12.13.x'
+        with:
+          node-version: '12.13.x'
 
       - name: Install and Build
         run: |
