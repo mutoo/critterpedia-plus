@@ -8,7 +8,7 @@
 <body>
 <canvas id="stage"></canvas>
 <script>
-    const app = new PIXI.Application();
+    const app = new PIXI.Application({backgroundColor: 0xFFFFFF});
     document.body.appendChild(app.view);
 
     let count = 0;
@@ -23,7 +23,7 @@
         points.push(new PIXI.Point(i * ropeLength, 0));
     }
 
-    const strip = new PIXI.SimpleRope(PIXI.Texture.from('../assets/fish-shadow.png'), points);
+    const strip = new PIXI.SimpleRope(PIXI.Texture.from('../resources/fish-shadow-fin.png'), points);
 
     strip.x = -32;
 
