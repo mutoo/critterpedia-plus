@@ -17,6 +17,7 @@ import { COLLECTION_DONATED } from 'utils/const';
 import SvgIcon from 'components/svg-icon';
 import selector from '../selectors';
 import IconButton from './icon-button';
+import { trackCategoryEvent } from '../../../configureGA';
 
 const DetailInsect = ({ data }) => {
   const { category, nextId, prevId, collection, collectionState } = useSelector(
@@ -178,7 +179,7 @@ const DetailInsect = ({ data }) => {
             </Text>
           </Container>
         </Flex>
-        <Container>
+        <Container mb="lg">
           <Heading mb="md">Price</Heading>
           <Text
             sx={{
@@ -199,6 +200,9 @@ const DetailInsect = ({ data }) => {
               '_',
             )}`}
             target="_blank"
+            onClick={() => {
+              trackCategoryEvent('used', 'wiki', data.name['name-en']);
+            }}
             sx={{
               fontSize: '14px',
               fontWeight: 'bold',
