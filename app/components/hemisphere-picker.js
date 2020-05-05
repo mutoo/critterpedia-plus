@@ -57,7 +57,7 @@ const HemispherePicker = ({ hemisphere, setHemisphere, ...props }) => (
         setHemisphere('Northern');
       }}
     />
-    <Text mx="sm">/</Text>
+    <Text mx={['2px', '', '', 'sm']}>/</Text>
     <Hemisphere
       label="Southern"
       icon={
