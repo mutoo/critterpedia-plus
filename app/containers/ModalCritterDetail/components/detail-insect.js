@@ -14,6 +14,7 @@ import {
 } from 'containers/ModalCritterDetail/slice';
 import { HemisphereContext } from 'utils/contexts';
 import { COLLECTION_DONATED } from 'utils/const';
+import SvgIcon from 'components/svg-icon';
 import selector from '../selectors';
 import IconButton from './icon-button';
 
@@ -187,6 +188,26 @@ const DetailInsect = ({ data }) => {
             }}
           >
             {data?.price} bells ( {data?.['price-flick']} when sell to Flick. )
+          </Text>
+        </Container>
+        <Container mb="md">
+          <Heading mr="lg">More</Heading>
+          <Text
+            as="a"
+            href={`${global.siteConfig?.Wiki}/${data.name['name-en'].replace(
+              /\s/g,
+              '_',
+            )}`}
+            target="_blank"
+            sx={{
+              fontSize: '14px',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+              textDecoration: 'none',
+              color: 'body',
+            }}
+          >
+            ON ACNH WIKI <SvgIcon icon="external-link-alt" inline ml="sm" />
           </Text>
         </Container>
       </Flex>

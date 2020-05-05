@@ -244,6 +244,24 @@ const DetailFish = ({ data }) => {
             {data?.availability?.rarity}
           </Text>
         </Container>
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
+          <Heading mr="lg">More</Heading>
+          <Text
+            as="a"
+            href={`${global.siteConfig?.Wiki}/${data['file-name']}`}
+            target="_blank"
+            sx={{
+              fontSize: '14px',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+              textDecoration: 'none',
+              color: 'body',
+            }}
+          >
+            ON ACNH WIKI <SvgIcon icon="external-link-alt" inline ml="sm" />
+          </Text>
+        </Container>
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg" />
       </Flex>
     </Box>
   );
