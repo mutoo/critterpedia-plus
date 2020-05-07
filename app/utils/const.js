@@ -14,3 +14,16 @@ export const COLLECTION_DONATED = 2;
 
 export const CATEGORY_FISH = 'fish';
 export const CATEGORY_INSECTS = 'insects';
+
+export const LANGUAGES = [
+  { label: 'English', value: 'en' },
+  { label: 'Chinese', value: 'cn' },
+  { label: 'German', value: 'de' },
+  { label: 'Spanish', value: 'sp' },
+  { label: 'French', value: 'fr' },
+  { label: 'Italian', value: 'it' },
+  { label: 'Japanese', value: 'jp' },
+  { label: 'Korean', value: 'kr' },
+  { label: 'Dutch', value: 'nl' },
+  { label: 'Russian', value: 'ru' },
+];

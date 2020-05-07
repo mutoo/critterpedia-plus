@@ -1,5 +1,5 @@
 import { createStructuredSelector } from 'reselect';
-import { getHemisphere } from 'containers/App/selectors';
+import { getHemisphere, getLanguage } from 'containers/App/selectors';
 import { COLLECTION_NA, MODE_DISCOVERY } from 'utils/const';
 import { name as key } from './slice';
 
@@ -24,5 +24,6 @@ export default createStructuredSelector({
   mode: getMode,
   selected: getSelected,
   filters: getFilters,
+  language: getLanguage,
   hemisphere: getHemisphere,
 });

@@ -8,10 +8,11 @@ import Container from 'containers/Container';
 import ModalCritterDetail from 'containers/ModalCritterDetail';
 import { HemisphereContext } from 'utils/contexts';
 import { DiscussionEmbed } from 'disqus-react';
-import { changeHemisphere } from 'containers/App/slice';
+import { changeHemisphere, changeLanguage } from 'containers/App/slice';
 import {
   CATEGORY_FISH,
   CATEGORY_INSECTS,
+  LANGUAGES,
   MODE_ALL,
   MODE_COLLECTION,
   MODE_DISCOVERY,
@@ -42,6 +43,7 @@ const CritterpediaPage = () => {
   const {
     hemisphere,
     filters: { month, hour },
+    language,
   } = useSelector(selector);
   const modeAnchorRef = useRef();
   const scrollToMode = useMemo(
@@ -125,6 +127,27 @@ const CritterpediaPage = () => {
           </Box>
           <Box as="section" mb="50px">
             <Heading as="h2">Getting Started</Heading>
+            <Text fontSize="18px">
+              <p>
+                Display critter&apos;s name in this language:{' '}
+                <select
+                  defaultValue={language}
+                  onChange={e => {
+                    dispatch(changeLanguage(e.target.value));
+                  }}
+                >
+                  {LANGUAGES.map(lang => (
+                    <option
+                      key={lang.value}
+                      value={lang.value}
+                      defaultChecked={lang.value === language}
+                    >
+                      {lang.label}
+                    </option>
+                  ))}
+                </select>
+              </p>
+            </Text>
             <Text fontSize="18px">
               <p>
                 Which <b>hemisphere</b> do you play on?
