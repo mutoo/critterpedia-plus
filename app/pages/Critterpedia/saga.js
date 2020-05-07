@@ -1,9 +1,10 @@
-import { fork, call, put } from 'redux-saga/effects';
+import { fork, put } from 'redux-saga/effects';
 
 import { parseAvailableHours, parseAvailableMonths } from 'utils/data';
 import { CATEGORY_FISH, CATEGORY_INSECTS } from 'utils/const';
+import fishData from 'assets/data/fish.json';
+import insectsData from 'assets/data/insects.json';
 import { storeCritterpediaData } from './slice';
-import { acnhapi } from '../../configureAxios';
 
 const transform = category => data => ({
   ...data,
@@ -21,13 +22,11 @@ const transform = category => data => ({
 const sortById = (n, m) => n.id - m.id;
 
 export function* loadCritterpediaDataHandler() {
-  const fish = yield call(acnhapi.get, '/fish');
-  const insects = yield call(acnhapi.get, '/bugs');
   const data = {
-    fish: Object.values(fish?.data)
+    fish: Object.values(fishData)
       .map(transform(CATEGORY_FISH))
       .sort(sortById),
-    insects: Object.values(insects?.data)
+    insects: Object.values(insectsData)
       .map(transform(CATEGORY_INSECTS))
       .sort(sortById),
   };
