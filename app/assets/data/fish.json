@@ -801,7 +801,10 @@
       "month-northern": "3-6 & 9-11",
       "month-southern": "3-5 & 9-12",
       "time": "4pm - 9am",
-      "isAllDay": false,
+      "isAllDay": {
+        "northern": "9-11",
+        "southern": "3-5"
+      },
       "isAllYear": false,
       "location": "River (Clifftop)",
       "rarity": "Common"
@@ -831,7 +834,10 @@
       "month-northern": "3-6 & 9-11",
       "month-southern": "3-5 & 9-12",
       "time": "4pm - 9am",
-      "isAllDay": false,
+      "isAllDay": {
+        "northern": "9-11",
+        "southern": "3-5"
+      },
       "isAllYear": false,
       "location": "River (Clifftop) & Pond",
       "rarity": "Uncommon"

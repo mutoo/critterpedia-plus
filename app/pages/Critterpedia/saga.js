@@ -13,8 +13,6 @@ const transform = category => data => ({
     time: parseAvailableHours(data.availability),
     'month-northern': parseAvailableMonths(data.availability, 'northern'),
     'month-southern': parseAvailableMonths(data.availability, 'southern'),
-    isAllYear: undefined,
-    isAllDay: undefined,
   },
   category,
 });
