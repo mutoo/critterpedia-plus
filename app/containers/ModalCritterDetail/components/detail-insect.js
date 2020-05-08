@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Flex, Box, Image, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { insectImage } from 'utils/data';
+import { getAvailableHours, insectImage } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
@@ -150,7 +150,10 @@ const DetailInsect = ({ data }) => {
             availableMonths={
               data.availability[`month-${hemisphere.toLowerCase()}`]
             }
-            availableHours={data.availability.time}
+            availableHours={getAvailableHours(
+              data.availability,
+              hemisphere.toLowerCase(),
+            )}
           />
         </Container>
         <Flex mb="lg">

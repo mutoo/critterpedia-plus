@@ -33,7 +33,7 @@ export const parseAvailableMonths = (available, hemisphere = 'northern') => {
 export const ALL_HOURS = Array.from({ length: 24 }, _ => true);
 
 export const parseAvailableHours = available => {
-  if (available?.isAllDay) return ALL_HOURS;
+  if (available?.isAllDay === true) return ALL_HOURS;
   const hoursDescription = available?.time;
   if (!hoursDescription) return ALL_HOURS;
   return hoursDescription.split('&').reduce((hours, segment) => {
@@ -55,8 +55,11 @@ export const parseAvailableHours = available => {
       return newHours;
     }
     const normalizedTo = from < to ? to : to + 24;
+    // the right border of hour description is not inclusive
+    // 4am - 9pm will be translated to
+    // [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0];
     Array.from(
-      { length: normalizedTo - from + 1 },
+      { length: normalizedTo - from },
       (_, idx) => (from + idx) % 24,
     ).forEach(m => {
       newHours[m] = true;
@@ -71,21 +74,41 @@ const AVAILABILITY_LEVEL_GLOBAL_NOW = 2;
 const AVAILABILITY_LEVEL_MO = 3;
 const AVAILABILITY_LEVEL_NOW = 4;
 
+export const getAvailableHours = (available, hemisphere, month) => {
+  if (available.isAllDay === true) return ALL_HOURS;
+  const allDayInMonths = available.isAllDay?.[hemisphere];
+  if (allDayInMonths) {
+    const now = new Date();
+    const theMonth = !month && month !== 0 ? getMonth(now) : month;
+    const [start, end] = allDayInMonths.split('-');
+    const from = parseInt(start, 10) - 1;
+    const to = parseInt(end, 10) - 1;
+    if (from <= theMonth && theMonth <= to) return ALL_HOURS;
+  }
+  return available.time;
+};
+
+export const isAvailableNow = (available, hemisphere, month, hour) => {
+  const hours = getAvailableHours(available, hemisphere, month);
+  return hours[hour];
+};
+
 export const calculateAvailability = (available, hemisphere, month, hour) => {
   const now = new Date();
   const theMonth = !month && month !== 0 ? getMonth(now) : month;
   const months = available[`month-${hemisphere}`];
   const theHour = !hour && hour !== 0 ? getHours(now) : hour;
-  const hours = available.time;
   if (months[theMonth]) {
-    if (hours[theHour]) return AVAILABILITY_LEVEL_NOW;
+    if (isAvailableNow(available, hemisphere, theMonth, theHour))
+      return AVAILABILITY_LEVEL_NOW;
     return AVAILABILITY_LEVEL_MO;
   }
   const theOtherHemisphere =
     hemisphere === 'northern' ? 'southern' : 'northern';
   const theOtherMonths = available[`month-${theOtherHemisphere}`];
   if (theOtherMonths[theMonth]) {
-    if (hours[theHour]) return AVAILABILITY_LEVEL_GLOBAL_NOW;
+    if (isAvailableNow(available, theOtherHemisphere, theMonth, theHour))
+      return AVAILABILITY_LEVEL_GLOBAL_NOW;
     return AVAILABILITY_LEVEL_GLOBAL_MO;
   }
   return AVAILABILITY_LEVEL_NA;
