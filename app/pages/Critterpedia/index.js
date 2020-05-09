@@ -108,21 +108,6 @@ const CritterpediaPage = () => {
                 </li>
               </ul>
               <p>By the way, you can mark your critters in Collection Mode.</p>
-              <p>If you like this app, please share it with your friends, </p>
-              <p>
-                or support me via{' '}
-                <a
-                  className="bmc-button"
-                  target="_blank"
-                  href="https://www.buymeacoffee.com/mutoo"
-                >
-                  <img
-                    src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/BMC-btn-logo.svg"
-                    alt="Buy me a Coca-Cola"
-                  />
-                  <span>Buy me a Coca-Cola</span>
-                </a>
-              </p>
             </Text>
           </Box>
           <Box as="section" mb="50px">
@@ -300,6 +285,23 @@ const CritterpediaPage = () => {
               <Statistic />
             </>
           )}
+          <Text fontSize="18px" mt="50px">
+            <p>If you like this app, please share it with your friends, </p>
+            <p>
+              or support me via{' '}
+              <a
+                className="bmc-button"
+                target="_blank"
+                href="https://www.buymeacoffee.com/mutoo"
+              >
+                <img
+                  src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/BMC-btn-logo.svg"
+                  alt="Buy me a Coca-Cola"
+                />
+                <span>Buy me a Coca-Cola</span>
+              </a>
+            </p>
+          </Text>
         </Container>
         <Box
           sx={{
