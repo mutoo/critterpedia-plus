@@ -19,7 +19,7 @@ import storage from 'redux-persist/lib/storage';
 export const initialState = {
   config: {
     hemisphere: 'Southern',
-    language: 'en',
+    lang: 'USen',
   },
 };
 
@@ -31,7 +31,7 @@ const ACHNSlice = createSlice({
       state.config.hemisphere = action.payload;
     },
     changeLanguage(state, action) {
-      state.config.language = action.payload;
+      state.config.lang = action.payload;
     },
   },
 });

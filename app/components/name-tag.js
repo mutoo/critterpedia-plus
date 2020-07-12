@@ -4,6 +4,7 @@ import { Box } from 'rebass';
 import SvgIcon from 'components/svg-icon';
 import { useSelector } from 'react-redux';
 import { getLanguage } from 'containers/App/selectors';
+import { capitalize } from 'lodash';
 import nameTabBorder from '!file-loader!assets/images/name-tag-border.svg';
 
 const NameTag = ({ names, donated, fontSize = '12px', ...props }) => {
@@ -70,7 +71,7 @@ const NameTag = ({ names, donated, fontSize = '12px', ...props }) => {
             />{' '}
           </>
         )}
-        {names[`name-${language}`]}
+        {capitalize(names[`name-${language}`])}
       </Box>
     </Box>
   );
