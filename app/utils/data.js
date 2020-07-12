@@ -117,5 +117,7 @@ export const calculateAvailability = (available, hemisphere, month, hour) => {
 export const fishImage = id => `${acnhapi.defaults.baseURL}/images/fish/${id}`;
 export const insectImage = id =>
   `${acnhapi.defaults.baseURL}/images/bugs/${id}`;
+export const seaImage = id => `${acnhapi.defaults.baseURL}/images/sea/${id}`;
 export const fishIcon = id => `${acnhapi.defaults.baseURL}/icons/fish/${id}`;
 export const insectIcon = id => `${acnhapi.defaults.baseURL}/icons/bugs/${id}`;
+export const seaIcon = id => `${acnhapi.defaults.baseURL}/icons/sea/${id}`;

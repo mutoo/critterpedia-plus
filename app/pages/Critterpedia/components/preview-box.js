@@ -5,7 +5,12 @@ import { Flex, Box, Image } from 'rebass';
 import { css } from '@emotion/core';
 import NameTag from 'components/name-tag';
 import { HemisphereContext } from 'utils/contexts';
-import { calculateAvailability, fishIcon, insectIcon } from 'utils/data';
+import {
+  calculateAvailability,
+  fishIcon,
+  insectIcon,
+  seaIcon,
+} from 'utils/data';
 import {
   MODE_ALL,
   MODE_COLLECTION,
@@ -15,6 +20,8 @@ import {
   AVAILABILITY_LEVEL_NA,
   COLLECTION_DONATED,
   CATEGORY_FISH,
+  CATEGORY_INSECTS,
+  CATEGORY_SEA,
 } from 'utils/const';
 import { createStructuredSelector } from 'reselect';
 import selector, { getCollectionState } from 'pages/Critterpedia/selectors';
@@ -53,16 +60,25 @@ const PreviewBox = ({ data, selected, ...props }) => {
       ),
     [data, hemisphere, month, hour],
   );
-  const avatar =
-    data.category === CATEGORY_FISH ? fishIcon(data.id) : insectIcon(data.id);
+  const avatar = {
+    [CATEGORY_FISH]: fishIcon,
+    [CATEGORY_INSECTS]: insectIcon,
+    [CATEGORY_SEA]: seaIcon,
+  }[data.category](data.id);
   const [theAvatar, setAvatar] = useState(avatar);
   const categoryIcon = useMemo(
-    () =>
-      data.category === CATEGORY_FISH ? (
-        <SvgIcon icon="fish" fontSize={[24, '', '', 32]} />
-      ) : (
-        <SvgIcon icon="insects" fontSize={[24, '', '', 32]} />
-      ),
+    () => (
+      <SvgIcon
+        icon={
+          {
+            [CATEGORY_FISH]: 'fish',
+            [CATEGORY_INSECTS]: 'insects',
+            [CATEGORY_SEA]: 'sea-creatures',
+          }[data.category]
+        }
+        fontSize={[24, '', '', 32]}
+      />
+    ),
     [data],
   );
   useEffect(() => {

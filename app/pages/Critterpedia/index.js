@@ -12,6 +12,7 @@ import { changeHemisphere, changeLanguage } from 'containers/App/slice';
 import {
   CATEGORY_FISH,
   CATEGORY_INSECTS,
+  CATEGORY_SEA,
   LANGUAGES,
   MODE_ALL,
   MODE_COLLECTION,
@@ -216,6 +217,12 @@ const CritterpediaPage = () => {
                 active={category === CATEGORY_FISH}
                 icon={<SvgIcon icon="fish" />}
                 onClick={() => history.push(`/${mode}/${CATEGORY_FISH}`)}
+              />
+              <CategoryTab
+                label="Sea Creatures"
+                active={category === CATEGORY_SEA}
+                icon={<SvgIcon icon="sea-creatures" />}
+                onClick={() => history.push(`/${mode}/${CATEGORY_SEA}`)}
               />
             </Flex>
             <Flex>
