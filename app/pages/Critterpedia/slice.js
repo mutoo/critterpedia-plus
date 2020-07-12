@@ -12,7 +12,7 @@
  */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
+import { createMigrate, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
   COLLECTION_CAUGHT,
@@ -22,6 +22,7 @@ import {
   CATEGORY_FISH,
   CATEGORY_SEA,
 } from 'utils/const';
+import produce from 'immer';
 
 export const initialState = {
   data: {
@@ -128,8 +129,21 @@ export const { name } = critterpediaSlice;
 export const reducer = persistReducer(
   {
     key: name,
+    version: 1,
     storage,
     blacklist: ['data', 'ui'],
+    migrate: createMigrate(
+      {
+        1: state =>
+          produce(state, draft => {
+            // add sea creature collection
+            if (!draft.collection[CATEGORY_SEA]) {
+              draft.collection[CATEGORY_SEA] = {};
+            }
+          }),
+      },
+      { debug: false },
+    ),
   },
   critterpediaSlice.reducer,
 );
