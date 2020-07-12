@@ -330,6 +330,20 @@ const CritterpediaPage = () => {
         <Container maxWidth="660px" mb="50px">
           {disqus}
         </Container>
+        <Container maxWidth="660px" mb="50px">
+          <Text fontSize="14px">
+            <p>
+              <b>Disclaimer:</b>
+            </p>
+            <p>
+              Critterpedia-plus is a fan made API/Website and claims no
+              ownership of any intellectual property associated with Nintendo or
+              Animal Crossing. All assets found on the site and the repository
+              are the sole property of Nintendo and are only used for
+              non-commercial and educational purpose.
+            </p>
+          </Text>
+        </Container>
       </Box>
       <ModalCritterDetail />
     </HemisphereContext.Provider>
