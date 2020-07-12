@@ -13,7 +13,7 @@ import Modal from 'react-modal';
 import BackgroundImg from 'assets/images/background.jpg';
 import { Box } from 'rebass';
 import { HemisphereContext } from 'utils/contexts';
-import { CATEGORY_FISH, CATEGORY_INSECTS } from 'utils/const';
+import { CATEGORY_FISH, CATEGORY_INSECTS, CATEGORY_SEA } from 'utils/const';
 import styles from './style.css';
 import selector from './selectors';
 import {
@@ -24,6 +24,7 @@ import {
 } from './slice';
 import DetailFish from './components/detail-fish';
 import DetailInsect from './components/detail-insect';
+import DetailSea from './components/detail-sea';
 import { trackCategoryEvent } from '../../configureGA';
 
 function ModalCritterDetail() {
@@ -106,6 +107,7 @@ function ModalCritterDetail() {
           {data && category === CATEGORY_INSECTS && (
             <DetailInsect data={data} />
           )}
+          {data && category === CATEGORY_SEA && <DetailSea data={data} />}
         </Box>
       </HemisphereContext.Provider>
     </Modal>

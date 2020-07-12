@@ -21,6 +21,7 @@ import GlobalStyle from 'containers/GlobalStyles';
 import {
   CATEGORY_FISH,
   CATEGORY_INSECTS,
+  CATEGORY_SEA,
   MODE_ALL,
   MODE_COLLECTION,
   MODE_DISCOVERY,
@@ -49,7 +50,7 @@ const App = () => {
           to={`/${MODE_DISCOVERY}/${CATEGORY_INSECTS}`}
         />
         <Route
-          path={`/:mode(${MODE_COLLECTION}|${MODE_DISCOVERY}|${MODE_ALL})/:category(${CATEGORY_FISH}|${CATEGORY_INSECTS})`}
+          path={`/:mode(${MODE_COLLECTION}|${MODE_DISCOVERY}|${MODE_ALL})/:category(${CATEGORY_FISH}|${CATEGORY_INSECTS}|${CATEGORY_SEA})`}
           component={CritterpediaPage}
         />
         <Route component={NotFoundPage} />
