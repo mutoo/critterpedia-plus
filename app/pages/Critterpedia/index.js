@@ -12,6 +12,7 @@ import { changeHemisphere, changeLanguage } from 'containers/App/slice';
 import {
   CATEGORY_FISH,
   CATEGORY_INSECTS,
+  CATEGORY_SEA,
   LANGUAGES,
   MODE_ALL,
   MODE_COLLECTION,
@@ -217,6 +218,12 @@ const CritterpediaPage = () => {
                 icon={<SvgIcon icon="fish" />}
                 onClick={() => history.push(`/${mode}/${CATEGORY_FISH}`)}
               />
+              <CategoryTab
+                label="Sea Creatures"
+                active={category === CATEGORY_SEA}
+                icon={<SvgIcon icon="sea-creatures" />}
+                onClick={() => history.push(`/${mode}/${CATEGORY_SEA}`)}
+              />
             </Flex>
             <Flex>
               <CategoryTab
@@ -322,6 +329,20 @@ const CritterpediaPage = () => {
         </Box>
         <Container maxWidth="660px" mb="50px">
           {disqus}
+        </Container>
+        <Container maxWidth="660px" mb="50px">
+          <Text fontSize="14px">
+            <p>
+              <b>Disclaimer:</b>
+            </p>
+            <p>
+              Critterpedia-plus is a fan made API/Website and claims no
+              ownership of any intellectual property associated with Nintendo or
+              Animal Crossing. All assets found on the site and the repository
+              are the sole property of Nintendo and are only used for
+              non-commercial and educational purpose.
+            </p>
+          </Text>
         </Container>
       </Box>
       <ModalCritterDetail />

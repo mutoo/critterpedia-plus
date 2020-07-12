@@ -18,16 +18,21 @@ import {
   COLLECTION_CAUGHT,
   COLLECTION_DONATED,
   COLLECTION_NA,
+  CATEGORY_INSECTS,
+  CATEGORY_FISH,
+  CATEGORY_SEA,
 } from 'utils/const';
 
 export const initialState = {
   data: {
-    insects: null,
-    fish: null,
+    [CATEGORY_INSECTS]: null,
+    [CATEGORY_FISH]: null,
+    [CATEGORY_SEA]: null,
   },
   collection: {
-    fish: {},
-    insects: {},
+    [CATEGORY_FISH]: {},
+    [CATEGORY_INSECTS]: {},
+    [CATEGORY_SEA]: {},
   },
   ui: {
     filters: {
@@ -43,8 +48,12 @@ const critterpediaSlice = createSlice({
   initialState,
   reducers: {
     storeCritterpediaData(state, action) {
-      const { insects, fish } = action.payload;
-      state.data = { insects, fish };
+      const { insects, fish, sea } = action.payload;
+      state.data = {
+        [CATEGORY_FISH]: fish,
+        [CATEGORY_INSECTS]: insects,
+        [CATEGORY_SEA]: sea,
+      };
     },
     catchCritter(state, action) {
       const { category, id } = action.payload;
