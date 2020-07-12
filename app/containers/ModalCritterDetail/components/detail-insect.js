@@ -198,13 +198,13 @@ const DetailInsect = ({ data }) => {
           <Heading mr="lg">More</Heading>
           <Text
             as="a"
-            href={`${global.siteConfig?.Wiki}/${data.name['name-en'].replace(
+            href={`${global.siteConfig?.Wiki}/${data.name['name-USen'].replace(
               /\s/g,
               '_',
             )}`}
             target="_blank"
             onClick={() => {
-              trackCategoryEvent('used', 'wiki', data.name['name-en']);
+              trackCategoryEvent('used', 'wiki', data.name['name-USen']);
             }}
             sx={{
               fontSize: '14px',

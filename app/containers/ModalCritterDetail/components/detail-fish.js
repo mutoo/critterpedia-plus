@@ -254,7 +254,7 @@ const DetailFish = ({ data }) => {
             href={`${global.siteConfig?.Wiki}/${data['file-name']}`}
             target="_blank"
             onClick={() => {
-              trackCategoryEvent('used', 'wiki', data.name['name-en']);
+              trackCategoryEvent('used', 'wiki', data.name['name-USen']);
             }}
             sx={{
               fontSize: '14px',
