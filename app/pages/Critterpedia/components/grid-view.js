@@ -5,7 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swiper from 'react-id-swiper';
 import { chunk, flatten } from 'lodash';
 import { openCritterDetail } from 'containers/ModalCritterDetail/slice';
-import { CATEGORY_FISH, MODE_COLLECTION } from 'utils/const';
+import {
+  CATEGORY_FISH,
+  CATEGORY_INSECTS,
+  CATEGORY_SEA,
+  MODE_COLLECTION,
+} from 'utils/const';
 import {
   markSelectedAsCaught,
   markSelectedAsDonated,
@@ -22,9 +27,13 @@ import selector from '../selectors';
 import { trackCategoryEvent } from '../../../configureGA';
 
 const GridView = ({ ...props }) => {
-  const { insects, fish, selected } = useSelector(selector);
+  const { insects, fish, sea, selected } = useSelector(selector);
   const { mode, category } = useParams();
-  const activeCategory = category === CATEGORY_FISH ? fish : insects;
+  const activeCategory = {
+    [CATEGORY_FISH]: fish,
+    [CATEGORY_INSECTS]: insects,
+    [CATEGORY_SEA]: sea,
+  }[category];
   const dispatch = useDispatch();
   const previewSlides = useMemo(() => chunk(activeCategory, 5), [
     activeCategory,

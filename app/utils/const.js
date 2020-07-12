@@ -14,16 +14,21 @@ export const COLLECTION_DONATED = 2;
 
 export const CATEGORY_FISH = 'fish';
 export const CATEGORY_INSECTS = 'insects';
+export const CATEGORY_SEA = 'sea-creatures';
 
 export const LANGUAGES = [
-  { label: 'English', value: 'en' },
-  { label: 'Chinese', value: 'cn' },
-  { label: 'German', value: 'de' },
-  { label: 'Spanish', value: 'sp' },
-  { label: 'French', value: 'fr' },
-  { label: 'Italian', value: 'it' },
-  { label: 'Japanese', value: 'jp' },
-  { label: 'Korean', value: 'kr' },
-  { label: 'Dutch', value: 'nl' },
-  { label: 'Russian', value: 'ru' },
+  { label: 'English(US)', value: 'USen' },
+  { label: 'English(EU)', value: 'EUen' },
+  { label: 'German(EU)', value: 'EUde' },
+  { label: 'Spanish(EU)', value: 'EUes' },
+  { label: 'Spanish(US)', value: 'USes' },
+  { label: 'French(EU)', value: 'EUfr' },
+  { label: 'French(US)', value: 'USfr' },
+  { label: 'Italian', value: 'EUit' },
+  { label: 'Dutch', value: 'EUnl' },
+  { label: 'Simplified Chinese', value: 'CNzh' },
+  { label: 'Traditional Chinese', value: 'TWzh' },
+  { label: 'Japanese', value: 'JPja' },
+  { label: 'Korean', value: 'KRko' },
+  { label: 'Russian', value: 'EUru' },
 ];

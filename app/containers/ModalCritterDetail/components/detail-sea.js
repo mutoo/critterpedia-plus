@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Flex, Box, Image, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { getAvailableHours, insectImage } from 'utils/data';
+import { getAvailableHours, seaImage } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
@@ -19,7 +19,7 @@ import selector from '../selectors';
 import IconButton from './icon-button';
 import { trackCategoryEvent } from '../../../configureGA';
 
-const DetailInsect = ({ data }) => {
+const DetailSea = ({ data }) => {
   const { category, nextId, prevId, collection, collectionState } = useSelector(
     selector,
   );
@@ -74,8 +74,8 @@ const DetailInsect = ({ data }) => {
               top: ['2px', '', '', '6px'],
               filter: 'brightness(0) opacity(0.5) blur(1px)',
             }}
-            src={insectImage(data.id)}
-            key={`insect-${data.id}-shadow`}
+            src={seaImage(data.id)}
+            key={`sea-${data.id}-shadow`}
           />
           <Image
             sx={{
@@ -85,8 +85,8 @@ const DetailInsect = ({ data }) => {
               left: 0,
               top: 0,
             }}
-            src={insectImage(data.id)}
-            key={`insect-${data.id}`}
+            src={seaImage(data.id)}
+            key={`sea-${data.id}`}
           />
         </Box>
         <Flex
@@ -158,7 +158,7 @@ const DetailInsect = ({ data }) => {
         </Container>
         <Flex mb="lg">
           <Container>
-            <Heading mb="md">Location</Heading>
+            <Heading mb="md">Price</Heading>
             <Text
               sx={{
                 fontSize: '14px',
@@ -166,11 +166,11 @@ const DetailInsect = ({ data }) => {
                 fontStyle: 'italic',
               }}
             >
-              {data?.availability?.location || 'Unknown'}
+              {data?.price} bells
             </Text>
           </Container>
           <Container>
-            <Heading mb="md">Rarity</Heading>
+            <Heading mb="md">Shadow</Heading>
             <Text
               sx={{
                 fontSize: '14px',
@@ -178,12 +178,12 @@ const DetailInsect = ({ data }) => {
                 fontStyle: 'italic',
               }}
             >
-              {data?.availability?.rarity}
+              {data?.shadow}
             </Text>
           </Container>
         </Flex>
         <Container mb="lg">
-          <Heading mb="md">Price</Heading>
+          <Heading mb="md">Speed</Heading>
           <Text
             sx={{
               fontSize: '14px',
@@ -191,7 +191,7 @@ const DetailInsect = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.price} bells ( {data?.['price-flick']} when sell to Flick. )
+            {data?.speed}
           </Text>
         </Container>
         <Container mb="md">
@@ -222,8 +222,8 @@ const DetailInsect = ({ data }) => {
   );
 };
 
-export default DetailInsect;
+export default DetailSea;
 
-DetailInsect.propTypes = {
+DetailSea.propTypes = {
   data: PropTypes.object.isRequired,
 };
