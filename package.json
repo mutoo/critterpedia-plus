@@ -77,7 +77,7 @@
     "graphql-tag": "2.10.3",
     "history": "4.10.1",
     "hoist-non-react-statics": "3.3.1",
-    "immer": "^5.3.2",
+    "immer": "^8.0.1",
     "intl": "1.2.5",
     "invariant": "2.2.4",
     "ip": "1.1.5",
