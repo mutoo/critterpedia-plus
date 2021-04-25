@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Flex, Box, Text } from 'rebass';
 import { useParams, useHistory } from 'react-router-dom';
 import { useInjectReducer, useInjectSaga } from 'redux-injectors';
@@ -37,10 +37,14 @@ import saga from './saga';
 import selector from './selectors';
 import GridView from './components/grid-view';
 import { trackCategoryEvent } from '../../configureGA';
+import { persistor } from '../../configureStore';
 
 const CritterpediaPage = () => {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
+  useEffect(() => {
+    persistor.persist();
+  }, []);
   const {
     hemisphere,
     filters: { month, hour },

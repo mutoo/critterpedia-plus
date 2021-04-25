@@ -62,4 +62,4 @@ export default function configureAppStore(initialState = {}, history) {
 // Create redux store with history
 const initialState = {};
 export const store = configureAppStore(initialState, history);
-export const persistor = persistStore(store);
+export const persistor = persistStore(store, { manualPersist: false });
