@@ -7,7 +7,7 @@
  *
  */
 
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { hot } from 'react-hot-loader/root';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
@@ -27,9 +27,13 @@ import {
   MODE_DISCOVERY,
 } from 'utils/const';
 import { name, reducer } from './slice';
+import { persistor } from '../../configureStore';
 
 const App = () => {
   useInjectReducer({ key: name, reducer });
+  useEffect(() => {
+    persistor.persist();
+  }, []);
   const location = useLocation();
   const cache = useMemo(() => {
     const { debugCSS } = queryString.parse(location.search);
