@@ -7,14 +7,20 @@ import selectors, { getCollectionStatus } from 'pages/Critterpedia/selectors';
 import { createStructuredSelector } from 'reselect';
 import {
   CATEGORY_FISH,
+  CATEGORY_INSECTS,
+  CATEGORY_SEA,
   COLLECTION_CAUGHT,
   COLLECTION_DONATED,
 } from 'utils/const';
 
 const Statistic = () => {
-  const { fish, insects } = useSelector(selectors);
+  const { fish, insects, sea } = useSelector(selectors);
   const { category } = useParams();
-  const activeCategory = category === CATEGORY_FISH ? fish : insects;
+  const activeCategory = {
+    [CATEGORY_FISH]: fish,
+    [CATEGORY_INSECTS]: insects,
+    [CATEGORY_SEA]: sea,
+  }[category];
   const statusSelector = useMemo(
     () =>
       createStructuredSelector({
