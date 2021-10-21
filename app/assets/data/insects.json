@@ -1854,14 +1854,14 @@
     },
     "availability": {
       "month-northern": "4-8",
-      "month-southern": "11-2",
+      "month-southern": "10-2",
       "time": "",
       "isAllDay": true,
       "isAllYear": false,
       "location": "On tree stumps",
       "rarity": "Uncommon",
       "month-array-northern": [4, 5, 6, 7, 8],
-      "month-array-southern": [11, 12, 1, 2],
+      "month-array-southern": [10, 11, 12, 1, 2],
       "time-array": [
         0,
         1,
