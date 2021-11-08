@@ -1790,14 +1790,14 @@
       "name-EUru": "жук-скакун"
     },
     "availability": {
-      "month-northern": "2-11",
+      "month-northern": "2-10",
       "month-southern": "8-4",
       "time": "",
       "isAllDay": true,
       "isAllYear": false,
       "location": "On the ground",
       "rarity": "Uncommon",
-      "month-array-northern": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "month-array-northern": [2, 3, 4, 5, 6, 7, 8, 9, 10],
       "month-array-southern": [8, 9, 10, 11, 12, 1, 2, 3, 4],
       "time-array": [
         0,
