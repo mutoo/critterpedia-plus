@@ -1,4 +1,5 @@
 const fetchSheets = require('./fetch-sheets');
+const extractV1 = require('./extractors/v1');
 
 if (!process.env.GOOGLE_SHEET_API_KEY) {
   console.error('Abort! google sheet api key is not set in ENV.');
@@ -6,3 +7,4 @@ if (!process.env.GOOGLE_SHEET_API_KEY) {
 }
 
 fetchSheets();
+extractV1();
