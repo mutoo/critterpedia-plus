@@ -1,4 +1,4 @@
-const { rowsToArray, parseAvailability } = require('../utils');
+const { rowsToArray, parseAvailability, parseRarity } = require('../utils');
 
 const commonExtractor = (dataRows, i18nRows, extraFields) => {
   const data = rowsToArray(dataRows);
@@ -15,6 +15,7 @@ const commonExtractor = (dataRows, i18nRows, extraFields) => {
         names: { ...i18nEntry, id: undefined },
         availability: parseAvailability(entry),
         price: entry.sell,
+        rarity: parseRarity(entry),
         'catch-phrase': entry['catch-phrase'],
         'museum-phrase': entry.description,
         'image-uri': entry['critterpedia-image'],
