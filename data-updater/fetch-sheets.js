@@ -35,4 +35,4 @@ const fetchSheets = () => {
   });
 };
 
-module.exports = fetchSheets();
+module.exports = fetchSheets;
