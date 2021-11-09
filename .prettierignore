@@ -5,3 +5,4 @@ internals/scripts/
 package-lock.json
 yarn.lock
 package.json
+data-updater/data/

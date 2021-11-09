@@ -149,7 +149,17 @@ const parseAvailability = entry => {
 
 const parseShadow = () => null;
 
-const parseRarity = () => null;
+const RARITY_PRICE = [0, 1000, 8000, 12000];
+
+const RARITY_LABEL = ['Common', 'Uncommon', 'Rare', 'Ultra-rare'];
+
+const parseRarity = entry => {
+  let rarityLevel = 0;
+  while (entry.sell >= RARITY_PRICE[rarityLevel + 1]) {
+    rarityLevel += 1;
+  }
+  return RARITY_LABEL[rarityLevel];
+};
 
 module.exports = {
   normalizeHeader,
