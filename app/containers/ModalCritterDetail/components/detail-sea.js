@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box, Image, Text } from 'rebass';
+import { Flex, Box, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { getAvailableHours, seaImage } from 'utils/data';
+import { ALL_MONTHS, getAvailableHours } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
@@ -15,6 +15,7 @@ import {
 import { HemisphereContext } from 'utils/contexts';
 import { COLLECTION_DONATED } from 'utils/const';
 import SvgIcon from 'components/svg-icon';
+import PreviewImage from 'containers/ModalCritterDetail/components/preview-image';
 import selector from '../selectors';
 import IconButton from './icon-button';
 import { trackCategoryEvent } from '../../../configureGA';
@@ -48,7 +49,7 @@ const DetailSea = ({ data }) => {
         }}
       >
         <NameTag
-          names={data.name}
+          names={data.names}
           fontSize="16px"
           donated={collectionState === COLLECTION_DONATED}
         />
@@ -57,35 +58,12 @@ const DetailSea = ({ data }) => {
             width: '100%',
             maxWidth: '600px',
             position: 'relative',
-            '&::after': {
-              content: '""',
-              display: 'block',
-              width: '100%',
-              paddingBottom: '100%',
-            },
           }}
         >
-          <Image
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              left: 0,
-              top: ['2px', '', '', '6px'],
-              filter: 'brightness(0) opacity(0.5) blur(1px)',
-            }}
-            src={seaImage(data.id)}
-            key={`sea-${data.id}-shadow`}
-          />
-          <Image
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              left: 0,
-              top: 0,
-            }}
-            src={seaImage(data.id)}
+          <PreviewImage
+            data={data}
+            width={640}
+            height={640}
             key={`sea-${data.id}`}
           />
         </Box>
@@ -141,14 +119,16 @@ const DetailSea = ({ data }) => {
         <Container mb="lg">
           <Seasonality
             availableMonths={
-              data.availability[`month-${hemisphere.toLowerCase()}`]
+              data.availability[`month-${hemisphere.toLowerCase()}`] ||
+              ALL_MONTHS
             }
           />
         </Container>
         <Container mb="lg">
           <ActiveHours
             availableMonths={
-              data.availability[`month-${hemisphere.toLowerCase()}`]
+              data.availability[`month-${hemisphere.toLowerCase()}`] ||
+              ALL_MONTHS
             }
             availableHours={getAvailableHours(
               data.availability,
@@ -158,7 +138,7 @@ const DetailSea = ({ data }) => {
         </Container>
         <Flex mb="lg">
           <Container>
-            <Heading mb="md">Price</Heading>
+            <Heading mb="md">Speed</Heading>
             <Text
               sx={{
                 fontSize: '14px',
@@ -166,7 +146,7 @@ const DetailSea = ({ data }) => {
                 fontStyle: 'italic',
               }}
             >
-              {data?.price} bells
+              {data?.speed}
             </Text>
           </Container>
           <Container>
@@ -182,29 +162,43 @@ const DetailSea = ({ data }) => {
             </Text>
           </Container>
         </Flex>
-        <Container mb="lg">
-          <Heading mb="md">Speed</Heading>
-          <Text
-            sx={{
-              fontSize: '14px',
-              fontWeight: 'bold',
-              fontStyle: 'italic',
-            }}
-          >
-            {data?.speed}
-          </Text>
-        </Container>
+        <Flex mb="lg">
+          <Container>
+            <Heading mb="md">Price</Heading>
+            <Text
+              sx={{
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+              }}
+            >
+              {data?.price} bells
+            </Text>
+          </Container>
+          <Container>
+            <Heading mb="md">Rarity</Heading>
+            <Text
+              sx={{
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+              }}
+            >
+              {data?.rarity}
+            </Text>
+          </Container>
+        </Flex>
         <Container mb="md">
           <Heading mr="lg">More</Heading>
           <Text
             as="a"
-            href={`${global.siteConfig?.Wiki}/${data.name['name-USen'].replace(
+            href={`${global.siteConfig?.Wiki}/${data.names.USen.replace(
               /\s/g,
               '_',
             )}`}
             target="_blank"
             onClick={() => {
-              trackCategoryEvent('used', 'wiki', data.name['name-USen']);
+              trackCategoryEvent('used', 'wiki', data.names.USen);
             }}
             sx={{
               fontSize: '14px',

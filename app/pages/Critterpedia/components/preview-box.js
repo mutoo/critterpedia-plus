@@ -64,7 +64,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
     [CATEGORY_FISH]: fishIcon,
     [CATEGORY_INSECTS]: insectIcon,
     [CATEGORY_SEA]: seaIcon,
-  }[data.category](data.id);
+  }[data.category](data);
   const [theAvatar, setAvatar] = useState(avatar);
   const categoryIcon = useMemo(
     () => (
@@ -233,7 +233,7 @@ const PreviewBox = ({ data, selected, ...props }) => {
           {categoryIcon}
         </Box>
       )}
-      <NameTag names={data.name} />
+      <NameTag names={data.names} />
       {availability > AVAILABILITY_LEVEL_NA &&
         collectionState === COLLECTION_DONATED && (
           <Box

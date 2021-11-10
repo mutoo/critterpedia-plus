@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box, Image, Text } from 'rebass';
+import { Flex, Box, Text } from 'rebass';
 import NameTag from 'components/name-tag';
 import Seasonality from 'components/seasonality';
-import { fishImage, getAvailableHours } from 'utils/data';
+import { ALL_MONTHS, getAvailableHours } from 'utils/data';
 import ActiveHours from 'components/active-hours';
 import Heading from 'components/heading';
 import Container from 'containers/Container';
@@ -17,6 +17,7 @@ import { HemisphereContext } from 'utils/contexts';
 import FishShadow from 'components/fish-shadow';
 import SvgIcon from 'components/svg-icon';
 import { COLLECTION_DONATED } from 'utils/const';
+import PreviewImage from 'containers/ModalCritterDetail/components/preview-image';
 import IconButton from './icon-button';
 import { trackCategoryEvent } from '../../../configureGA';
 import { colors } from '../../../theme';
@@ -46,7 +47,7 @@ const DetailFish = ({ data }) => {
         }}
       >
         <NameTag
-          names={data.name}
+          names={data.names}
           donated={collectionState === COLLECTION_DONATED}
           fontSize="16px"
           mb="10px"
@@ -55,36 +56,12 @@ const DetailFish = ({ data }) => {
           sx={{
             width: '100%',
             maxWidth: '640px',
-            position: 'relative',
-            '&::after': {
-              content: '""',
-              display: 'block',
-              width: '100%',
-              paddingBottom: '50%',
-            },
           }}
         >
-          <Image
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              left: 0,
-              top: ['2px', '', '', '6px'],
-              filter: 'brightness(0) opacity(0.5) blur(1px)',
-            }}
-            src={fishImage(data.id)}
-            key={`fish-${data.id}-shadow`}
-          />
-          <Image
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              left: 0,
-              top: 0,
-            }}
-            src={fishImage(data.id)}
+          <PreviewImage
+            data={data}
+            width={1024}
+            height={512}
             key={`fish-${data.id}`}
           />
         </Box>
@@ -139,14 +116,16 @@ const DetailFish = ({ data }) => {
         <Container mb={['lg', '', '0']}>
           <Seasonality
             availableMonths={
-              data.availability[`month-${hemisphere.toLowerCase()}`]
+              data.availability[`month-${hemisphere.toLowerCase()}`] ||
+              ALL_MONTHS
             }
           />
         </Container>
         <Container>
           <ActiveHours
             availableMonths={
-              data.availability[`month-${hemisphere.toLowerCase()}`]
+              data.availability[`month-${hemisphere.toLowerCase()}`] ||
+              ALL_MONTHS
             }
             availableHours={getAvailableHours(
               data.availability,
@@ -166,7 +145,7 @@ const DetailFish = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.availability?.location}
+            {data?.location}
           </Text>
         </Container>
         <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
@@ -231,7 +210,7 @@ const DetailFish = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.price} bells ( {data?.['price-cj']} when sell to C.J. )
+            {data?.price} bells ( {data?.price * 1.5} when sell to C.J. )
           </Text>
         </Container>
         <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
@@ -244,17 +223,17 @@ const DetailFish = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.availability?.rarity}
+            {data?.rarity}
           </Text>
         </Container>
         <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
           <Heading mr="lg">More</Heading>
           <Text
             as="a"
-            href={`${global.siteConfig?.Wiki}/${data['file-name']}`}
+            href={`${global.siteConfig?.Wiki}/${data.filename}`}
             target="_blank"
             onClick={() => {
-              trackCategoryEvent('used', 'wiki', data.name['name-USen']);
+              trackCategoryEvent('used', 'wiki', data.names.USen);
             }}
             sx={{
               fontSize: '14px',
