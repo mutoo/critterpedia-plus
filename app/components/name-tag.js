@@ -71,7 +71,7 @@ const NameTag = ({ names, donated, fontSize = '12px', ...props }) => {
             />{' '}
           </>
         )}
-        {capitalize(names[`name-${language}`])}
+        {capitalize(names[language])}
       </Box>
     </Box>
   );

@@ -75,5 +75,5 @@ const Seasonality = ({ availableMonths = ALL_MONTHS, ...props }) => {
 export default Seasonality;
 
 Seasonality.propTypes = {
-  availableMonths: PropTypes.arrayOf(PropTypes.bool),
+  availableMonths: PropTypes.arrayOf(PropTypes.number),
 };

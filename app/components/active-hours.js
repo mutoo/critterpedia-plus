@@ -145,6 +145,6 @@ const ActiveHours = ({
 export default ActiveHours;
 
 ActiveHours.propTypes = {
-  availableMonths: PropTypes.arrayOf(PropTypes.bool),
-  availableHours: PropTypes.arrayOf(PropTypes.bool),
+  availableMonths: PropTypes.arrayOf(PropTypes.number),
+  availableHours: PropTypes.arrayOf(PropTypes.number),
 };

@@ -1,6 +1,4 @@
 import { fork, put } from 'redux-saga/effects';
-
-import { parseAvailableHours, parseAvailableMonths } from 'utils/data';
 import { CATEGORY_FISH, CATEGORY_INSECTS, CATEGORY_SEA } from 'utils/const';
 import fishData from 'assets/data/fish.json';
 import insectsData from 'assets/data/insects.json';
@@ -9,12 +7,6 @@ import { storeCritterpediaData } from './slice';
 
 const transform = category => data => ({
   ...data,
-  availability: {
-    ...data.availability,
-    time: parseAvailableHours(data.availability),
-    'month-northern': parseAvailableMonths(data.availability, 'northern'),
-    'month-southern': parseAvailableMonths(data.availability, 'southern'),
-  },
   category,
 });
 
