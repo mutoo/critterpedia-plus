@@ -34,7 +34,8 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write",
+    "update-data": "node data-updater"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -162,6 +163,7 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-redux-saga": "^1.1.1",
     "file-loader": "^5.0.2",
+    "googleapis": "39",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "4.0.1",
     "http-proxy-middleware": "1.0.0",

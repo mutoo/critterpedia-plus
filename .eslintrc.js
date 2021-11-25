@@ -84,14 +84,16 @@ module.exports = {
     {
       /* internals and server folder are for dev */
       files: [
-        'internals/**/*.*',
-        'server/**/*.*',
+        'internals/**/*.js',
+        'server/**/*.js',
+        'data-updater/**/*.js',
         '*.config.js',
         '*.stories.js',
       ],
       rules: {
         'import/no-extraneous-dependencies': 0,
         'global-require': 0,
+        'no-console': 0,
       },
     },
     {
