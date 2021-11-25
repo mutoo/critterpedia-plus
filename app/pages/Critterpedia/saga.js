@@ -1,8 +1,8 @@
 import { fork, put } from 'redux-saga/effects';
 import { CATEGORY_FISH, CATEGORY_INSECTS, CATEGORY_SEA } from 'utils/const';
-import fishData from 'assets/data/fish.json';
-import insectsData from 'assets/data/insects.json';
-import seaData from 'assets/data/sea.json';
+import fishData from '../../../data-updater/data/v1/fish.json';
+import insectsData from '../../../data-updater/data/v1/insects.json';
+import seaData from '../../../data-updater/data/v1/sea-creatures.json';
 import { storeCritterpediaData } from './slice';
 
 const transform = category => data => ({

@@ -5,7 +5,8 @@
       "components/*": ["./app/components/*"],
       "containers/*": ["./app/containers/*"],
       "pages/*": ["./app/pages/*"],
-      "utils/*": ["./app/utils/*"]
+      "utils/*": ["./app/utils/*"],
+      "data/*": ["./data-updater/data/*"]
     }
   },
   "exclude": ["node_modules", "docs"]

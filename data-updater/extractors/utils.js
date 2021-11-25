@@ -114,14 +114,15 @@ const parseAvailableHours = timeString => {
       });
     // is single hour value possible? e.g. "12 PM"
     if (!to) {
-      to = from;
+      to = from + 1;
     }
     // if cross midnight, move to next day
     if (to < from) {
       to += 24;
     }
     // set available hours
-    for (let h = from; h <= to; h += 1) {
+    // N.B. the end hour is exclusive: [a-b)
+    for (let h = from; h < to; h += 1) {
       hours[h % 24] = 1;
     }
   });
