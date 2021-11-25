@@ -13,6 +13,7 @@ import { hot } from 'react-hot-loader/root';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import CritterpediaPage from 'pages/Critterpedia/loadable';
 import NotFoundPage from 'pages/404';
+import DisqusRedirect from 'pages/DisqusRedirect';
 import { useInjectReducer } from 'redux-injectors';
 import { CacheProvider } from '@emotion/core';
 import createCache from '@emotion/cache';
@@ -57,6 +58,7 @@ const App = () => {
           path={`/:mode(${MODE_COLLECTION}|${MODE_DISCOVERY}|${MODE_ALL})/:category(${CATEGORY_FISH}|${CATEGORY_INSECTS}|${CATEGORY_SEA})`}
           component={CritterpediaPage}
         />
+        <Route path={`/comment-:commentId(\\d+)`} component={DisqusRedirect} />
         <Route component={NotFoundPage} />
       </Switch>
       {/* the global modals */}
