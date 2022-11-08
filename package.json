@@ -174,7 +174,7 @@
     "jest-styled-components": "^7.0.0",
     "jest-watch-typeahead": "0.4.2",
     "lint-staged": "9.5.0",
-    "loader-utils": "1.2.3",
+    "loader-utils": "1.4.1",
     "ngrok": "^3.2.5",
     "node-plop": "0.23.0",
     "null-loader": "^3.0.0",
