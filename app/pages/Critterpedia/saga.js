@@ -1,5 +1,6 @@
 import { fork, put } from 'redux-saga/effects';
 import { CATEGORY_FISH, CATEGORY_INSECTS, CATEGORY_SEA } from 'utils/const';
+import { merge } from 'lodash';
 import fishData from '../../../data-updater/data/v1/fish.json';
 import insectsData from '../../../data-updater/data/v1/insects.json';
 import seaData from '../../../data-updater/data/v1/sea-creatures.json';
@@ -12,13 +13,10 @@ const transform = category => data => ({
 
 const sortById = (n, m) => n.id - m.id;
 
-const patchFish = fish => {
-  if (fish) {
+const patchCritter = (entry, patch) => {
+  if (entry) {
     // eslint-disable-next-line no-param-reassign
-    fish.availability.isAllDay = {
-      northern: '9-11',
-      southern: '3-5',
-    };
+    merge(entry, patch);
   }
 };
 
@@ -29,8 +27,35 @@ export function* loadCritterpediaDataHandler() {
     sea: seaData.map(transform(CATEGORY_SEA)).sort(sortById),
   };
   // these two fish have special all day rules
-  patchFish(data.fish.find(f => f.id === 27));
-  patchFish(data.fish.find(f => f.id === 28));
+  patchCritter(
+    data.fish.find(f => f.id === 27),
+    {
+      availability: {
+        isAllDay: {
+          northern: '9-11',
+          southern: '3-5',
+        },
+      },
+    },
+  );
+  patchCritter(
+    data.fish.find(f => f.id === 28),
+    {
+      availability: {
+        isAllDay: {
+          northern: '9-11',
+          southern: '3-5',
+        },
+      },
+    },
+  );
+  // cicada shell is rare, but it sells cheap :(
+  patchCritter(
+    data.insects.find(i => i.id === 31),
+    {
+      rarity: 'Rare',
+    },
+  );
   yield put(storeCritterpediaData(data));
   return data;
 }
