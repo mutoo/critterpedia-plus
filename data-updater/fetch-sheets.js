@@ -20,7 +20,7 @@ const fetchSheets = () => {
         case 'fulfilled':
           fs.writeFileSync(
             path.resolve(__dirname, sheetToFetch.output),
-            JSON.stringify(result.value.data.values, null, 2),
+            `${JSON.stringify(result.value.data.values, null, 2)}\n`,
           );
           console.info(`${sheetToFetch.output} is generated`);
           break;
