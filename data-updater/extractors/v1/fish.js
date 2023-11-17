@@ -39,6 +39,7 @@ const fishExtractor = (dataRows, i18nRows) =>
   commonExtractor(dataRows, i18nRows, entry => ({
     location: entry['where-how'],
     shadow: parseShadow(entry),
+    vision: entry.vision,
   }));
 
 module.exports = fishExtractor;

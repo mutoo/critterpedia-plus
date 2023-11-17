@@ -57,7 +57,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishTanagoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish0.png",
     "location": "River",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 2,
@@ -117,7 +118,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishOikawaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish1.png",
     "location": "River",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Wide"
   },
   {
     "id": 3,
@@ -151,7 +153,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishFunaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish2.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Wide"
   },
   {
     "id": 4,
@@ -211,7 +214,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishUguiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish3.png",
     "location": "River",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Wide"
   },
   {
     "id": 5,
@@ -245,7 +249,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKoiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish5.png",
     "location": "Pond",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 6,
@@ -305,7 +310,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishNishikigoiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish6.png",
     "location": "Pond",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 7,
@@ -339,7 +345,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKingyoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish7.png",
     "location": "Pond",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 8,
@@ -399,7 +406,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishDemekinCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish8.png",
     "location": "Pond",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 9,
@@ -459,7 +467,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishRanchuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish85.png",
     "location": "Pond",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Narrow"
   },
   {
     "id": 10,
@@ -519,7 +528,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishMedakaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish9.png",
     "location": "Pond",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 11,
@@ -579,7 +589,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishZariganiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish10.png",
     "location": "Pond",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Very Wide"
   },
   {
     "id": 12,
@@ -665,7 +676,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishSupponCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish65.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Narrow"
   },
   {
     "id": 13,
@@ -751,7 +763,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKamitsukigameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish78.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 14,
@@ -811,7 +824,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishOtamajakusiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish64.png",
     "location": "Pond",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Very Wide"
   },
   {
     "id": 15,
@@ -871,7 +885,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKaeruCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish11.png",
     "location": "Pond",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Very Wide"
   },
   {
     "id": 16,
@@ -931,7 +946,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishDonkoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish12.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Medium"
   },
   {
     "id": 17,
@@ -991,7 +1007,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishDojouCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish13.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Wide"
   },
   {
     "id": 18,
@@ -1077,7 +1094,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishNamazuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish14.png",
     "location": "Pond",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 19,
@@ -1163,7 +1181,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishRaigyoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish16.png",
     "location": "Pond",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 20,
@@ -1223,7 +1242,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishBlueguillCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish17.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Very Wide"
   },
   {
     "id": 21,
@@ -1283,7 +1303,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishYellowparchCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish18.png",
     "location": "River",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Narrow"
   },
   {
     "id": 22,
@@ -1317,7 +1338,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishBlackbassCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish19.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 23,
@@ -1377,7 +1399,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishThirapiaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish76.png",
     "location": "River",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Medium"
   },
   {
     "id": 24,
@@ -1437,7 +1460,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishPaikuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish20.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 25,
@@ -1497,7 +1521,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishWakasagiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish21.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Wide"
   },
   {
     "id": 26,
@@ -1557,7 +1582,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishAyuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish22.png",
     "location": "River",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Medium"
   },
   {
     "id": 27,
@@ -1643,7 +1669,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishYamameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish23.png",
     "location": "River (clifftop)",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Narrow"
   },
   {
     "id": 28,
@@ -1729,7 +1756,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishOoiwanaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish24.png",
     "location": "River (clifftop)",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Narrow"
   },
   {
     "id": 29,
@@ -1815,7 +1843,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishGoldenTorautoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish79.png",
     "location": "River (clifftop)",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Very Narrow"
   },
   {
     "id": 30,
@@ -1901,7 +1930,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishItouCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish26.png",
     "location": "River (clifftop)",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Very Narrow"
   },
   {
     "id": 31,
@@ -1961,7 +1991,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishSakeCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish27.png",
     "location": "River (mouth)",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 32,
@@ -2021,7 +2052,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKingsalmonCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish28.png",
     "location": "River (mouth)",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 33,
@@ -2107,7 +2139,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishSyanhaiganiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish66.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Narrow"
   },
   {
     "id": 34,
@@ -2193,7 +2226,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishGuppiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish29.png",
     "location": "River",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 35,
@@ -2279,7 +2313,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishDokutaafishCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish67.png",
     "location": "River",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Narrow"
   },
   {
     "id": 36,
@@ -2365,7 +2400,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishAngelfishCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish30.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Medium"
   },
   {
     "id": 37,
@@ -2451,7 +2487,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishBetaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish77.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Narrow"
   },
   {
     "id": 38,
@@ -2537,7 +2574,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishNeontetoraCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish31.png",
     "location": "River",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 39,
@@ -2623,7 +2661,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishRainbowfishCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish80.png",
     "location": "River",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Narrow"
   },
   {
     "id": 40,
@@ -2709,7 +2748,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishPiraniaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish32.png",
     "location": "River",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Very Wide"
   },
   {
     "id": 41,
@@ -2795,7 +2835,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishArowanaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish33.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 42,
@@ -2881,7 +2922,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishDoladoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish34.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Narrow"
   },
   {
     "id": 43,
@@ -2967,7 +3009,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishGaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish35.png",
     "location": "Pond",
-    "shadow": "Large (5)"
+    "shadow": "Large (5)",
+    "vision": "Wide"
   },
   {
     "id": 44,
@@ -3053,7 +3096,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishPirarukuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish36.png",
     "location": "River",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Narrow"
   },
   {
     "id": 45,
@@ -3139,7 +3183,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishEndorikeriiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish68.png",
     "location": "River",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Narrow"
   },
   {
     "id": 46,
@@ -3199,7 +3244,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishTyouzameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish75.png",
     "location": "River (mouth)",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Very Narrow"
   },
   {
     "id": 47,
@@ -3259,7 +3305,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKurioneCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish37.png",
     "location": "Sea",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Very Narrow"
   },
   {
     "id": 48,
@@ -3319,7 +3366,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishTatsunootoshigoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish39.png",
     "location": "Sea",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Narrow"
   },
   {
     "id": 49,
@@ -3379,7 +3427,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKumanomiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish40.png",
     "location": "Sea",
-    "shadow": "Smallest (1)"
+    "shadow": "Smallest (1)",
+    "vision": "Medium"
   },
   {
     "id": 50,
@@ -3439,7 +3488,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishNanyouhagiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish41.png",
     "location": "Sea",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Medium"
   },
   {
     "id": 51,
@@ -3499,7 +3549,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishChouchouuoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish42.png",
     "location": "Sea",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Medium"
   },
   {
     "id": 52,
@@ -3585,7 +3636,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishNaporeonfishCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish43.png",
     "location": "Sea",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Medium"
   },
   {
     "id": 53,
@@ -3645,7 +3697,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishMinokasagoCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish44.png",
     "location": "Sea",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Wide"
   },
   {
     "id": 54,
@@ -3731,7 +3784,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishFuguCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish73.png",
     "location": "Sea",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Very Narrow"
   },
   {
     "id": 55,
@@ -3791,7 +3845,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishHarisenbonCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish45.png",
     "location": "Sea",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Medium"
   },
   {
     "id": 56,
@@ -3851,7 +3906,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishAntyobiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish81.png",
     "location": "Sea",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Very Wide"
   },
   {
     "id": 57,
@@ -3885,7 +3941,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishAjiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish46.png",
     "location": "Sea",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Wide"
   },
   {
     "id": 58,
@@ -3945,7 +4002,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishIshidaiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish47.png",
     "location": "Sea",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Medium"
   },
   {
     "id": 59,
@@ -3979,7 +4037,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishSuzukiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish48.png",
     "location": "Sea",
-    "shadow": "Large (5)"
+    "shadow": "Large (5)",
+    "vision": "Wide"
   },
   {
     "id": 60,
@@ -4013,7 +4072,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishTaiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish49.png",
     "location": "Sea",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 61,
@@ -4073,7 +4133,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKareiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish50.png",
     "location": "Sea",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Medium"
   },
   {
     "id": 62,
@@ -4107,7 +4168,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishHirameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish51.png",
     "location": "Sea",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Narrow"
   },
   {
     "id": 63,
@@ -4167,7 +4229,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishIkaCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish52.png",
     "location": "Sea",
-    "shadow": "Medium (3)"
+    "shadow": "Medium (3)",
+    "vision": "Wide"
   },
   {
     "id": 64,
@@ -4227,7 +4290,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishUtsuboCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish55.png",
     "location": "Sea",
-    "shadow": "Narrow"
+    "shadow": "Narrow",
+    "vision": "Medium"
   },
   {
     "id": 65,
@@ -4287,7 +4351,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishHanahigeutuboCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish71.png",
     "location": "Sea",
-    "shadow": "Narrow"
+    "shadow": "Narrow",
+    "vision": "Very Narrow"
   },
   {
     "id": 66,
@@ -4347,7 +4412,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishMaguroCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish57.png",
     "location": "Pier",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Narrow"
   },
   {
     "id": 67,
@@ -4407,7 +4473,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKajikiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish58.png",
     "location": "Pier",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Narrow"
   },
   {
     "id": 68,
@@ -4467,7 +4534,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishRouninajiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish70.png",
     "location": "Pier",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Very Narrow"
   },
   {
     "id": 69,
@@ -4527,7 +4595,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishShiiraCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish82.png",
     "location": "Pier",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Very Narrow"
   },
   {
     "id": 70,
@@ -4613,7 +4682,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishManbouCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish60.png",
     "location": "Sea",
-    "shadow": "Largest with fin (6)"
+    "shadow": "Largest with fin (6)",
+    "vision": "Very Narrow"
   },
   {
     "id": 71,
@@ -4699,7 +4769,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishEiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish59.png",
     "location": "Sea",
-    "shadow": "Large (4)"
+    "shadow": "Large (4)",
+    "vision": "Medium"
   },
   {
     "id": 72,
@@ -4785,7 +4856,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishNokogirizameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish74.png",
     "location": "Sea",
-    "shadow": "Largest with fin (6)"
+    "shadow": "Largest with fin (6)",
+    "vision": "Very Narrow"
   },
   {
     "id": 73,
@@ -4871,7 +4943,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishShumokuzameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish61.png",
     "location": "Sea",
-    "shadow": "Largest with fin (6)"
+    "shadow": "Largest with fin (6)",
+    "vision": "Narrow"
   },
   {
     "id": 74,
@@ -4957,7 +5030,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishSameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish62.png",
     "location": "Sea",
-    "shadow": "Largest with fin (6)"
+    "shadow": "Largest with fin (6)",
+    "vision": "Narrow"
   },
   {
     "id": 75,
@@ -5017,7 +5091,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishJinbeezameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish72.png",
     "location": "Sea",
-    "shadow": "Largest with fin (6)"
+    "shadow": "Largest with fin (6)",
+    "vision": "Very Narrow"
   },
   {
     "id": 76,
@@ -5077,7 +5152,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishKobanzameCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish83.png",
     "location": "Sea",
-    "shadow": "Largest with fin (6)"
+    "shadow": "Largest with fin (6)",
+    "vision": "Very Wide"
   },
   {
     "id": 77,
@@ -5163,7 +5239,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishChouchinankouCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish56.png",
     "location": "Sea",
-    "shadow": "Large (5)"
+    "shadow": "Large (5)",
+    "vision": "Wide"
   },
   {
     "id": 78,
@@ -5223,7 +5300,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishRyuuguunotukaiCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish69.png",
     "location": "Sea",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Very Narrow"
   },
   {
     "id": 79,
@@ -5283,7 +5361,8 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishDemenigisuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish84.png",
     "location": "Sea",
-    "shadow": "Small (2)"
+    "shadow": "Small (2)",
+    "vision": "Very Narrow"
   },
   {
     "id": 80,
@@ -5317,6 +5396,7 @@
     "image-uri": "https://acnhcdn.com/latest/BookFishIcon/FishSirakansuCropped.png",
     "icon-uri": "https://acnhcdn.com/latest/MenuIcon/Fish63.png",
     "location": "Sea (rainy days)",
-    "shadow": "Largest (6)"
+    "shadow": "Largest (6)",
+    "vision": "Very Narrow"
   }
 ]

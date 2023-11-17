@@ -201,19 +201,6 @@ const DetailFish = ({ data }) => {
           </Text>
         </Container>
         <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
-          <Heading mr="lg">Price</Heading>
-          <Text
-            as="span"
-            sx={{
-              fontSize: '14px',
-              fontWeight: 'bold',
-              fontStyle: 'italic',
-            }}
-          >
-            {data?.price} bells ( {data?.price * 1.5} when sell to C.J. )
-          </Text>
-        </Container>
-        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
           <Heading mr="lg">Rarity</Heading>
           <Text
             as="span"
@@ -224,6 +211,32 @@ const DetailFish = ({ data }) => {
             }}
           >
             {data?.rarity}
+          </Text>
+        </Container>
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
+          <Heading mr="lg">Vision</Heading>
+          <Text
+            as="span"
+            sx={{
+              fontSize: '14px',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+            }}
+          >
+            {data?.vision}
+          </Text>
+        </Container>
+        <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
+          <Heading mr="lg">Price</Heading>
+          <Text
+            as="span"
+            sx={{
+              fontSize: '14px',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+            }}
+          >
+            {data?.price} bells ( {data?.price * 1.5} when sell to C.J. )
           </Text>
         </Container>
         <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">
