@@ -74,10 +74,12 @@ const HourPicker = ({ hour, onChange, ...props }) => {
   return (
     <Box {...props}>
       <Flex justifyContent="flex-start" mb="md">
-        <Heading mr="md">Hour</Heading>
+        <Heading mr="md" sx={{ flex: '0 0 auto' }}>
+          Hour
+        </Heading>
         {hour !== null ? (
           <Box
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: 'pointer', flex: '1 1 auto' }}
             onClick={() => {
               onChange(null);
             }}
