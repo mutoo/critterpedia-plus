@@ -1,7 +1,7 @@
 {
   "name": "critterpedia-plus",
   "version": "1.2.1",
-  "description": "An advanced critterpedia for Animal Crossing: New Horizons, helps you find new critters easily.",
+  "description": "An advanced Critterpedia for Animal Crossing: New Horizons that helps you find new critters easily.",
   "repository": {
     "type": "git",
     "url": "git://github.com/mutoo/critterpedia-plus.git"

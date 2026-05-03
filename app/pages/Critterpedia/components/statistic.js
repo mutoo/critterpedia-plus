@@ -41,13 +41,13 @@ const Statistic = () => {
   );
   return (
     <>
-      <Heading>Statistic</Heading>
+      <Heading>Statistics</Heading>
       <Text fontSize="18px">
         <p>
-          In category {category}, you had caught {caught} of {total}, donated{' '}
-          {donated} of {total}.
+          In the {category} category, you have caught {caught} of {total} and
+          donated {donated} of {total}.
         </p>
-        {donated < total && <p>Keep moving on! {total - donated} to go!</p>}
+        {donated < total && <p>Keep going! {total - donated} to go!</p>}
       </Text>
     </>
   );

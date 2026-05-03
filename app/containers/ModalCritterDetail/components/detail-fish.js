@@ -236,7 +236,7 @@ const DetailFish = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.price} bells ( {data?.price * 1.5} when sell to C.J. )
+            {data?.price} bells ({data?.price * 1.5} when sold to C.J.)
           </Text>
         </Container>
         <Container flex="0 0 auto" width={['100%', '', '50%']} mb="lg">

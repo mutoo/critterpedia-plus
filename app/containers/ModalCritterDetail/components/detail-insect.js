@@ -171,7 +171,7 @@ const DetailInsect = ({ data }) => {
               fontStyle: 'italic',
             }}
           >
-            {data?.price} bells ( {data?.price * 1.5} when sell to Flick. )
+            {data?.price} bells ({data?.price * 1.5} when sold to Flick)
           </Text>
         </Container>
         <Container mb="md">

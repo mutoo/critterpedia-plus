@@ -77,20 +77,20 @@ const CritterpediaPage = () => {
             <Text fontSize="18px">
               <p>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                Hello everyone! I'm Ninja from HiddenLeaf island. I built this
-                app to provide an interactive way to inspect critterpedia. Which
-                helps you easily <b>finding new critters</b>.
+                Hello everyone! I'm Ninja from HiddenLeaf Island. I built this
+                app as an interactive way to explore your Critterpedia and help
+                you <b>find new critters</b> more easily.
               </p>
               <p>
-                If you are curious about these questions below, it would be a
-                great time for you to find out the answer:
+                If you have ever wondered about any of these questions, this app
+                can help you find the answers:
               </p>
               <ul>
                 <li>
                   What critters are available <b>at the moment</b>?
                 </li>
                 <li>
-                  What critters are available <b>in the other hemisphere</b>?
+                  What critters are available <b>in the opposite hemisphere</b>?
                 </li>
                 <li>
                   What critters will be available <b>next month</b>?
@@ -103,7 +103,7 @@ const CritterpediaPage = () => {
             <Heading as="h2">Getting Started</Heading>
             <Text fontSize="18px">
               <p>
-                Display critter&apos;s name in this language:{' '}
+                Display critter names in:{' '}
                 <select
                   defaultValue={language}
                   onChange={e => {
@@ -124,7 +124,7 @@ const CritterpediaPage = () => {
             </Text>
             <Text fontSize="18px">
               <p>
-                Which <b>hemisphere</b> do you play on?
+                Which <b>hemisphere</b> is your island in?
               </p>
               <HemispherePicker
                 hemisphere={hemisphere}
@@ -136,7 +136,7 @@ const CritterpediaPage = () => {
               />
             </Text>
             <Text fontSize="18px">
-              <p>You might also want to do some time traveling:</p>
+              <p>You might also want to do some time-traveling:</p>
             </Text>
             <MonthPicker
               month={month}
@@ -148,7 +148,7 @@ const CritterpediaPage = () => {
               onChange={h => dispatch(updateFilterHour(h))}
             />
             <Text fontSize="14px">
-              <p>N.B. these settings are only applicable to Discovery Mode.</p>
+              <p>Note: These settings apply only to Discovery Mode.</p>
             </Text>
           </Box>
           <Box ref={modeAnchorRef} />
@@ -158,9 +158,8 @@ const CritterpediaPage = () => {
               <Text fontSize="18px">
                 {' '}
                 <p>
-                  In this mode, you can view the critters with{' '}
-                  <b>availability</b>, based on your selected hemisphere, date,
-                  and time, above this section.
+                  In this mode, you can see which critters are <b>available</b>{' '}
+                  based on the hemisphere, date, and time selected above.
                 </p>
               </Text>
             </>
@@ -170,10 +169,10 @@ const CritterpediaPage = () => {
               <Heading as="h2">Collection Mode</Heading>
               <Text fontSize="18px">
                 <p>
-                  In this mode, you can <b>mark</b> all the critters you had
-                  already caught or donated.
+                  In this mode, you can <b>mark</b> critters as caught or
+                  donated.
                 </p>
-                <p>Tips: click on the grid to select the critters.</p>
+                <p>Tip: Click on the grid to select critters.</p>
               </Text>
             </>
           )}
@@ -182,8 +181,8 @@ const CritterpediaPage = () => {
               <Heading as="h2">All Mode</Heading>
               <Text fontSize="18px">
                 <p>
-                  In this mode, you can view <b>all the critters</b> in the
-                  Animal Crossing: New Horizons game.
+                  In this mode, you can view <b>all the critters</b> in Animal
+                  Crossing: New Horizons.
                 </p>
               </Text>
             </>
@@ -251,20 +250,20 @@ const CritterpediaPage = () => {
             <>
               <Heading>Graph</Heading>
               <Text fontSize="18px">
-                <p>The critters are shown in different status: </p>
+                <p>Critters are shown with different statuses:</p>
                 <ul>
                   <li>
-                    <b>Colorful</b>: It is available right now! Go and find
-                    them!
+                    <b>Colorful</b>: These critters are available right now. Go
+                    and find them!
                   </li>
                   <li>
-                    <b>Dark shade</b>: It is available this month, but not at
-                    the current hour, try the other time then.
+                    <b>Dark shade</b>: These critters are available this month,
+                    but not at the selected hour. Try a different time.
                   </li>
                   <li>
-                    <b>Light shade</b>: It is available on the other hemisphere,
-                    visit your long-distance friends and pay attention to the
-                    critters!
+                    <b>Light shade</b>: These critters are available in the
+                    opposite hemisphere. Visit your long-distance friends and
+                    keep an eye out for them.
                   </li>
                 </ul>
               </Text>
@@ -281,7 +280,7 @@ const CritterpediaPage = () => {
             </>
           )}
           <Text fontSize="18px" mt="50px">
-            <p>If you like this app, please share it with your friends, </p>
+            <p>If you like this app, please share it with your friends</p>
             <p>
               or support me via{' '}
               <a
@@ -304,11 +303,11 @@ const CritterpediaPage = () => {
               <b>Disclaimer:</b>
             </p>
             <p>
-              Critterpedia-plus is a fan made API/Website and claims no
+              Critterpedia Plus is a fan-made API and website. It claims no
               ownership of any intellectual property associated with Nintendo or
-              Animal Crossing. All assets found on the site and the repository
-              are the sole property of Nintendo and are only used for
-              non-commercial and educational purpose.
+              Animal Crossing. All assets found on the site and in the
+              repository are the sole property of Nintendo and are used only for
+              non-commercial and educational purposes.
             </p>
           </Text>
         </Container>

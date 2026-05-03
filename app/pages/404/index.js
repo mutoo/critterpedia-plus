@@ -11,7 +11,9 @@ const NotFoundPage = () => {
       <Container maxWidth="660px">
         <Heading>404 Critter Not Caught</Heading>
         <Text fontSize="18px">
-          <p>The little critter is vanish in the dark, please try again!</p>
+          <p>
+            The little critter has vanished into the dark. Please try again!
+          </p>
         </Text>
         <Text
           onClick={() => {
@@ -22,7 +24,7 @@ const NotFoundPage = () => {
             cursor: 'pointer',
           }}
         >
-          <p>Back to critterpedia page</p>
+          <p>Back to the Critterpedia page</p>
         </Text>
       </Container>
     </Box>
