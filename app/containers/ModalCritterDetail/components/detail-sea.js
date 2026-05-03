@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Flex, Box, Text } from 'rebass';
 import NameTag from 'components/name-tag';
@@ -15,16 +15,19 @@ import {
 import { HemisphereContext } from 'utils/contexts';
 import { COLLECTION_DONATED } from 'utils/const';
 import SvgIcon from 'components/svg-icon';
+import SeaBubbleSize from 'components/sea-bubble-size';
 import PreviewImage from 'containers/ModalCritterDetail/components/preview-image';
 import selector from '../selectors';
 import IconButton from './icon-button';
 import { trackCategoryEvent } from '../../../configureGA';
+import { colors } from '../../../theme';
 
 const DetailSea = ({ data }) => {
   const { category, nextId, prevId, collection, collectionState } = useSelector(
     selector,
   );
   const [hemisphere] = useContext(HemisphereContext);
+  const [shouldPreviewBubble, previewBubble] = useState(false);
   const dispatch = useDispatch();
   return (
     <Flex
@@ -33,6 +36,7 @@ const DetailSea = ({ data }) => {
         width: '100%',
         maxWidth: '960px',
       }}
+      onClick={() => previewBubble(false)}
     >
       <Flex
         flexDirection="column"
@@ -150,20 +154,6 @@ const DetailSea = ({ data }) => {
             </Text>
           </Container>
           <Container>
-            <Heading mb="md">Shadow</Heading>
-            <Text
-              sx={{
-                fontSize: '14px',
-                fontWeight: 'bold',
-                fontStyle: 'italic',
-              }}
-            >
-              {data?.shadow}
-            </Text>
-          </Container>
-        </Flex>
-        <Flex mb="lg">
-          <Container>
             <Heading mb="md">Price</Heading>
             <Text
               sx={{
@@ -173,6 +163,59 @@ const DetailSea = ({ data }) => {
               }}
             >
               {data?.price} bells
+            </Text>
+          </Container>
+        </Flex>
+        <Flex mb="lg">
+          <Container>
+            <Heading mb="md">Shadow</Heading>
+            <Text
+              sx={{
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+                position: 'relative',
+              }}
+            >
+              {data?.shadow ? (
+                <Box
+                  as="span"
+                  sx={{ cursor: 'pointer' }}
+                  onClick={e => {
+                    trackCategoryEvent(
+                      'ModalCritterDetail',
+                      'preview bubble',
+                      `${data.id}`,
+                    );
+                    previewBubble(true);
+                    e.stopPropagation();
+                  }}
+                >
+                  {data.shadow}{' '}
+                  <SvgIcon color={colors.alert} icon="question-circle" inline />
+                  {shouldPreviewBubble && (
+                    <SeaBubbleSize
+                      description={data.shadow}
+                      sx={{
+                        position: ['fixed', '', 'absolute'],
+                        bottom: ['50%', '', '100%'],
+                        left: '50%',
+                        transform: [
+                          'translate(-50%, 50%) scale(0.75)',
+                          '',
+                          'translate(-50%, -20px)',
+                        ],
+                        borderRadius: '40%',
+                        overflow: 'hidden',
+                        zIndex: 3,
+                        boxShadow: '0 5px 10px 0px rgba(0,0,0,0.5)',
+                      }}
+                    />
+                  )}
+                </Box>
+              ) : (
+                'Unknown'
+              )}
             </Text>
           </Container>
           <Container>
