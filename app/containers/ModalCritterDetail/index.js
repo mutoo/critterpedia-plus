@@ -27,6 +27,26 @@ import DetailInsect from './components/detail-insect';
 import DetailSea from './components/detail-sea';
 import { trackCategoryEvent } from '../../configureGA';
 
+const dispatchResize = () => {
+  if (typeof Event === 'function') {
+    window.dispatchEvent(new Event('resize'));
+    return;
+  }
+
+  const event = document.createEvent('Event');
+  event.initEvent('resize', true, true);
+  window.dispatchEvent(event);
+};
+
+const notifyLayoutAfterModalClose = () => {
+  if (typeof window.requestAnimationFrame === 'function') {
+    window.requestAnimationFrame(dispatchResize);
+    return;
+  }
+
+  setTimeout(dispatchResize, 0);
+};
+
 function ModalCritterDetail() {
   useInjectReducer({ key, reducer });
   const {
@@ -88,6 +108,7 @@ function ModalCritterDetail() {
         document.body.style.position = '';
         document.body.style.top = '';
         window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+        notifyLayoutAfterModalClose();
       }}
       onRequestClose={() => {
         dispatch(closeCritterDetail());

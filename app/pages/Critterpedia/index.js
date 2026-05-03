@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet-async';
 import Container from 'containers/Container';
 import ModalCritterDetail from 'containers/ModalCritterDetail';
 import { HemisphereContext } from 'utils/contexts';
-import { DiscussionEmbed } from 'disqus-react';
 import { changeHemisphere, changeLanguage } from 'containers/App/slice';
 import {
   CATEGORY_FISH,
@@ -27,7 +26,6 @@ import {
   updateFilterHour,
 } from 'pages/Critterpedia/slice';
 import SvgIcon from 'components/svg-icon';
-import { Bling as GPT } from 'react-gpt';
 import MonthPicker from './components/month-picker';
 import HourPicker from './components/hour-picker';
 import Statistic from './components/statistic';
@@ -65,20 +63,6 @@ const CritterpediaPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [view /* , setView */] = useState('Grid');
-  const disqus = useMemo(
-    () => (
-      <DiscussionEmbed
-        key="critterpedia-plus-disqus"
-        shortname="critterpedia-plus"
-        config={{
-          url: 'https://critterpedia-plus.mutoo.im',
-          identifier: 'critterpedia-plus-guestbook',
-          title: 'Critterpedia Plus',
-        }}
-      />
-    ),
-    [],
-  );
   return (
     <HemisphereContext.Provider
       value={[hemisphere, h => dispatch(changeHemisphere(h))]}
@@ -206,7 +190,7 @@ const CritterpediaPage = () => {
           )}
         </Container>
       </Box>
-      <Box my="50px">
+      <Box mt="50px" pb="50px">
         <Container>
           <Flex mb="-20px" justifyContent="space-between">
             <Flex mr="50px">
@@ -261,7 +245,7 @@ const CritterpediaPage = () => {
           </Flex>
         </Container>
         {view === 'Grid' && <GridView mb="30px" />}
-        {view === 'List' && <Box>Building</Box>}
+        {view === 'List' && <Box>Not implemented yet.</Box>}
         <Container maxWidth="660px" mb="50px">
           {mode === MODE_DISCOVERY && (
             <>
@@ -314,27 +298,7 @@ const CritterpediaPage = () => {
             </p>
           </Text>
         </Container>
-        <Box
-          sx={{
-            margin: '0 auto',
-            maxWidth: '728px',
-            backgroundColor: 'title-bg',
-            backgroundClip: 'content-box',
-            mb: '50px',
-          }}
-        >
-          <GPT
-            adUnitPath="/21918258587/critterpedia-index"
-            sizeMapping={[
-              { viewport: [0, 0], slot: [320, 50] },
-              { viewport: [750, 0], slot: [728, 90] },
-            ]}
-          />
-        </Box>
-        <Container maxWidth="660px" mb="50px">
-          {disqus}
-        </Container>
-        <Container maxWidth="660px" mb="50px">
+        <Container maxWidth="660px" mb={0}>
           <Text fontSize="14px">
             <p>
               <b>Disclaimer:</b>
