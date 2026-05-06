@@ -72,7 +72,7 @@
     "date-fns": "^2.9.0",
     "disqus-react": "1.0.8",
     "emotion-theming": "^10.0.19",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "fontfaceobserver": "2.1.0",
     "graphql": "14.6.0",
     "graphql-tag": "2.10.3",
